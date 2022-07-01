@@ -13,9 +13,5 @@ public class UserSql {
 	"delete from user_info where user_id=?";
 	public static final String SELECT_USER_ID=
 	"select * from user_info where user_id=?";
-	public static final String SELECT_USER_ALL=
-	"select * from user_info";
-	
-	
-	
+
 }

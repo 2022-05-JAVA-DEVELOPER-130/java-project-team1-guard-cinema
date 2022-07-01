@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import com.itwill.gc.common.DataSource;
 import com.itwill.gc.vo.User;
 
+
 public class UserDao {
 	private DataSource dataSource;
 	public UserDao() {
@@ -29,7 +30,7 @@ public class UserDao {
 		
 	}
 	//유저 전화번호 수정
-	public int update(User user) throws Exception{
+	public int updateByPhone(User user) throws Exception{
 		Connection con=dataSource.getConnection();
 		PreparedStatement ptmt=con.prepareStatement(UserSql.UPDATE_USER_PH_NUM);
 		ptmt.setString(1, user.getUserPhNum());
@@ -40,7 +41,7 @@ public class UserDao {
 		
 	}
 	//유저 이메일 수정
-	public int update(User user) throws Exception{
+	public int updateByEmail(User user) throws Exception{
 		Connection con=dataSource.getConnection();
 		PreparedStatement ptmt=con.prepareStatement(UserSql.UPDATE_USER_EMAIL);
 		ptmt.setString(1, user.getUserEmail());
@@ -51,7 +52,7 @@ public class UserDao {
 		
 	}
 	//유저 비밀번호 수정
-	public int update(User user) throws Exception{
+	public int updateByPW(User user) throws Exception{
 		Connection con=dataSource.getConnection();
 		PreparedStatement ptmt=con.prepareStatement(UserSql.UPDATE_USER_PASSWORD);
 		ptmt.setString(1, user.getUserPassword());
@@ -61,7 +62,35 @@ public class UserDao {
 		return rCount;
 		
 	}
-
+	//회원 탈퇴
+	public int remove(String userId) throws Exception{
+		Connection con=dataSource.getConnection();
+		PreparedStatement ptmt=con.prepareStatement(UserSql.DELETE_USER_INFO);
+		ptmt.setString(1, userId);
+		int rCount=ptmt.executeUpdate();
+		ptmt.close();
+		con.close();
+		return rCount;
+		
+	}
+	//유저 정보 가져오기
+	public User finduserInfo(String userId) throws Exception {
+		User user = null;
+		Connection con=dataSource.getConnection();
+		PreparedStatement ptmt=con.prepareStatement(UserSql.SELECT_USER_ID);
+		ptmt.setString(1, userId);
+		ResultSet rs = ptmt.executeQuery();
+		if(rs.next()) {
+			user=new User(
+					rs.getString("userId"),
+					rs.getString("userName"),
+					rs.getString("userPhNum"),
+					rs.getString("userJumin"),
+					rs.getString("userEmail"),
+					rs.getString("userPassword"));
+		}
+		return user;
+	}
 
 
 }
