@@ -106,7 +106,6 @@ public class UserDao {
 		return findUser;
 	}
 
-	
 	// 유저 아이디 중복검사
 	public boolean serchUserid(String userId) throws Exception {
 		Connection con = dataSource.getConnection();
