@@ -11,7 +11,10 @@ public class UserSql {
 	"update user_info set user_password=? where user_id=?";
 	public static final String DELETE_USER_INFO=
 	"delete from user_info where user_id=?";
+	public static final String SELECT_USER_INFO=
+	"select user_id, user_name, user_ph_num, user_jumin, user_email, user_password from user_info where user_id=?";
 	public static final String SELECT_USER_ID=
-	"select * from user_info where user_id=?";
-
+	"select user_id from user_info where user_email=?";
+	public static final String SELECT_BY_ID_COUNT=
+	"select count(*) as cnt from user_info where user_id=?";
 }

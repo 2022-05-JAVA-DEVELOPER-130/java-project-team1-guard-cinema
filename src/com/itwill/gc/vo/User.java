@@ -66,4 +66,9 @@ public class User {
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
 	}
+	
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", name=" + userName + ", phNum= " +userPhNum+ ", jumin= " +userJumin+ ", email=" + userEmail + ", password= " +userPassword+ "]";
+	}
 }
