@@ -13,7 +13,6 @@ public class UserDao {
 	public UserDao() {
 		dataSource = new DataSource();
 	}
-
 	// 새로운 유저 생성
 	public int create(User user) throws Exception {
 		Connection con = dataSource.getConnection();
