@@ -20,6 +20,8 @@ DROP SEQUENCE event_event_no_SEQ;
 CREATE SEQUENCE event_event_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 
+
+
 CREATE TABLE movie(
 		movie_code                    		NUMBER(10)		 NULL ,
 		movie_title                   		VARCHAR2(20)		 NULL ,
@@ -75,18 +77,16 @@ CREATE TABLE food(
 
 
 CREATE TABLE gongji(
+		gongji_no                     		NUMBER(10)		 NULL ,
 		gongji_title                  		VARCHAR2(50)		 NULL ,
 		gongji_content                		VARCHAR2(500)		 NULL ,
 		gongji_date                   		DATE		 NULL ,
-		gongji_category               		VARCHAR2(50)		 NULL ,
-		gongji_no                     		NUMBER(10)		 NULL 
+		gongji_category               		VARCHAR2(50)		 NULL 
 );
 
 DROP SEQUENCE gongji_gongji_no_SEQ;
 
 CREATE SEQUENCE gongji_gongji_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
-
-
 
 
 CREATE TABLE review(
@@ -120,6 +120,7 @@ CREATE SEQUENCE cart_cart_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 
 
+
 CREATE TABLE food_receipt(
 		food_rv_num                   		NUMBER(10)		 NULL ,
 		user_id                       		VARCHAR2(20)		 NULL ,
@@ -132,7 +133,6 @@ CREATE TABLE food_receipt(
 DROP SEQUENCE food_receipt_food_rv_num_SEQ;
 
 CREATE SEQUENCE food_receipt_food_rv_num_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
-
 
 
 
@@ -152,18 +152,17 @@ CREATE SEQUENCE question_question_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 
 
-
-
 CREATE TABLE faq(
+		faq_no                        		NUMBER(10)		 NULL ,
 		faq_category                  		VARCHAR2(50)		 NULL ,
 		faq_title                     		VARCHAR2(50)		 NULL ,
-		faq_content                   		VARCHAR2(500)		 NULL ,
-		faq_no                        		NUMBER(10)		 NULL 
+		faq_content                   		VARCHAR2(500)		 NULL 
 );
 
 DROP SEQUENCE faq_faq_no_SEQ;
 
 CREATE SEQUENCE faq_faq_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
+
 
 
 
