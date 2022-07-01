@@ -54,7 +54,7 @@ CREATE TABLE movie_reserve(
 		user_id                       		VARCHAR2(20)		 NULL ,
 		movie_day                     		DATE		 NULL ,
 		movie_seat_num                		NUMBER(10)		 NULL ,
-		movie_daytime                 		NUMBER(10)		 NULL ,
+		movie_daytime                 		VARCHAR2(20)	 NULL ,
 		movie_order_pr                		NUMBER(20)		 NULL ,
 		movie_title                   		VARCHAR2(20)		 NULL ,
 		cinema_name                   		VARCHAR2(20)		 NULL ,
