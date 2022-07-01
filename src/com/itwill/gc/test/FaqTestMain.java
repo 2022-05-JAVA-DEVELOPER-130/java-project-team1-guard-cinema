@@ -1,5 +1,5 @@
 package com.itwill.gc.test;
 
-public class FaqTest {
+public class FaqTestMain {
 
 }

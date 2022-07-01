@@ -1,5 +1,5 @@
 package com.itwill.gc.test;
 
-public class UserTest {
+public class FoodTestMain {
 
 }
