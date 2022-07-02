@@ -11,7 +11,7 @@ import com.itwill.gc.vo.Food;
 
 public class FoodDao {
 	private DataSource dataSource;
-	public FoodDao() {
+	public FoodDao() throws Exception {
 		dataSource=new DataSource();
 	}
 	/*
@@ -28,31 +28,34 @@ public class FoodDao {
 					new Food(
 							rs.getInt("food_code"),
 							rs.getString("food_name"), 
-							rs.getInt("food_price"), 
-							rs.getString("food_image"), 
-							rs.getString("food_info"));
+							rs.getString("food_info"),
+							rs.getInt("food_price"),
+							rs.getString("food_image")
+							);
 		}
 		rs.close();
 		pstmt.close();
 		con.close();
+		
 		return food;
 	}
 	/*
 	 * selectAll : 상품전체검색
 	 */
 	public List<Food> selectAll() throws Exception{
-		List<Food> FoodList=new ArrayList<Food>();
+		List<Food> foodList=new ArrayList<Food>();
 		
 		Connection con=dataSource.getConnection();
 		PreparedStatement pstmt=con.prepareStatement(FoodSql.FOOD_LIST);
 		ResultSet rs=pstmt.executeQuery();
 		while(rs.next()) {
 			Food food=new Food(
-								rs.getInt("food_code"),
-								rs.getString("food_name"), 
-								rs.getInt("food_price"), 
-								rs.getString("food_image"), 
-								rs.getString("food_info"));
+					rs.getInt("food_code"),
+					rs.getString("food_name"), 
+					rs.getString("food_info"),
+					rs.getInt("food_price"),
+					rs.getString("food_image")
+					);
 			foodList.add(food);
 		}
 		rs.close();
