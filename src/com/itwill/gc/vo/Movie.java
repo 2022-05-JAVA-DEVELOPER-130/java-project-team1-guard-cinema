@@ -1,28 +1,30 @@
 package com.itwill.gc.vo;
 
+import java.util.Date;
+
 public class Movie {
 
 
 	private int movie_code;
 	private String movie_title;
-	private String movie_opening;
-	private int movie_grade;
+	private Date movie_opening;
+	private double movie_grade;
 	private String movie_category;
 	private String movie_content;
 	private String movie_genre;
 	private int movie_totaltime;
 	private String movie_country;
 	private int movie_audience;
-	private String movie_day;
+	private String movie_ing;
+	private String movie_image;
 	
 	public Movie() {
 		
 	}
-	
-	public Movie(int movie_code, String movie_title, String movie_opening,
-				 int movie_grade, String movie_category, String movie_content,
-				 String movie_genre, int movie_totaltime, String movie_country,
-				 int movie_audience, String movie_day) {
+
+	public Movie(int movie_code, String movie_title, Date movie_opening, double movie_grade, String movie_category,
+			String movie_content, String movie_genre, int movie_totaltime, String movie_country, int movie_audience,
+		 String movie_ing,String movie_image) {
 		super();
 		this.movie_code = movie_code;
 		this.movie_title = movie_title;
@@ -34,9 +36,11 @@ public class Movie {
 		this.movie_totaltime = movie_totaltime;
 		this.movie_country = movie_country;
 		this.movie_audience = movie_audience;
-		this.movie_day = movie_day;
-	}
 	
+		this.movie_ing = movie_ing;
+		this.movie_image = movie_image;
+	}
+
 	public int getMovie_code() {
 		return movie_code;
 	}
@@ -53,19 +57,19 @@ public class Movie {
 		this.movie_title = movie_title;
 	}
 
-	public String getMovie_opening() {
+	public Date getMovie_opening() {
 		return movie_opening;
 	}
 
-	public void setMovie_opening(String movie_opening) {
+	public void setMovie_opening(Date movie_opening) {
 		this.movie_opening = movie_opening;
 	}
 
-	public int getMovie_grade() {
+	public double getMovie_grade() {
 		return movie_grade;
 	}
 
-	public void setMovie_grade(int movie_grade) {
+	public void setMovie_grade(double movie_grade) {
 		this.movie_grade = movie_grade;
 	}
 
@@ -117,21 +121,35 @@ public class Movie {
 		this.movie_audience = movie_audience;
 	}
 
-	public String getMovie_day() {
-		return movie_day;
+	
+	public String getMovie_ing() {
+		return movie_ing;
 	}
 
-	public void setMovie_day(String movie_day) {
-		this.movie_day = movie_day;
+	public void setMovie_ing(String movie_ing) {
+		this.movie_ing = movie_ing;
 	}
-	
+
+	public String getMovie_image() {
+		return movie_image;
+	}
+
+	public void setMovie_image(String movie_image) {
+		this.movie_image = movie_image;
+	}
+
 	@Override
 	public String toString() {
 		return "Movie [movie_code=" + movie_code + ", movie_title=" + movie_title + ", movie_opening=" + movie_opening
 				+ ", movie_grade=" + movie_grade + ", movie_category=" + movie_category + ", movie_content="
 				+ movie_content + ", movie_genre=" + movie_genre + ", movie_totaltime=" + movie_totaltime
-				+ ", movie_country=" + movie_country + ", movie_audience=" + movie_audience + ", movie_day=" + movie_day
-				+ "]";
+				+ ", movie_country=" + movie_country + ", movie_audience=" + movie_audience + ", movie_ing=" + movie_ing
+				+ ", movie_image=" + movie_image + "]";
 	}
+
+	
+	
+	
+	
 
 }

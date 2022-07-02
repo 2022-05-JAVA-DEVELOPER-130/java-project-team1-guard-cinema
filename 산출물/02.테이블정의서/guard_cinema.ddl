@@ -33,8 +33,8 @@ CREATE TABLE movie(
 		movie_totaltime               		NUMBER(10)		 NULL ,
 		movie_country                 		VARCHAR2(10)		 NULL ,
 		movie_audience                		NUMBER(30)		 NULL ,
-		movie_day                     		DATE		 NULL ,
-		movie_ing                     		VARCHAR2(10)		 NULL 
+		movie_ing                     		VARCHAR2(10)		 NULL ,
+		movie_image                   		VARCHAR2(20)		 NULL 
 );
 
 
@@ -54,7 +54,7 @@ CREATE TABLE movie_reserve(
 		user_id                       		VARCHAR2(20)		 NULL ,
 		movie_day                     		DATE		 NULL ,
 		movie_seat_num                		NUMBER(10)		 NULL ,
-		movie_daytime                 		VARCHAR2(20)	 NULL ,
+		movie_daytime                 		VARCHAR2(20)		 NULL ,
 		movie_order_pr                		NUMBER(20)		 NULL ,
 		movie_title                   		VARCHAR2(20)		 NULL ,
 		cinema_name                   		VARCHAR2(20)		 NULL ,
@@ -67,12 +67,12 @@ CREATE SEQUENCE movie_reserve_movie_rv_num_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCL
 
 
 
-
 CREATE TABLE food(
 		food_code                     		NUMBER(20)		 NULL ,
 		food_info                     		VARCHAR2(200)		 NULL ,
 		food_name                     		VARCHAR2(20)		 NULL ,
-		food_price                    		NUMBER(10)		 NULL 
+		food_price                    		NUMBER(10)		 NULL ,
+		food_image                    		VARCHAR2(20)		 NULL 
 );
 
 
@@ -87,6 +87,8 @@ CREATE TABLE gongji(
 DROP SEQUENCE gongji_gongji_no_SEQ;
 
 CREATE SEQUENCE gongji_gongji_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
+
+
 
 
 CREATE TABLE review(
@@ -167,7 +169,6 @@ CREATE SEQUENCE faq_faq_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 
 
-
 ALTER TABLE event ADD CONSTRAINT IDX_event_PK PRIMARY KEY (event_no);
 
 ALTER TABLE movie ADD CONSTRAINT IDX_movie_PK PRIMARY KEY (movie_code);
@@ -184,7 +185,6 @@ ALTER TABLE gongji ADD CONSTRAINT IDX_gongji_PK PRIMARY KEY (gongji_no);
 
 ALTER TABLE review ADD CONSTRAINT IDX_review_PK PRIMARY KEY (review_no);
 ALTER TABLE review ADD CONSTRAINT IDX_review_FK0 FOREIGN KEY (user_id) REFERENCES user_info (user_id);
-ALTER TABLE review ADD CONSTRAINT IDX_review_FK1 FOREIGN KEY (movie_code) REFERENCES movie (movie_code);
 
 ALTER TABLE cart ADD CONSTRAINT IDX_cart_PK PRIMARY KEY (cart_no);
 ALTER TABLE cart ADD CONSTRAINT IDX_cart_FK0 FOREIGN KEY (food_code) REFERENCES food (food_code);

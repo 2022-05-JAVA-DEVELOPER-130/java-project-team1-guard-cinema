@@ -17,8 +17,8 @@ insert into user_info (user_id, user_name, user_ph_num, user_jumin, user_email, 
         
         
 /***********movie insert***********/
-insert into movie values(1,'지구멸망좀',sysdate,3.4,'19금','지구멸망을 꿈꾸는 1조','공포',120,'한국',20000,sysdate,'true');
-insert into movie values(2,'흙흙흙',sysdate,4.4,'만17세','흙이되어버린 1조','스릴러',110,'스페인',6,sysdate,'false');
+insert into movie values(1,'지구멸망좀',sysdate,3.4,'19금','지구멸망을 꿈꾸는 1조','공포',120,'한국',20000,'true','sfsf');
+insert into movie values(2,'흙흙흙',sysdate,4.4,'만17세','흙이되어버린 1조','스릴러',110,'스페인',6,'false','sffs');
 
 /***********movie_reserve insert***********/
 --영화 선택 -> 지역,날짜 선택후 다음버튼 클릭 (변수에 영화,지역,날짜 저장)
