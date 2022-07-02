@@ -11,19 +11,22 @@ import com.itwill.gc.vo.Food;
 
 public class FoodDao {
 	private DataSource dataSource;
-	public FoodDao() throws Exception {
+	public FoodDao() {
 		dataSource=new DataSource();
 	}
 	/*
 	 * selelctByPK : 상품번호로 검색
 	 */
-	public Food selectByNo(int food_code) throws Exception{
+	public Food selectByFoodNo(int food_code) throws Exception{
 		Food food=null;
 		Connection con=dataSource.getConnection();
 		PreparedStatement pstmt=con.prepareStatement(FoodSql.FOOD_SELECT_BY_NO);
 		pstmt.setInt(1, food_code);
-		ResultSet rs=pstmt.executeQuery();
+		ResultSet rs = pstmt.executeQuery();
+		
+		
 		if(rs.next()) {
+			
 			food=
 					new Food(
 							rs.getInt("food_code"),
@@ -42,7 +45,7 @@ public class FoodDao {
 	/*
 	 * selectAll : 상품전체검색
 	 */
-	public List<Food> selectAll() throws Exception{
+	public List<Food> selectAllFood() throws Exception{
 		List<Food> foodList=new ArrayList<Food>();
 		
 		Connection con=dataSource.getConnection();
