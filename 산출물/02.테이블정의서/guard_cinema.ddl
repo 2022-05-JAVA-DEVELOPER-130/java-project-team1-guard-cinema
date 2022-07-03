@@ -57,6 +57,7 @@ CREATE TABLE movie_reserve(
 		movie_daytime                 		VARCHAR2(20)		 NULL ,
 		movie_order_pr                		NUMBER(20)		 NULL ,
 		movie_title                   		VARCHAR2(20)		 NULL ,
+		movie_totaltime               		NUMBER(10)		 NULL ,
 		cinema_name                   		VARCHAR2(20)		 NULL ,
 		cinema_place                  		VARCHAR2(10)		 NULL 
 );
@@ -64,6 +65,7 @@ CREATE TABLE movie_reserve(
 DROP SEQUENCE movie_reserve_movie_rv_num_SEQ;
 
 CREATE SEQUENCE movie_reserve_movie_rv_num_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
+
 
 
 
@@ -138,6 +140,7 @@ CREATE SEQUENCE food_receipt_food_rv_num_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 
 
+
 CREATE TABLE question(
 		question_no                   		NUMBER(10)		 NULL ,
 		user_id                       		VARCHAR2(20)		 NULL ,
@@ -154,6 +157,7 @@ CREATE SEQUENCE question_question_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 
 
+
 CREATE TABLE faq(
 		faq_no                        		NUMBER(10)		 NULL ,
 		faq_category                  		VARCHAR2(50)		 NULL ,
@@ -164,7 +168,6 @@ CREATE TABLE faq(
 DROP SEQUENCE faq_faq_no_SEQ;
 
 CREATE SEQUENCE faq_faq_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
-
 
 
 

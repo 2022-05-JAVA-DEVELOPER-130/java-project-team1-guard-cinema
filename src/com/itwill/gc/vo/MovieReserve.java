@@ -13,6 +13,7 @@ MOVIE_ORDER_PR		NUMBER(20,0)
 MOVIE_TITLE			VARCHAR2(20 BYTE)
 CINEMA_NAME			VARCHAR2(20 BYTE)
 CINEMA_PLACE		VARCHAR2(10 BYTE)
+MOVIE_TOTALTIME     NUMBER(10,0)
 */
 public class MovieReserve {
 	private int movie_rv_num;
@@ -22,8 +23,9 @@ public class MovieReserve {
 	private int movie_order_pr;
 	private String cinema_name;
 	private String cinema_place;
+	
 
-	// movie_code, movie_title
+	// movie_code, movie_title, movie_totaltime
 	private Movie movie;
 
 	// user_id

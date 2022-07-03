@@ -11,54 +11,47 @@ import com.itwill.gc.vo.Food;
 
 public class FoodDao {
 	private DataSource dataSource;
+
 	public FoodDao() {
-		dataSource=new DataSource();
+		dataSource = new DataSource();
 	}
+
 	/*
 	 * selelctByPK : 상품번호로 검색
 	 */
-	public Food selectByFoodNo(int food_code) throws Exception{
-		Food food=null;
-		Connection con=dataSource.getConnection();
-		PreparedStatement pstmt=con.prepareStatement(FoodSql.FOOD_SELECT_BY_NO);
+	public Food selectByFoodNo(int food_code) throws Exception {
+		Food food = null;
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(FoodSql.FOOD_SELECT_BY_NO);
 		pstmt.setInt(1, food_code);
 		ResultSet rs = pstmt.executeQuery();
-		
-		
-		if(rs.next()) {
-			
-			food=
-					new Food(
-							rs.getInt("food_code"),
-							rs.getString("food_name"), 
-							rs.getString("food_info"),
-							rs.getInt("food_price"),
-							rs.getString("food_image")
-							);
+
+		if (rs.next()) {
+			food = new Food(
+					rs.getInt("food_code"),
+					rs.getString("food_name"),
+					rs.getString("food_info"),
+					rs.getInt("food_price"),
+					rs.getString("food_image"));
 		}
 		rs.close();
 		pstmt.close();
 		con.close();
-		
 		return food;
 	}
+
 	/*
 	 * selectAll : 상품전체검색
 	 */
-	public List<Food> selectAllFood() throws Exception{
-		List<Food> foodList=new ArrayList<Food>();
-		
-		Connection con=dataSource.getConnection();
-		PreparedStatement pstmt=con.prepareStatement(FoodSql.FOOD_LIST);
-		ResultSet rs=pstmt.executeQuery();
-		while(rs.next()) {
-			Food food=new Food(
-					rs.getInt("food_code"),
-					rs.getString("food_name"), 
-					rs.getString("food_info"),
-					rs.getInt("food_price"),
-					rs.getString("food_image")
-					);
+	public List<Food> selectAllFood() throws Exception {
+		List<Food> foodList = new ArrayList<Food>();
+
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(FoodSql.FOOD_LIST);
+		ResultSet rs = pstmt.executeQuery();
+		while (rs.next()) {
+			Food food = new Food(rs.getInt("food_code"), rs.getString("food_name"), rs.getString("food_info"),
+					rs.getInt("food_price"), rs.getString("food_image"));
 			foodList.add(food);
 		}
 		rs.close();
@@ -67,4 +60,3 @@ public class FoodDao {
 		return foodList;
 	}
 }
-

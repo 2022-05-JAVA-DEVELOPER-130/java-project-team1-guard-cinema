@@ -86,8 +86,8 @@ public class UserDao {
 		ptmt.setString(1, userId);
 		ResultSet rs = ptmt.executeQuery();
 		if (rs.next()) {
-			user = new User(rs.getString("userId"), rs.getString("userName"), rs.getString("userPhNum"),
-					rs.getString("userJumin"), rs.getString("userEmail"), rs.getString("userPassword"));
+			user = new User(rs.getString("user_id"), rs.getString("user_name"), rs.getString("user_ph_num"),
+					rs.getString("user_jumin"), rs.getString("user_email"), rs.getString("user_password"));
 		}
 		return user;
 	}
