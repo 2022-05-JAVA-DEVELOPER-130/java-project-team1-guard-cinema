@@ -94,15 +94,11 @@ public class CartItemDao {
 		while(rs.next()) {
 			
 			cartList.add(
-					new CartItem(rs.getInt("cartNo"),
+					new CartItem(rs.getInt("cart_no"),
 								 rs.getInt("cart_qty"),
-					new Food(rs.getInt("food_code"),
-							 rs.getString("food_name"), 
-							 rs.getString("food_info"), 
-							 rs.getInt("food_price"), 
-							 rs.getString("food_image"),
-					new User(rs.getString("user_id"),"","","","","")))
-					);
+								 
+					new User(rs.getString("user_id"),"","","","",""),
+					new Food(rs.getInt("food_code"),rs.getString("food_name"),rs.getString("food_info"), rs.getInt("food_price"),rs.getString("food_image"))));
 		}
 
 		return cartList;

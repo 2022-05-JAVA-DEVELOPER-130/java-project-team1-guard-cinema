@@ -9,7 +9,7 @@ public class CartItemSql {
 	public static final String CART_SELECT_FOOD_NOW=
 	"select count(*)  as food_count from cart_item c join user_info u on c.user_id=u.user_id where u.user_id=? and c.food_code=?";
 	public static final String CART_SELECT_LISTUP=
-	"select * from cart_Item c join user_info u on c.user_id=u.user_id "
+	"select * from cart c join user_info u on c.user_id=u.user_id "
     + "join food f on f.food_code=c.food_code "
     + "where u.user_id=?";
 	public static final String DELETE_CART=
