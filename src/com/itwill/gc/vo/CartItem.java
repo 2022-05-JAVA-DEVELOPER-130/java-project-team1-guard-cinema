@@ -2,28 +2,34 @@ package com.itwill.gc.vo;
 
 public class CartItem {
 	private int cartNo;
-	private User userID;
-	private int foodCode;
 	private int cart_qty;
-	private String foodName;
-	private int foodPrice;
 	
-	public CartItem(int cartNo, User userID, int cart_qty, int foodCode, String foodName, int foodPrice) {
+	private User user;
+	
+	private Food food;
+	
+	public CartItem(int cartNo, int cart_qty, User user, Food food) {
 		super();
 		this.cartNo=cartNo;
-		this.userID=userID;
-		this.foodCode=foodCode;
 		this.cart_qty=cart_qty;
-		this.foodName=foodName;
-		this.foodPrice=foodPrice;
+		this.user=user;
+		this.food=food;
 	}
 
-	public int getFoodPrice() {
-		return foodPrice;
+	public User getUser() {
+		return user;
 	}
 
-	public void setFoodPrice(int foodPrice) {
-		this.foodPrice = foodPrice;
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Food getFood() {
+		return food;
+	}
+
+	public void setFood(Food food) {
+		this.food = food;
 	}
 
 	public int getCartNo() {
@@ -34,14 +40,6 @@ public class CartItem {
 		this.cartNo = cartNo;
 	}
 
-	public User getUserID() {
-		return userID;
-	}
-
-	public void setUserID(User userID) {
-		this.userID = userID;
-	}
-
 	public int getCart_qty() {
 		return cart_qty;
 	}
@@ -50,25 +48,11 @@ public class CartItem {
 		this.cart_qty = cart_qty;
 	}
 
-	public int getFoodCode() {
-		return foodCode;
-	}
-
-	public void setFoodCode(int foodCode) {
-		this.foodCode = foodCode;
-	}
-
-	public String getFoodName() {
-		return foodName;
-	}
-
-	public void setFoodName(String foodName) {
-		this.foodName = foodName;
-	}
+	
 	
 	@Override
 	public String toString() {
-		return "CartItem [cartNo=" + cartNo + ", userID=" + userID + ",  cart_qty=" + cart_qty + ", foodCode=" + foodCode + ", foodName=" + foodName + "]";
+		return "CartItem [cartNo=" + cartNo + ", cart_qty=" + cart_qty + ", user=" + user + ", food=" + food + "]";
 	}
 	
 	

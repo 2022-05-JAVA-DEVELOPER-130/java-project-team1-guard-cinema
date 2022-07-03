@@ -3,7 +3,7 @@ package com.itwill.gc.dao;
 public class CartItemSql {
 	
 	public static final String INSERT_CART=
-	"insert into cart (cart_no, user_id, food_code, cart_qty,food_name) values (CART_CART_NO_SEQ.nextval, ?, ?, ?,?)";	
+	"insert into cart (cart_no, cart_qty) values (CART_CART_NO_SEQ.nextval,?,?)";	
 	public static final String UPDATE_CART_SET=
 	"update cart set cart_qty=cart_qty+? where user_id=? and food_code=?";
 	public static final String CART_SELECT_FOOD_NOW=

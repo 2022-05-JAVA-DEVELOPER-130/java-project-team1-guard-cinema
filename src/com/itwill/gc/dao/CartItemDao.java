@@ -41,7 +41,7 @@ public class CartItemDao {
 		return count;
 	}
 	//cartitem 담기
-	public int add(CartItem cartItem) throws Exception {
+	public int add1(String sUserId, int food_code, int cart_qty, String food_name, int food_price) throws Exception {
 		String insertQuery=CartItemSql.INSERT_CART;
 		Connection con=null;
 		PreparedStatement ptmt=null;
@@ -49,11 +49,11 @@ public class CartItemDao {
 		try {
 			con=dataSource.getConnection();
 			ptmt=con.prepareStatement(insertQuery);
-			ptmt.setString(1, cartItem.getUserID().getUserId());
-			ptmt.setInt(2, cartItem.getFoodCode());
-			ptmt.setInt(3, cartItem.getCart_qty());
-			ptmt.setString(4, cartItem.getFoodName());
-			ptmt.setInt(5, cartItem.getFoodPrice());
+			ptmt.setString(1, sUserId);
+			ptmt.setInt(2, food_code);
+			ptmt.setInt(3, cart_qty);
+			ptmt.setString(4,food_name);
+			ptmt.setInt(5, food_price);
 			insertrCount = ptmt.executeUpdate();
 		}finally {
 			if(con!=null) {
@@ -83,32 +83,26 @@ public class CartItemDao {
 		return rCount;
 	}
 	//cartItem 목록
-	public ArrayList<CartItem> getCartList(String sUserId) throws Exception{
+	public ArrayList<CartItem> getCartList(String user_Id) throws Exception{
 		ArrayList<CartItem> cartList=new ArrayList<CartItem>();
 		
 		Connection con=dataSource.getConnection();
 		PreparedStatement ptmt=con.prepareStatement(CartItemSql.CART_SELECT_LISTUP);
-		ptmt.setString(1,sUserId);
+		ptmt.setString(1, user_Id);
 		ResultSet rs=ptmt.executeQuery();
 		
 		while(rs.next()) {
 			
-			 cartList.addCart(
-					new CartItem(rs.getInt("cart_no"), 
-								rs.getString("user_id"), 
-								rs.getInt("food_code"), 
-								rs.getInt("cart_qty"), 
-								rs.getString("food_name"), 
-								rs.getInt("food_price")),
-								new User(rs.getString("user_Id"),"","","","",""),
-								 new Food(rs.getInt("food_code"),
-											rs.getString("food_name"),
-											rs.getString("food_info"),
-											rs.getInt("food_price"),
-											rs.getString("food_image"))	 
-							)
+			cartList.add(
+					new CartItem(rs.getInt("cartNo"),
+								 rs.getInt("cart_qty"),
+					new Food(rs.getInt("food_code"),
+							 rs.getString("food_name"), 
+							 rs.getString("food_info"), 
+							 rs.getInt("food_price"), 
+							 rs.getString("food_image"),
+					new User(rs.getString("user_id"),"","","","","")))
 					);
-					
 		}
 
 		return cartList;

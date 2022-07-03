@@ -78,6 +78,37 @@ public class MovieDao {
 		con.close();
 		return movieIngList;
 	}
+	/*
+	 * selelctByMovieTitle : 영화 이름으로 검색
+	 */
+	public Movie selectByMovieCode(int movie_code) throws Exception{
+		Movie movie=null;
+		Connection con=dataSource.getConnection();
+		PreparedStatement pstmt=con.prepareStatement(MovieSql.MOVIE_BY_CODE);
+		pstmt.setInt(1, movie_code);
+		ResultSet rs=pstmt.executeQuery();
+		if(rs.next()) {
+			movie=
+					new Movie(
+							rs.getInt("movie_code"),
+							rs.getString("movie_title"), 
+							rs.getDate("movie_opening"), 
+							rs.getDouble("movie_grade"),
+							rs.getString("movie_category"), 
+							rs.getString("movie_content"), 
+							rs.getString("movie_genre"), 
+							rs.getInt("movie_totaltime"),
+							rs.getString("movie_country"), 
+							rs.getInt("movie_audience"), 
+							rs.getString("movie_ing"),
+							rs.getString("movie_image")
+							); 
+		}
+		rs.close();
+		pstmt.close();
+		con.close();
+		return movie;
+	}
 	
 	
 }

@@ -8,6 +8,9 @@ public class MovieSql {
 	public final static String MOVIE_ING_LIST=
 			"select * from movie1 where movie_ing =?";
 	
+	//영화코드으로 영화정보 찾기
+		public final static String MOVIE_BY_CODE="select* from movie1 where movie_code=?";
+	
 	
 	
 	
