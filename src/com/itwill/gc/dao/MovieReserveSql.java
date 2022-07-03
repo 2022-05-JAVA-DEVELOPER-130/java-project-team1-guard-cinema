@@ -2,21 +2,37 @@ package com.itwill.gc.dao;
 
 public class MovieReserveSql {
 	//영화 예매
-	public final static String MOVIE_RESERVE="insert into movie_reserve values("
-			+ "MOVIE_RESERVE_MOVIE_RV_NUM_SEQ.nextval,"
-			+ "1,'qkrrjsxo',(select movie_day from movie where movie_code=1),"
-			+ "1,120,12000,'지구멸망좀','건대입구','서울');";
+	//public static final String MOVIE_RESERVE_INSERT="insert into movie_reserve values(MOVIE_RESERVE_MOVIE_RV_NUM_SEQ.nextval,?,?,?,?,?,?,?,?)";
+	
+	
+	//영화예매 1.영화 선택.
+	public static final String INSERT_PAGE_ONE = "insert into movie_reserve(movie_rv_num,user_id,movie_code) values(MOVIE_RESERVE_MOVIE_RV_NUM_SEQ.nextval,?,?)";
+	
+	//영화예매 2.날짜, 시간대 선택
+	public static final String INSERT_PAGE_TWO = "update  movie_reserve set movie_day=?,movie_daytime=?,cinema_name=?,cinema_place=? where movie_rv_num=?";
+
+	//영화예매 3.좌석 선택,가격
+	public static final String INSERT_PAGE_THREE = "update  movie_reserve set movie_seat_num=?,movie_order_pr=? where movie_rv_num=?";
 	
 	//id로 예매정보
-	public final static String RESERVE_LIST_BY_ID= 
+	public static final String RESERVE_LIST_BY_ID= 
 			"select* from movie_reserve m join user_info u on m.user_id=u.user_id "
 			+ "join movie s on m.movie_code = s.movie_code where "
 			+ "u.user_id = ?";
 	
+	//예매 번호로 영화취소
+	public static final String DELETE_MOVIE_RESERVE = "delete from movie_reserve where movie_rv_num=?";
 	
-	
+	//로그인한 멤버 아이디로 영화취소
+	public static final String DELETE_MOVIE_RESERVE_ID = "delete from movie_reserve where movie_rv_num=? and user_id=?";
 	
 
+
+	
+	
+	
+	
+	
 /*
 	--예매
 	insert into movie_reserve values(MOVIE_RESERVE_MOVIE_RV_NUM_SEQ.nextval,1,'qkrrjsxo',(select movie_day from movie where movie_code=1),1,120,12000,'지구멸망좀','건대입구','서울');

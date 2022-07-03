@@ -17,7 +17,7 @@ MOVIE_TOTALTIME     NUMBER(10,0)
 */
 public class MovieReserve {
 	private int movie_rv_num;
-	private Date movie_day;
+	private String movie_day;
 	private int movie_seat_num;
 	private String movie_daytime;
 	private int movie_order_pr;
@@ -34,7 +34,7 @@ public class MovieReserve {
 	public MovieReserve() {
 	}
 
-	public MovieReserve(int movie_rv_num, Date movie_day, int movie_seat_num, String movie_daytime, int movie_order_pr,
+	public MovieReserve(int movie_rv_num, String movie_day, int movie_seat_num, String movie_daytime, int movie_order_pr,
 			String cinema_name, String cinema_place, Movie movie, User user) {
 		super();
 		this.movie_rv_num = movie_rv_num;
@@ -56,11 +56,11 @@ public class MovieReserve {
 		this.movie_rv_num = movie_rv_num;
 	}
 
-	public Date getMovie_day() {
+	public String getMovie_day() {
 		return movie_day;
 	}
 
-	public void setMovie_day(Date movie_day) {
+	public void setMovie_day(String movie_day) {
 		this.movie_day = movie_day;
 	}
 

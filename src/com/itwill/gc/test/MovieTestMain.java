@@ -14,7 +14,7 @@ public class MovieTestMain {
 		System.out.println("selectByMovieTitle:"+movieDao.selectByMovieTitle("흙흙흙"));
 		System.out.println("selectByIng 상영중:"+movieDao.selectByIng("true"));
 		System.out.println("selectByIng 예정:"+movieDao.selectByIng("false"));
-		
+		System.out.println("selectByMovieCode:"+movieDao.selectByMovieCode(1));
 		
 	
 	}
