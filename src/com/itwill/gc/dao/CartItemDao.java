@@ -41,9 +41,8 @@ public class CartItemDao {
 		return count;
 	}
 	//cartitem 담기 
+	
 	public int add1(CartItem cartItem) throws Exception {
-=======
-	public int add1(String sUserId, int food_code, String food_name, int food_price, int cart_qty) throws Exception {
 		String insertQuery=CartItemSql.INSERT_CART;
 		Connection con=null;
 		PreparedStatement ptmt=null;
@@ -55,11 +54,6 @@ public class CartItemDao {
 			ptmt.setString(2, cartItem.getUser().getUserId());
 			ptmt.setInt(3, cartItem.getFood().getFood_code());
 			
-			ptmt.setString(1, sUserId);
-			ptmt.setInt(2, food_code);
-			ptmt.setString(3,food_name);
-			ptmt.setInt(4, food_price);
-			ptmt.setInt(5, cart_qty);
 			insertrCount = ptmt.executeUpdate();
 		}finally {
 			if(con!=null) {
