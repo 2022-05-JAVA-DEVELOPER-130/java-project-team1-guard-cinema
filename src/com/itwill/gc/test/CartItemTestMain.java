@@ -14,22 +14,22 @@ public class CartItemTestMain {
 
 	public static void main(String[] args) throws Exception {
 		CartItemDao cartitemDao = new CartItemDao();
-/*
+
 		System.out.println("1.cartItem 목록보기");
-*/		
+		
 		int rowCount = -999;		
-/*		
+		/*
 		CartItem addCart=
-				new CartItem(null, 1, null, null),
-				new User("kkk1", null, null, null, null, null),
-				new Food(3, "팝콘", null, 1000, null);		
+				new User("kkkk1", null, null, null, null, null),
+				new Food(1, "팝콘", null, 1000, null),
+				new CartItem(null, 1, null, null);	
 		rowCount = cartitemDao.add1(addCart);
 		System.out.println(">> "+rowCount);
 */
 
-		
+		/*
 			System.out.println("2.updateByCartNo");
-			rowCount=cartitemDao.update("guard1",3,2);
+			rowCount=cartitemDao.update("kkkk1",3,2);
 			System.out.println(">> "+rowCount);
 		/*
 			System.out.println("3.delete");
