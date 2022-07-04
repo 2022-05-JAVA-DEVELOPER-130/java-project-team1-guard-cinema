@@ -40,7 +40,7 @@ public class CartItemDao {
 		}
 		return count;
 	}
-	//cartitem 담기
+	//cartitem 담기 
 	public int add1(String sUserId, int food_code, int cart_qty, String food_name, int food_price) throws Exception {
 		String insertQuery=CartItemSql.INSERT_CART;
 		Connection con=null;
