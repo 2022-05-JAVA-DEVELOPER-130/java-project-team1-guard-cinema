@@ -14,6 +14,16 @@ public class MovieReserveSql {
 	//영화예매 3.좌석 선택,가격
 	public static final String INSERT_PAGE_THREE = "update  movie_reserve set movie_seat_num=?,movie_order_pr=? where movie_rv_num=?";
 	
+	////영화예매 1.영화 취소.
+	public static final String DELETE_MOVIE_ONE = "delete from movie_reserve where movie_rv_num=?";
+	
+	//영화예매 2.날짜, 시간대 선택 취소
+	public static final String DELETE_PAGE_TWO = "update  movie_reserve set movie_day=null,movie_daytime=null,cinema_name=null,cinema_place=null where movie_rv_num=?";
+
+	//영화예매 3.좌석 선택,가격 취소
+	public static final String DELETE_PAGE_THREE = "update  movie_reserve set movie_seat_num=null,movie_order_pr=null where movie_rv_num=?";
+	
+	
 	//id로 예매정보
 	public static final String RESERVE_LIST_BY_ID= 
 			"select* from movie_reserve m join user_info u on m.user_id=u.user_id "
