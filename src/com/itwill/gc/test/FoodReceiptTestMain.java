@@ -14,7 +14,7 @@ public class FoodReceiptTestMain {
 		// 예약번호로 검색
 		System.out.println("selelctByNo 예약 번호로 검색:" + foodReceiptDao.selectByNo(1));
 		FoodDao foodDao = new FoodDao();
-		CartItemDao cartitemDao = new CartItemDao();
+		CartItemDao cartItemDao = new CartItemDao();
 
 	}
 }
