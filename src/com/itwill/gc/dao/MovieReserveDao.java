@@ -74,7 +74,7 @@ public class MovieReserveDao {
 		
 		
 	}
-	//예매번호로
+	//예매번호로 예매취소 
 	public int deleteMovieReserveByNo(int movie_rv_num)throws Exception{
 		String deleteQuery=MovieReserveSql.DELETE_MOVIE_RESERVE;
 		Connection con=null;

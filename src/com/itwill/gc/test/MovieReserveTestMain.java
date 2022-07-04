@@ -21,16 +21,16 @@ public class MovieReserveTestMain {
 		//rowCount = movieReserveDao.deleteMovieReserveByNo(1);
 		//System.out.println(">>"+rowCount);
 		
-		//System.out.println("3.아이디로 예매 삭제");
-		
-		//rowCount = movieReserveDao.deleteMovieReserveById("qkrrjsxo");
-		//System.out.println(">>"+rowCount);
-		
+	/**********************************************************************id말고 예매번호로  	
+		System.out.println("3.아이디로 예매 삭제");
+		rowCount = movieReserveDao.deleteMovieReserveById("qkrrjsxo");
+		System.out.println(">>"+rowCount);
+	****************************************************************************************/	
 		//System.out.println("4.영화 예매 페이지");
 	 
 		//rowCount = movieReserveDao.add(new MovieReserve(0,"2월5일",2,"11시~13시",0,"건대","서울",
-		//		new Movie(1,"",null,0,"","","",0,"",0,"",""),
-		//		new User("qkrrjsxo","","","","","")));
+			//	new Movie(1,"",null,0,"","","",0,"",0,"",""),
+				//new User("guard1","","","","","")));
 	   
 		
 	
