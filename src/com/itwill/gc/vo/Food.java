@@ -7,6 +7,10 @@ public class Food {
 	private int food_price;
 	private String food_image;
 	
+	public Food() {
+		
+	}
+	
 	
 	public Food(int food_code, String food_name, String food_info, int food_price, String food_image) {
 		super();

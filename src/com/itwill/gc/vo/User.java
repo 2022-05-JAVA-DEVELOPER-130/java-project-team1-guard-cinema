@@ -7,6 +7,10 @@ public class User {
 	private String userJumin;
 	private String userEmail;
 	private String userPassword;
+	
+	public User() {
+		
+	}
 
 	public User(String userId, String userName, String userPhNum, String userJumin, String userEmail,
 			String userPassword) {
