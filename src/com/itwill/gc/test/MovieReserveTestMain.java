@@ -2,7 +2,9 @@ package com.itwill.gc.test;
 import java.util.ArrayList;
 import java.util.List;
 import com.itwill.gc.dao.MovieReserveDao;
+import com.itwill.gc.vo.Movie;
 import com.itwill.gc.vo.MovieReserve;
+import com.itwill.gc.vo.User;
 public class MovieReserveTestMain {
 	
 	public static void main(String[] args) throws Exception{
@@ -26,13 +28,12 @@ public class MovieReserveTestMain {
 		
 		System.out.println("4.영화 예매 1페이지");
 	 
-		//rowCount = movieReserveDao.add1("qkrrjsxo", 1);
-	    //rowCount = movieReserveDao.add2("12월3일", "22~24","건대입구","서울",1);
-	    //rowCount = movieReserveDao.add3(22,1);
+		rowCount = movieReserveDao.add(new MovieReserve(0,"12월5일",2,"11시~13시",0,"건대","서울",
+				new Movie(1,"",null,0,"","","",0,"",0,"",""),
+				new User("qkrrjsxo","","","","","")));
+	   
 		
-		rowCount = movieReserveDao.deleteMovieReserveOne(1);
-		//rowCount = movieReserveDao.deleteMovieReserveTwo(1);
-		//rowCount = movieReserveDao.deleteMovieReserveThree(1);
+	
 		
 		
 	}

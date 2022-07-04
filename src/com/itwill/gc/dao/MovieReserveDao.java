@@ -17,17 +17,29 @@ public class MovieReserveDao {
 		
 	}
 	
-	//영화 예매 (rv_num,아이디,영화코드)
-	public int add1(String user_id,int movie_code)throws Exception{
-		String insertQuery=MovieReserveSql.INSERT_PAGE_ONE;
+	//영화 예매 
+	public int add(MovieReserve movieReserve)throws Exception{
+		String insertQuery=MovieReserveSql.INSERT_RESERVE;
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		int insertRowCount=0;
+		int price = 0;
+		if(movieReserve.getMovie_seat_num() <=10) {
+			price = 10000;
+		}else if(movieReserve.getMovie_seat_num()<=20) {price=12000;}
+		else if(movieReserve.getMovie_seat_num()<=30) {price=13000;}
+		else if(movieReserve.getMovie_seat_num()<=40) {price=15000;}
 		try {
 			con=dataSource.getConnection();
 			pstmt=con.prepareStatement(insertQuery);
-			pstmt.setString(1, user_id);
-			pstmt.setInt(2, movie_code);
+			pstmt.setInt(1, movieReserve.getMovie().getMovie_code());
+			pstmt.setString(2, movieReserve.getUser().getUserId());
+			pstmt.setString(3, movieReserve.getMovie_day());
+			pstmt.setInt(4, movieReserve.getMovie_seat_num());
+			pstmt.setString(5, movieReserve.getMovie_daytime());
+			pstmt.setInt(6, price);
+			pstmt.setString(7, movieReserve.getCinema_name());
+			pstmt.setString(8, movieReserve.getCinema_place());
 			insertRowCount = pstmt.executeUpdate();
 		}finally {
 			if(con!=null) {
@@ -37,125 +49,7 @@ public class MovieReserveDao {
 		return insertRowCount;
 	}
 	
-	//영화예매 1페이지 취소
-		public int deleteMovieReserveOne(int movie_rv_num)throws Exception{
-			String deleteQuery=MovieReserveSql.DELETE_MOVIE_ONE;
-			Connection con=null;
-			PreparedStatement pstmt=null;
-			int deleteRowCount=0;
-			try {
-				con=dataSource.getConnection();
-				pstmt=con.prepareStatement(deleteQuery);
-				pstmt.setInt(1, movie_rv_num);
-				deleteRowCount = pstmt.executeUpdate();
-			}finally {
-				if(con!=null) {
-					con.close();
-				}
-			}
-			return deleteRowCount;
-			
-			
-			
-		}
-		
-		
 	
-	//영화 예매 (상영날짜, 상영 시간대,영화관이름,장소)
-		public int add2(String movie_day,String movie_daytime,String cinema_name,String cinema_place,int movie_rv_num)throws Exception{
-			String insertQuery=MovieReserveSql.INSERT_PAGE_TWO;
-			Connection con=null;
-			PreparedStatement pstmt=null;
-			int insertRowCount=0;
-			try {
-				con=dataSource.getConnection();
-				pstmt=con.prepareStatement(insertQuery);
-				pstmt.setString(1,movie_day);
-				pstmt.setString(2, movie_daytime);
-				pstmt.setString(3, cinema_name);
-				pstmt.setString(4, cinema_place);
-				pstmt.setInt(5, movie_rv_num);
-				insertRowCount = pstmt.executeUpdate();
-			}finally {
-				if(con!=null) {
-					con.close();
-				}
-			}
-			return insertRowCount;
-		}
-		
-		
-		//영화 취소 (상영날짜, 상영 시간대,영화관이름,장소) 
-				public int deleteMovieReserveTwo(int movie_rv_num)throws Exception{
-					String insertQuery=MovieReserveSql.DELETE_PAGE_TWO;
-					Connection con=null;
-					PreparedStatement pstmt=null;
-					int insertRowCount=0;
-					try {
-						con=dataSource.getConnection();
-						pstmt=con.prepareStatement(insertQuery);
-						pstmt.setInt(1,movie_rv_num);
-					
-						insertRowCount = pstmt.executeUpdate();
-					}finally {
-						if(con!=null) {
-							con.close();
-						}
-					}
-					return insertRowCount;
-				}
-		//영화 예매 (좌석,가격)
-				public int add3(int movie_seat_num,int movie_rv_num)throws Exception{
-					int price = 0;
-					if(movie_seat_num <=10) {
-						price = 10000;
-					}else if(movie_seat_num<=20) {price=12000;}
-					else if(movie_seat_num<=30) {price=13000;}
-					else if(movie_seat_num<=40) {price=15000;}
-					
-					String insertQuery=MovieReserveSql.INSERT_PAGE_THREE;
-					Connection con=null;
-					PreparedStatement pstmt=null;
-					int insertRowCount=0;
-					try {
-						con=dataSource.getConnection();
-						pstmt=con.prepareStatement(insertQuery);
-						pstmt.setInt(1,movie_seat_num);
-						pstmt.setInt(2,price);
-						pstmt.setInt(3, movie_rv_num);
-						
-						
-						insertRowCount = pstmt.executeUpdate();
-					}finally {
-						if(con!=null) {
-							con.close();
-						}
-					}
-					return insertRowCount;
-				}
-				//영화 취소(좌석,가격)
-				public int deleteMovieReserveThree(int movie_rv_num)throws Exception{
-					
-					
-					String insertQuery=MovieReserveSql.DELETE_PAGE_THREE;
-					Connection con=null;
-					PreparedStatement pstmt=null;
-					int insertRowCount=0;
-					try {
-						con=dataSource.getConnection();
-						pstmt=con.prepareStatement(insertQuery);
-						pstmt.setInt(1,movie_rv_num);
-						
-						
-						
-						insertRowCount = pstmt.executeUpdate();
-					}finally {
-						if(con!=null) {
-							con.close();
-						}
-					}
-					return insertRowCount;
-				}
 	
 	
 	//로그인한 아이디 예매 취소

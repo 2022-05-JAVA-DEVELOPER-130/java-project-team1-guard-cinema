@@ -1,44 +1,45 @@
 package com.itwill.gc.vo;
+
 import java.sql.Date;
 import com.itwill.gc.vo.User;
-
+import com.itwill.gc.vo.Movie;
 public class Review {
-   private User userId;
-   private int review_num;
+	private int review_no;
+   private User user;
    private String review_title;
    private Date review_date;
-   private int movie_code;
+   private Movie movie;
    private String review_content;
    
    public Review() {
       
    }
    
-   public Review(User userId,int review_num,String review_title,Date review_date,int movie_code,String review_content) {
+   public Review(int review_no,User user,String review_title,Date review_date,Movie movie,String review_content) {
       super();
-      this.userId=userId;
-      this.review_num=review_num;
+      this.review_no=review_no;
+      this.user=user;
       this.review_title=review_title;
       this.review_date=review_date;
-      this.movie_code=movie_code;
+      this.movie=movie;
       this.review_content=review_content;
    }
 
 
-   public User getUserId() {
-      return userId;
+   public User getUser() {
+      return user;
    }
 
-   public void setUserId(User userId) {
-      this.userId = userId;
+   public void setUser(User user) {
+      this.user = user;
    }
 
-   public int getReview_num() {
-      return review_num;
+   public int getReview_no() {
+      return review_no;
    }
 
-   public void setReview_num(int review_num) {
-      this.review_num = review_num;
+   public void setReview_no(int review_no) {
+      this.review_no = review_no;
    }
 
    public String getReview_title() {
@@ -57,12 +58,12 @@ public class Review {
       this.review_date = review_date;
    }
 
-   public int getMovie_code() {
-      return movie_code;
+   public Movie getMovie() {
+      return movie;
    }
 
-   public void setMovie_code(int movie_code) {
-      this.movie_code = movie_code;
+   public void setMovie(Movie movie) {
+      this.movie = movie;
    }
 
    public String getReview_content() {
@@ -72,10 +73,11 @@ public class Review {
    public void setReview_content(String review_content) {
       this.review_content = review_content;
    }
+  
    @Override
    public String toString() {
-      return "Review [userId=" + userId + ", review_num=" + review_num + ", review_title=" + review_title
-            + ", review_date=" + review_date + ", movie_code=" + movie_code + ", review_content=" + review_content
+      return "Review [review_no=" + review_no + "user=" + user + ", review_title=" + review_title
+            + ", review_date=" + review_date + ", movie=" + movie + ", review_content=" + review_content
             + "]";
    }
 }

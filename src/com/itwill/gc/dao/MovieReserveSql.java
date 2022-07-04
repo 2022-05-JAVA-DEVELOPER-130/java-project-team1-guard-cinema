@@ -5,23 +5,11 @@ public class MovieReserveSql {
 	//public static final String MOVIE_RESERVE_INSERT="insert into movie_reserve values(MOVIE_RESERVE_MOVIE_RV_NUM_SEQ.nextval,?,?,?,?,?,?,?,?)";
 	
 	
-	//영화예매 1.영화 선택.
-	public static final String INSERT_PAGE_ONE = "insert into movie_reserve(movie_rv_num,user_id,movie_code) values(MOVIE_RESERVE_MOVIE_RV_NUM_SEQ.nextval,?,?)";
+	//영화예매 1.영화 예매.
+	public static final String INSERT_RESERVE = "insert into movie_reserve(movie_rv_num,movie_code,user_id,movie_day,movie_seat_num,movie_daytime,movie_order_pr,cinema_name,cinema_place) "
+			+ "values(MOVIE_RESERVE_MOVIE_RV_NUM_SEQ.nextval,?,?,?,?,?,?,?,?)";
 	
-	//영화예매 2.날짜, 시간대 선택
-	public static final String INSERT_PAGE_TWO = "update  movie_reserve set movie_day=?,movie_daytime=?,cinema_name=?,cinema_place=? where movie_rv_num=?";
 
-	//영화예매 3.좌석 선택,가격
-	public static final String INSERT_PAGE_THREE = "update  movie_reserve set movie_seat_num=?,movie_order_pr=? where movie_rv_num=?";
-	
-	////영화예매 1.영화 취소.
-	public static final String DELETE_MOVIE_ONE = "delete from movie_reserve where movie_rv_num=?";
-	
-	//영화예매 2.날짜, 시간대 선택 취소
-	public static final String DELETE_PAGE_TWO = "update  movie_reserve set movie_day=null,movie_daytime=null,cinema_name=null,cinema_place=null where movie_rv_num=?";
-
-	//영화예매 3.좌석 선택,가격 취소
-	public static final String DELETE_PAGE_THREE = "update  movie_reserve set movie_seat_num=null,movie_order_pr=null where movie_rv_num=?";
 	
 	
 	//id로 예매정보
@@ -58,4 +46,20 @@ public class MovieReserveSql {
 /*"select * from cart c join userinfo u on c.userid=u.userid  "
 + "join product p on p.p_no=c.p_no "
 + "where u.userid=?";
+
+
+	//영화예매 2.날짜, 시간대 선택
+	public static final String INSERT_PAGE_TWO = "update  movie_reserve set movie_day=?,movie_daytime=?,cinema_name=?,cinema_place=? where movie_rv_num=?";
+
+	//영화예매 3.좌석 선택,가격
+	public static final String INSERT_PAGE_THREE = "update  movie_reserve set movie_seat_num=?,movie_order_pr=? where movie_rv_num=?";
+	
+	////영화예매 1.영화 취소.
+	public static final String DELETE_MOVIE_ONE = "delete from movie_reserve where movie_rv_num=?";
+	
+	//영화예매 2.날짜, 시간대 선택 취소
+	public static final String DELETE_PAGE_TWO = "update  movie_reserve set movie_day=null,movie_daytime=null,cinema_name=null,cinema_place=null where movie_rv_num=?";
+
+	//영화예매 3.좌석 선택,가격 취소
+	public static final String DELETE_PAGE_THREE = "update  movie_reserve set movie_seat_num=null,movie_order_pr=null where movie_rv_num=?";
 */
