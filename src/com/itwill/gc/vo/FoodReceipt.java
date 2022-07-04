@@ -2,64 +2,73 @@ package com.itwill.gc.vo;
 
 public class FoodReceipt {
 	private int food_rv_num;
-	private String user_id;
-	private int food_code;
-	private int cart_qty;
-	private String food_name;
-	private int food_price;
+	
+	private User user;
+	private Food food;
+	private CartItem cartitem;
 	
 	
-	public FoodReceipt(int food_rv_num, String user_id, int food_code, int cart_qty, String food_name, int food_price) {
+	
+	public FoodReceipt(int food_rv_num, User user, Food food, CartItem cartItem) {
 		super();
 		this.food_rv_num = food_rv_num;
-		this.user_id = user_id;
-		this.food_code = food_code;
-		this.cart_qty = cart_qty;
-		this.food_name = food_name;
-		this.food_price = food_price;
+		this.user = user;
+		this.food = food;
+		this.cartitem = cartitem;
 	}
-	
-	
+
+
+
 	public int getFood_rv_num() {
 		return food_rv_num;
 	}
+
+
+
 	public void setFood_rv_num(int food_rv_num) {
 		this.food_rv_num = food_rv_num;
 	}
-	public String getUser_id() {
-		return user_id;
+
+
+
+	public User getUser() {
+		return user;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+
+
+
+	public void setUser(User user) {
+		this.user = user;
 	}
-	public int getFood_code() {
-		return food_code;
+
+
+
+	public Food getFood() {
+		return food;
 	}
-	public void setFood_code(int food_code) {
-		this.food_code = food_code;
+
+
+
+	public void setFood(Food food) {
+		this.food = food;
 	}
-	public int getCart_qty() {
-		return cart_qty;
+
+
+
+	public CartItem getCartitem() {
+		return cartitem;
 	}
-	public void setCart_qty(int cart_qty) {
-		this.cart_qty = cart_qty;
+
+
+
+	public void setCartitem(CartItem cartitem) {
+		this.cartitem = cartitem;
 	}
-	public String getFood_name() {
-		return food_name;
-	}
-	public void setFood_name(String food_name) {
-		this.food_name = food_name;
-	}
-	public int getFood_price() {
-		return food_price;
-	}
-	public void setFood_price(int food_price) {
-		this.food_price = food_price;
-	}
+	
+	
 	@Override
 	public String toString() {
-		return "FoodReceipt [food_rv_num=" + food_rv_num + ", user_id=" + user_id + ", food_code=" + food_code
-				+ ", cart_qty=" + cart_qty + ", food_name=" + food_name + ", food_price=" + food_price + "]";
+		return "FoodReceipt [food_rv_num=" + food_rv_num + ", User=" + user + ", Food=" + food + ", CartItem=" + cartitem + "]";
 	}
 	
 	
