@@ -37,6 +37,30 @@ public class MovieReserveDao {
 		return insertRowCount;
 	}
 	
+	//영화예매 1페이지 취소
+		public int deleteMovieReserveOne(int movie_rv_num)throws Exception{
+			String deleteQuery=MovieReserveSql.DELETE_MOVIE_ONE;
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			int deleteRowCount=0;
+			try {
+				con=dataSource.getConnection();
+				pstmt=con.prepareStatement(deleteQuery);
+				pstmt.setInt(1, movie_rv_num);
+				deleteRowCount = pstmt.executeUpdate();
+			}finally {
+				if(con!=null) {
+					con.close();
+				}
+			}
+			return deleteRowCount;
+			
+			
+			
+		}
+		
+		
+	
 	//영화 예매 (상영날짜, 상영 시간대,영화관이름,장소)
 		public int add2(String movie_day,String movie_daytime,String cinema_name,String cinema_place,int movie_rv_num)throws Exception{
 			String insertQuery=MovieReserveSql.INSERT_PAGE_TWO;
@@ -59,6 +83,27 @@ public class MovieReserveDao {
 			}
 			return insertRowCount;
 		}
+		
+		
+		//영화 취소 (상영날짜, 상영 시간대,영화관이름,장소) 
+				public int deleteMovieReserveTwo(int movie_rv_num)throws Exception{
+					String insertQuery=MovieReserveSql.DELETE_PAGE_TWO;
+					Connection con=null;
+					PreparedStatement pstmt=null;
+					int insertRowCount=0;
+					try {
+						con=dataSource.getConnection();
+						pstmt=con.prepareStatement(insertQuery);
+						pstmt.setInt(1,movie_rv_num);
+					
+						insertRowCount = pstmt.executeUpdate();
+					}finally {
+						if(con!=null) {
+							con.close();
+						}
+					}
+					return insertRowCount;
+				}
 		//영화 예매 (좌석,가격)
 				public int add3(int movie_seat_num,int movie_rv_num)throws Exception{
 					int price = 0;
@@ -88,7 +133,29 @@ public class MovieReserveDao {
 					}
 					return insertRowCount;
 				}
-	
+				//영화 취소(좌석,가격)
+				public int deleteMovieReserveThree(int movie_rv_num)throws Exception{
+					
+					
+					String insertQuery=MovieReserveSql.DELETE_PAGE_THREE;
+					Connection con=null;
+					PreparedStatement pstmt=null;
+					int insertRowCount=0;
+					try {
+						con=dataSource.getConnection();
+						pstmt=con.prepareStatement(insertQuery);
+						pstmt.setInt(1,movie_rv_num);
+						
+						
+						
+						insertRowCount = pstmt.executeUpdate();
+					}finally {
+						if(con!=null) {
+							con.close();
+						}
+					}
+					return insertRowCount;
+				}
 	
 	
 	//로그인한 아이디 예매 취소

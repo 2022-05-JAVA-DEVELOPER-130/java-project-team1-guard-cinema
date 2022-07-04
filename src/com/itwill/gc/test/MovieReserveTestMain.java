@@ -25,9 +25,15 @@ public class MovieReserveTestMain {
 		//System.out.println(">>"+rowCount);
 		
 		System.out.println("4.영화 예매 1페이지");
-	//   rowCount = movieReserveDao.add1("qkrrjsxo", 1);
-	 //   rowCount = movieReserveDao.add2("12월3일", "22~24","건대입구","서울",5);
-	    rowCount = movieReserveDao.add3(22,5);
+	 
+		//rowCount = movieReserveDao.add1("qkrrjsxo", 1);
+	    //rowCount = movieReserveDao.add2("12월3일", "22~24","건대입구","서울",1);
+	    //rowCount = movieReserveDao.add3(22,1);
+		
+		rowCount = movieReserveDao.deleteMovieReserveOne(1);
+		//rowCount = movieReserveDao.deleteMovieReserveTwo(1);
+		//rowCount = movieReserveDao.deleteMovieReserveThree(1);
+		
 		
 	}
 
