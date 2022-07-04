@@ -107,7 +107,7 @@ public class QuestionDao {
    }
    
    //1:1문의 보기(select)
-   
+   //선택한 문의 보기
    public Question selectByNo(String sUserId, int question_no)throws Exception{
 	   Question question = null;
 	   Connection con = null;
@@ -146,7 +146,7 @@ public class QuestionDao {
   QUESTION_CATE_TWO          VARCHAR2(50)  
   QUESTION_DATE              DATE  
    */
-   
+   //사용자가 문의한 모든 문의내역보기
    public List<Question> selectAll(String sUserId) throws Exception {
 	   List<Question> questionList = new ArrayList<Question>();
 	   
