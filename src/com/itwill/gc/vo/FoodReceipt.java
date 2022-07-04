@@ -2,20 +2,28 @@ package com.itwill.gc.vo;
 
 public class FoodReceipt {
 	private int food_rv_num;
-	
+
 	private User user;
 	private Food food;
 	private CartItem cartitem;
-	
-	
-	
+
+
+	public FoodReceipt() {
+		
+	}
+
+
 	public FoodReceipt(int food_rv_num, User user, Food food, CartItem cartItem) {
 		super();
 		this.food_rv_num = food_rv_num;
+		
 		this.user = user;
 		this.food = food;
-		this.cartitem = cartitem;
+		this.cartitem = cartItem;
+
 	}
+
+
 
 
 
@@ -25,9 +33,13 @@ public class FoodReceipt {
 
 
 
+
+
 	public void setFood_rv_num(int food_rv_num) {
 		this.food_rv_num = food_rv_num;
 	}
+
+
 
 
 
@@ -37,9 +49,12 @@ public class FoodReceipt {
 
 
 
+
+
 	public void setUser(User user) {
 		this.user = user;
 	}
+
 
 
 
@@ -49,28 +64,35 @@ public class FoodReceipt {
 
 
 
+
 	public void setFood(Food food) {
 		this.food = food;
 	}
 
 
 
-	public CartItem getCartitem() {
+
+	public CartItem getCartItem() {
 		return cartitem;
 	}
 
 
 
-	public void setCartitem(CartItem cartitem) {
-		this.cartitem = cartitem;
+
+
+	public void setCartItem(CartItem cartItem) {
+		this.cartitem = cartItem;
+
 	}
+
 	
 	
+
+
+
 	@Override
 	public String toString() {
 		return "FoodReceipt [food_rv_num=" + food_rv_num + ", User=" + user + ", Food=" + food + ", CartItem=" + cartitem + "]";
 	}
-	
-	
 
 }

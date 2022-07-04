@@ -2,9 +2,13 @@ package com.itwill.gc.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.itwill.gc.common.DataSource;
 import com.itwill.gc.vo.Question;
+import com.itwill.gc.vo.User;
 
 public class QuestionDao {
    private DataSource dataSource;
@@ -103,5 +107,75 @@ public class QuestionDao {
    }
    
    //1:1문의 보기(select)
+   //선택한 문의 보기
+   
+   public Question selectByNo(String sUserId, int question_no)throws Exception{
+	   Question question = null;
+	   Connection con = null;
+	   PreparedStatement pstmt = null;
+	   ResultSet rs = null;
+	   try {
+	   con =dataSource.getConnection();
+	   pstmt = con.prepareStatement(QuestionSql.QUESTION_SELECT_BY_NO);
+	   pstmt.setString(1,sUserId);
+	   pstmt.setInt(2,question_no);
+	   rs = pstmt.executeQuery();
+	   if(rs.next()) {
+		   question =
+	   				new Question(rs.getInt("question_no"), 
+	   							new User(rs.getString("user_id"), "", "", "", "", ""), 
+	   							rs.getString("question_title"), 
+	   							rs.getString("question_content"), 
+	   							rs.getString("question_cate_one"), 
+	   							rs.getString("question_cate_two"), 
+	   							rs.getDate("question_date"));
+	   
+	   }
+	   }finally {
+		   if(con!=null) {
+				con.close();
+			}
+	   }
+	   rs.close();
+	   pstmt.close();
+	   
+	   return question;
+   }
+   
+   /*
+   이름                널?       유형            
+  ----------------- -------- ------------- 
+  QUESTION_NO       NOT NULL NUMBER(10)    
+  USER_ID                    VARCHAR2(20)  
+  QUESTION_TITLE             VARCHAR2(50)  
+  QUESTION_CONTENT           VARCHAR2(500) 
+  QUESTION_CATE_ONE          VARCHAR2(50)  
+  QUESTION_CATE_TWO          VARCHAR2(50)  
+  QUESTION_DATE              DATE  
+   */
+   //사용자가 문의한 모든 문의내역보기
+   public List<Question> selectAll(String sUserId) throws Exception {
+	   List<Question> questionList = new ArrayList<Question>();
+	   
+	   Connection con = dataSource.getConnection();
+	   PreparedStatement pstmt= con.prepareStatement(QuestionSql.QUESTION_SELECT_ALL);
+	   pstmt.setString(1, sUserId);
+	   ResultSet rs = pstmt.executeQuery();
+	   while(rs.next()) {
+		   questionList.add(
+				   				new Question(rs.getInt("question_no"), 
+				   							new User(rs.getString("user_id"), "", "", "", "", ""), 
+				   							rs.getString("question_title"), 
+				   							rs.getString("question_content"), 
+				   							rs.getString("question_cate_one"), 
+				   							rs.getString("question_cate_two"), 
+				   							rs.getDate("question_date"))
+				   );
+	   }
+	   rs.close();
+	   pstmt.close();
+	   con.close();
+	   return questionList;
+   }
    
 }

@@ -8,6 +8,10 @@ public class CartItem {
 	
 	private Food food;
 	
+	public CartItem() {
+		
+	}
+	
 	public CartItem(int cartNo, int cart_qty, User user, Food food) {
 		super();
 		this.cartNo=cartNo;
@@ -15,6 +19,7 @@ public class CartItem {
 		this.user=user;
 		this.food=food;
 	}
+
 
 	public User getUser() {
 		return user;
