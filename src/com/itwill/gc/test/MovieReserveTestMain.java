@@ -26,11 +26,11 @@ public class MovieReserveTestMain {
 		//rowCount = movieReserveDao.deleteMovieReserveById("qkrrjsxo");
 		//System.out.println(">>"+rowCount);
 		
-		System.out.println("4.영화 예매 1페이지");
+		//System.out.println("4.영화 예매 페이지");
 	 
-		rowCount = movieReserveDao.add(new MovieReserve(0,"12월5일",2,"11시~13시",0,"건대","서울",
-				new Movie(1,"",null,0,"","","",0,"",0,"",""),
-				new User("qkrrjsxo","","","","","")));
+		//rowCount = movieReserveDao.add(new MovieReserve(0,"2월5일",2,"11시~13시",0,"건대","서울",
+		//		new Movie(1,"",null,0,"","","",0,"",0,"",""),
+		//		new User("qkrrjsxo","","","","","")));
 	   
 		
 	
