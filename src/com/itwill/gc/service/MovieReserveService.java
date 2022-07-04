@@ -14,15 +14,17 @@ public class MovieReserveService {
 	/*
 	 * 영화 예매하기 
 	 */
-	public int movieReserve(MovieReserve movieReserve) throws Exception {
-		int result=movieReserveDao.add(movieReserve);;
-		if(result==1) {
-			//영화 예매 성공
-			return result;
-		}else
-		{	//영화 예매 실패
-			return result;
+	public boolean movieReserve(MovieReserve movieReserve) throws Exception {
+		boolean isSuccess = false;
+		MovieReserve findSeat = movieReserveDao.selectByMany(movieReserve.getMovie().getMovie_code(), movieReserve.getMovie_day(), movieReserve.getMovie_daytime(),movieReserve.getCinema_name(), movieReserve.getCinema_place(), movieReserve.getMovie_seat_num());
+		if(findSeat == null) {
+			int rowCount = movieReserveDao.add(movieReserve);
+			isSuccess = true;
+			
+		}else {
+			isSuccess = false;
 		}
+		return isSuccess;
 	}
 	
 	

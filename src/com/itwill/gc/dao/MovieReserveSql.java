@@ -26,10 +26,18 @@ public class MovieReserveSql {
 	
 
 
+	//좌석찾기 
+		public static final String SELECT_BY_MANY= 
+				"select * from movie_reserve where movie_code = ? and movie_day =? and movie_daytime = ? and\r\n"
+				+ "cinema_name=? and cinema_place=? and movie_seat_num = ?";
 	
 	
 	
-	
+		
+		
+		
+		
+		
 	
 /*
 	--예매

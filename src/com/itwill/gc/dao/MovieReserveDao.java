@@ -124,6 +124,32 @@ public class MovieReserveDao {
 		return movieReserve;
 		
 	}
+	//좌석 중복찾기
+	public MovieReserve selectByMany(int movie_code,String movie_day,String movie_daytime,String cinema_name,String cinema_place,int movie_seat_num)throws Exception{
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(MovieReserveSql.SELECT_BY_MANY);
+		pstmt.setInt(1, movie_code);
+		pstmt.setString(2, movie_day);
+		pstmt.setString(3, movie_daytime);
+		pstmt.setString(4, cinema_name);
+		pstmt.setString(5, cinema_place);
+		pstmt.setInt(6, movie_seat_num);
+		ResultSet rs = pstmt.executeQuery();
+		MovieReserve findSeat = null;
+		if(rs.next()) {
+			findSeat = new MovieReserve(
+					rs.getInt("movie_rv_num"),
+					rs.getString("movie_movieday"),
+					rs.getInt("movie_seat_num"),
+					rs.getString("movie_daytime"),
+					rs.getInt("movie_order_pr"),
+					rs.getString("cinema_name"),
+					rs.getString("cinema_place"),null,null
+					
+					);
+		}
+		return findSeat;
+	}
 	
 	
 }
