@@ -25,16 +25,17 @@ public class QuestionTestMain {
       rowCount = questionDao.update("guard1", 6, "문의내용변경", "문의내용변경했어요");
       System.out.println(">>"+rowCount);
 
-/*******************문의삭제***********************      
+/*******************문의삭제***********************/      
       System.out.println("3.deleteByNo");
       rowCount = questionDao.deleteQuestionByNo(7);
       System.out.println(">>"+rowCount);
       System.out.println("4.deleteAll");
       rowCount = questionDao.deleteQuestionAll("guard2");
       System.out.println(">>"+rowCount);
-******************문의확인**********************/
+/******************문의확인**********************/
       System.out.println("5.selectByNo");
-      
+      Question question1 = questionDao.selectByNo("guard1", 1);
+      System.out.println(question1);
       
       
       System.out.println("6.selectAll");

@@ -108,15 +108,18 @@ public class QuestionDao {
    
    //1:1문의 보기(select)
    //선택한 문의 보기
+   
    public Question selectByNo(String sUserId, int question_no)throws Exception{
 	   Question question = null;
 	   Connection con = null;
 	   PreparedStatement pstmt = null;
+	   ResultSet rs = null;
+	   try {
 	   con =dataSource.getConnection();
 	   pstmt = con.prepareStatement(QuestionSql.QUESTION_SELECT_BY_NO);
-	   pstmt.setString(1,question.getUser().getUserId());
-	   pstmt.setInt(2,question.getQuestion_no());
-	   ResultSet rs = pstmt.executeQuery();
+	   pstmt.setString(1,sUserId);
+	   pstmt.setInt(2,question_no);
+	   rs = pstmt.executeQuery();
 	   if(rs.next()) {
 		   question =
 	   				new Question(rs.getInt("question_no"), 
@@ -128,9 +131,13 @@ public class QuestionDao {
 	   							rs.getDate("question_date"));
 	   
 	   }
+	   }finally {
+		   if(con!=null) {
+				con.close();
+			}
+	   }
 	   rs.close();
 	   pstmt.close();
-	   con.close();
 	   
 	   return question;
    }
