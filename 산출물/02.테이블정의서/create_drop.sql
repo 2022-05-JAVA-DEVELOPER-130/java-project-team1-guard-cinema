@@ -8,17 +8,6 @@ DROP TABLE food CASCADE CONSTRAINTS;
 DROP TABLE movie_reserve CASCADE CONSTRAINTS;
 DROP TABLE user_info CASCADE CONSTRAINTS;
 DROP TABLE movie CASCADE CONSTRAINTS;
-DROP TABLE event CASCADE CONSTRAINTS;
-
-CREATE TABLE event(
-		event_no                      		NUMBER(10)		 NULL ,
-		event_name                    		VARCHAR2(10)		 NULL 
-);
-
-DROP SEQUENCE event_event_no_SEQ;
-
-CREATE SEQUENCE event_event_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
-
 
 
 
@@ -41,7 +30,7 @@ CREATE TABLE movie(
 CREATE TABLE user_info(
 		user_id                       		VARCHAR2(20)		 NULL ,
 		user_name                     		VARCHAR2(10)		 NULL ,
-		user_ph_num                   		NUMBER(20)		 NULL ,
+		user_ph_num                   		VARCHAR(20)		 NULL ,
 		user_jumin                    		VARCHAR2(20)		 NULL ,
 		user_email                    		VARCHAR2(20)		 NULL ,
 		user_password                 		VARCHAR2(20)		 NULL 
@@ -167,7 +156,7 @@ CREATE SEQUENCE faq_faq_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 
 
-ALTER TABLE event ADD CONSTRAINT IDX_event_PK PRIMARY KEY (event_no);
+
 
 ALTER TABLE movie ADD CONSTRAINT IDX_movie_PK PRIMARY KEY (movie_code);
 

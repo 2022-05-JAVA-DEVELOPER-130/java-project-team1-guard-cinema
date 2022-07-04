@@ -1,7 +1,6 @@
 /***********user insert***********/
 -- 회원가입 페이지에서 이름,아이디,비밀번호 등등 입력하고 가입버튼 누름 ---> insert user_info에 데이터 넣기
-insert into user_info values('qkrrjsxo','박건태',01096964850,9601111111111,'rjsxo@naver.com','1111');
-insert into user_info values('qnflqnfl','신짱구',01094544850,9703532234542,'fsmwl@naver.com','2222');
+
 insert into user_info (user_id, user_name, user_ph_num, user_jumin, user_email, user_password)
         values ('guard1', '김민주', '01011111111', '9011111111111', 'guard1@gmail.com', '1111');
 insert into user_info (user_id, user_name, user_ph_num, user_jumin, user_email, user_password)
@@ -17,67 +16,62 @@ insert into user_info (user_id, user_name, user_ph_num, user_jumin, user_email, 
         
         
 /***********movie insert***********/
-insert into movie values(1,'지구멸망좀',sysdate,3.4,'19금','지구멸망을 꿈꾸는 1조','공포',120,'한국',20000,'true','sfsf');
-insert into movie values(2,'흙흙흙',sysdate,4.4,'만17세','흙이되어버린 1조','스릴러',110,'스페인',6,'false','sffs');
-
-/***********movie_reserve insert***********/
---영화 선택 -> 지역,날짜 선택후 다음버튼 클릭 (변수에 영화,지역,날짜 저장)
---         -> 좌석,시간대 선택 -> 결제 클릭 (지역,날짜 변수와 좌석,시간대를 movie_reserve 테이블에 넣기
-insert into movie_reserve values(MOVIE_RESERVE_MOVIE_RV_NUM_SEQ.nextval,1,'qkrrjsxo',
-(select movie_day from movie where movie_code=1),1,120,12000,'지구멸망좀','건대입구','서울');
---(movie_code말고도 영화제목,user_id등등도 변수나 select로 뽑아서 사용)
+insert into movie values(1,'지구멸망좀',sysdate,4.4,'19금','지구멸망을 꿈꾸는 1조','공포',120,'한국',20000,'true','movie_a.jpg');
+insert into movie values(2,'흙흙흙',sysdate,3.3,'만17세','흙이되어버린 1조','스릴러',110,'스페인',6,'true','movie_b.jpg');
+insert into movie values(3,'여름시러',sysdate,3.1,'만12세','녹아버린 1조','SF',80,'영국',6,'true','movie_c.jpg');
+insert into movie values(4,'팥빙수조아',sysdate,2.4,'전체이용가','먹고자는 1조','코믹',130,'일본',6,'false','movie_d.jpg');
 
 
 /**********food insert***********/
-insert into food (food_code, food_name, food_info) values (10, '콜라', '콜라는 역시 코카콜라');
-insert into food (food_code, food_name, food_info) values (20, '사이다', '사이다는 역시 칠성 사이다');
-insert into food (food_code, food_name, food_info) values (30, '환타', '환타는 역시 오렌지맛 환타');
-insert into food (food_code, food_name, food_info) values (100, '기본 팝콘', '팝콘은 역시 오리지널 팝콘');
-insert into food (food_code, food_name, food_info) values (200, '카라멜 팝콘', '팝콘은 역시 단짠 카라멜 팝콘');
-insert into food (food_code, food_name, food_info) values (300, '치즈 팝콘', '팝콘은 역시 고소한 치즈 팝콘');
+insert into food  values (10, '콜라','콜라는 역시 코카콜라, 사실 제로가 더 맛있음' ,2000,'food_a.jpg');
+insert into food  values (20,'사이다', '사이다는 역시 칠성 사이다, 콜라보다는 아니지만',2000,'food_b.jpg');
+insert into food  values (30,'환타',  '환타는 역시 오렌지맛 환타,듣는 포도맛 섭섭해',2000,'food_c.jpg');
+insert into food  values (100,'기본 팝콘',  '팝콘은 역시 오리지널 팝콘,노맛..',5000,'food_d.jpg');
+insert into food  values (200,'카라멜',  '팝콘은 역시 단짠 카라멜 팝콘,이건 인정',6000,'food_e.jpg');
+insert into food  values (300, '치즈', '팝콘은 역시 고소한 치즈 팝콘,나쁘지않아',6000,'food_f.jpg');
 
 
 /*******cart insert**********/
-insert into cart (cart_no, user_id, food_code, cart_qty,food_name) values (CART_CART_NO_SEQ.nextval, 'guard1', 100, 2,'기본 팝콘');
-insert into cart (cart_no, user_id, food_code, cart_qty,food_name) values (CART_CART_NO_SEQ.nextval, 'guard1', 200, 1,'카라멜 팝콘');
-insert into cart (cart_no, user_id, food_code, cart_qty,food_name) values (CART_CART_NO_SEQ.nextval, 'guard1', 20, 3,'사이다');
-insert into cart (cart_no, user_id, food_code, cart_qty,food_name) values (CART_CART_NO_SEQ.nextval, 'guard2', 100, 1,'기본 팝콘');
-insert into cart (cart_no, user_id, food_code, cart_qty,food_name) values (CART_CART_NO_SEQ.nextval, 'guard2', 300, 1,'치즈 팝콘');
-insert into cart (cart_no, user_id, food_code, cart_qty,food_name) values (CART_CART_NO_SEQ.nextval, 'guard2', 30, 3,'환타');
-insert into cart (cart_no, user_id, food_code, cart_qty,food_name) values (CART_CART_NO_SEQ.nextval, 'guard3', 300, 1,'치즈 팝콘');
-insert into cart (cart_no, user_id, food_code, cart_qty,food_name) values (CART_CART_NO_SEQ.nextval, 'guard3', 20, 2,'사이다');
-insert into cart (cart_no, user_id, food_code, cart_qty,food_name) values (CART_CART_NO_SEQ.nextval, 'guard4', 10, 1,'콜라');
-insert into cart (cart_no, user_id, food_code, cart_qty,food_name) values (CART_CART_NO_SEQ.nextval, 'guard4', 100, 1,'기본 팝콘');
-insert into cart (cart_no, user_id, food_code, cart_qty,food_name) values (CART_CART_NO_SEQ.nextval, 'guard5', 20, 1,'사이다');
-insert into cart (cart_no, user_id, food_code, cart_qty,food_name) values (CART_CART_NO_SEQ.nextval, 'guard5', 200, 1,'카라멜 팝콘');
-insert into cart (cart_no, user_id, food_code, cart_qty,food_name) values (CART_CART_NO_SEQ.nextval, 'guard6', 30, 1,'환타');
-insert into cart (cart_no, user_id, food_code, cart_qty,food_name) values (CART_CART_NO_SEQ.nextval, 'guard6', 300, 1,'치즈 팝콘');
+insert into cart (cart_no, user_id, food_code, cart_qty) values (CART_CART_NO_SEQ.nextval, 'guard1', 100, 2);
+insert into cart (cart_no, user_id, food_code, cart_qty) values (CART_CART_NO_SEQ.nextval, 'guard1', 200, 1);
+insert into cart (cart_no, user_id, food_code, cart_qty) values (CART_CART_NO_SEQ.nextval, 'guard1', 20, 3);
+insert into cart (cart_no, user_id, food_code, cart_qty) values (CART_CART_NO_SEQ.nextval, 'guard2', 100, 1);
+insert into cart (cart_no, user_id, food_code, cart_qty) values (CART_CART_NO_SEQ.nextval, 'guard2', 300, 1);
+insert into cart (cart_no, user_id, food_code, cart_qty) values (CART_CART_NO_SEQ.nextval, 'guard2', 30, 3);
+insert into cart (cart_no, user_id, food_code, cart_qty) values (CART_CART_NO_SEQ.nextval, 'guard3', 300, 1);
+insert into cart (cart_no, user_id, food_code, cart_qty) values (CART_CART_NO_SEQ.nextval, 'guard3', 20, 2);
+insert into cart (cart_no, user_id, food_code, cart_qty) values (CART_CART_NO_SEQ.nextval, 'guard4', 10, 1);
+insert into cart (cart_no, user_id, food_code, cart_qty) values (CART_CART_NO_SEQ.nextval, 'guard4', 100, 1);
+insert into cart (cart_no, user_id, food_code, cart_qty) values (CART_CART_NO_SEQ.nextval, 'guard5', 20, 1);
+insert into cart (cart_no, user_id, food_code, cart_qty) values (CART_CART_NO_SEQ.nextval, 'guard5', 200, 1);
+insert into cart (cart_no, user_id, food_code, cart_qty) values (CART_CART_NO_SEQ.nextval, 'guard6', 30, 1);
+insert into cart (cart_no, user_id, food_code, cart_qty) values (CART_CART_NO_SEQ.nextval, 'guard6', 300, 1);
 
 
 /***********food receipt*************/
-insert into food_receipt (food_rv_num, user_id, food_code, cart_qty,food_name) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard1', 100, 2,'기본 팝콘');
-insert into food_receipt (food_rv_num, user_id, food_code, cart_qty,food_name) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard1', 200, 1,'카라멜 팝콘');
-insert into food_receipt (food_rv_num, user_id, food_code, cart_qty,food_name) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard1', 20, 3,'사이다');
-insert into food_receipt (food_rv_num, user_id, food_code, cart_qty,food_name) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard2', 100, 1,'기본 팝콘');
-insert into food_receipt (food_rv_num, user_id, food_code, cart_qty,food_name) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard2', 300, 1,'치즈 팝콘');
-insert into food_receipt (food_rv_num, user_id, food_code, cart_qty,food_name) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard2', 30, 3,'환타');
-insert into food_receipt (food_rv_num, user_id, food_code, cart_qty,food_name) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard3', 300, 1,'치즈 팝콘');
-insert into food_receipt (food_rv_num, user_id, food_code, cart_qty,food_name) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard3', 20, 2,'사이다');
-insert into food_receipt (food_rv_num, user_id, food_code, cart_qty,food_name) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard4', 10, 1,'콜라');
-insert into food_receipt (food_rv_num, user_id, food_code, cart_qty,food_name) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard4', 100, 1,'기본 팝콘');
-insert into food_receipt (food_rv_num, user_id, food_code, cart_qty,food_name) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard5', 20, 1,'사이다');
-insert into food_receipt (food_rv_num, user_id, food_code, cart_qty,food_name) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard5', 200, 1,'카라멜 팝콘');
-insert into food_receipt (food_rv_num, user_id, food_code, cart_qty,food_name) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard6', 30, 1,'환타');
-insert into food_receipt (food_rv_num, user_id, food_code, cart_qty,food_name) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard6', 300, 1,'치즈 팝콘');
+insert into food_receipt (food_rv_num, user_id, food_code, cart_qty) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard1', 100, 2);
+insert into food_receipt (food_rv_num, user_id, food_code, cart_qty) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard1', 200, 1);
+insert into food_receipt (food_rv_num, user_id, food_code, cart_qty) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard1', 20, 3);
+insert into food_receipt (food_rv_num, user_id, food_code, cart_qty) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard2', 100, 1);
+insert into food_receipt (food_rv_num, user_id, food_code, cart_qty) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard2', 300, 1);
+insert into food_receipt (food_rv_num, user_id, food_code, cart_qty) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard2', 30, 3);
+insert into food_receipt (food_rv_num, user_id, food_code, cart_qty) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard3', 300, 1);
+insert into food_receipt (food_rv_num, user_id, food_code, cart_qty) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard3', 20, 2);
+insert into food_receipt (food_rv_num, user_id, food_code, cart_qty) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard4', 10, 1);
+insert into food_receipt (food_rv_num, user_id, food_code, cart_qty) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard4', 100, 1);
+insert into food_receipt (food_rv_num, user_id, food_code, cart_qty) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard5', 20, 1);
+insert into food_receipt (food_rv_num, user_id, food_code, cart_qty) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard5', 200, 1);
+insert into food_receipt (food_rv_num, user_id, food_code, cart_qty) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard6', 30, 1);
+insert into food_receipt (food_rv_num, user_id, food_code, cart_qty) values (FOOD_RECEIPT_FOOD_RV_NUM_SEQ.nextval, 'guard6', 300, 1);
 
 
 /********************review insert*******************/
 insert into review(review_no,user_id,review_title,review_date,movie_code,review_content)
-            values(review_review_no_SEQ.nextval,'guard1','리뷰제목',sysdate,1,'리뷰본문');
+            values(review_review_no_SEQ.nextval,'guard1','리뷰제목1',sysdate,1,'리뷰본문1');
 insert into review(review_no,user_id,review_title,review_date,movie_code,review_content)
-            values(review_review_no_SEQ.nextval,'guard2','리뷰제목',sysdate,1,'리뷰본문');
+            values(review_review_no_SEQ.nextval,'guard2','리뷰제목2',sysdate,2,'리뷰본문2');
 insert into review(review_no,user_id,review_title,review_date,movie_code,review_content)
-            values(review_review_no_SEQ.nextval,'guard3','리뷰제목',sysdate,3,'리뷰본문'); 
+            values(review_review_no_SEQ.nextval,'guard3','리뷰제목3',sysdate,3,'리뷰본문3'); 
 
 
 /*************gongji insert******************/
@@ -119,3 +113,4 @@ insert into question values(QUESTION_QUESTION_NO_SEQ.nextval,'guard1','문의타
 insert into question values(QUESTION_QUESTION_NO_SEQ.nextval,'guard2','문의타이틀','문의내용','문의분류1','문의종류1',sysdate);
 insert into question values(QUESTION_QUESTION_NO_SEQ.nextval,'guard2','문의타이틀','문의내용','문의분류2','문의종류3',sysdate);
 insert into question values(QUESTION_QUESTION_NO_SEQ.nextval,'guard2','문의타이틀','문의내용','문의분류1','문의종류3',sysdate);
+commit;
