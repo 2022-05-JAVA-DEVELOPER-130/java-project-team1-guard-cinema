@@ -8,6 +8,7 @@ public class QuestionTestMain {
    
    public static void main(String[] args) throws Exception{
       QuestionDao questionDao = new QuestionDao();
+/*******************문의작성************************/
       System.out.println("1.add(insert)");
       
       int rowCount = -999;
@@ -17,4 +18,7 @@ public class QuestionTestMain {
                   "문의제목1", "문의내용1", "카테고리1", "카테고리2", null);
       rowCount = questionDao.add(addQuestion);
    }
+/*****************문의수정***********************/
+   
+   
 }

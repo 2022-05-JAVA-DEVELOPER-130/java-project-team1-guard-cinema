@@ -41,7 +41,8 @@ public class CartItemDao {
 		return count;
 	}
 	//cartitem 담기 
-	public int add1(String sUserId, int food_code, int cart_qty, String food_name, int food_price) throws Exception {
+	
+	public int add1(CartItem cartItem) throws Exception {
 		String insertQuery=CartItemSql.INSERT_CART;
 		Connection con=null;
 		PreparedStatement ptmt=null;
@@ -49,11 +50,10 @@ public class CartItemDao {
 		try {
 			con=dataSource.getConnection();
 			ptmt=con.prepareStatement(insertQuery);
-			ptmt.setString(1, sUserId);
-			ptmt.setInt(2, food_code);
-			ptmt.setInt(3, cart_qty);
-			ptmt.setString(4,food_name);
-			ptmt.setInt(5, food_price);
+			ptmt.setInt(1, cartItem.getCart_qty());
+			ptmt.setString(2, cartItem.getUser().getUserId());
+			ptmt.setInt(3, cartItem.getFood().getFood_code());
+			
 			insertrCount = ptmt.executeUpdate();
 		}finally {
 			if(con!=null) {
