@@ -10,6 +10,7 @@ import com.itwill.gc.common.DataSource;
 import com.itwill.gc.vo.CartItem;
 import com.itwill.gc.vo.Food;
 import com.itwill.gc.vo.FoodReceipt;
+import com.itwill.gc.vo.MovieReserve;
 import com.itwill.gc.vo.User;
 
 
@@ -48,20 +49,20 @@ public class FoodReceiptDao {
 	
 	  //selelctByID : 아이디로 검색
 	 
-	public FoodReceipt selectById(String user_id) throws Exception{
-		FoodReceipt foodReceipt=null;
+	public List<FoodReceipt> selectById(String user_id) throws Exception{
+		ArrayList<FoodReceipt> foodReceipt=new ArrayList<FoodReceipt>();
 		Connection con=dataSource.getConnection();
 		PreparedStatement pstmt=con.prepareStatement(FoodReceiptSql.FOOD_RECEIPT_SELECT_BY_ID);
 		pstmt.setString(1, user_id);
 		ResultSet rs=pstmt.executeQuery();
-		if(rs.next()) {
+		while(rs.next()) {
 			
-			foodReceipt=
+			foodReceipt.add(
 					new FoodReceipt(
 							rs.getInt("food_rv_num"),
 							new User(rs.getString("user_id"), "", "", "", "", ""),
 							new Food(rs.getInt("food_code"), rs.getString("food_name"), "", rs.getInt("food_price"), ""),
-							new CartItem(0,rs.getInt("cart_qty"),null,null));
+							new CartItem(0,rs.getInt("cart_qty"),null,null)));
 							 
 		}
 		rs.close();
@@ -69,7 +70,27 @@ public class FoodReceiptDao {
 		con.close();
 		return foodReceipt;
 	}
-	//주문내역
+	//카트담긴물건 구매 
+	public int cartToReceipt(String user_id)throws Exception{
+		String insertQuery=FoodReceiptSql.INSERT_FOOD_RECEIPT;
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		int insertRowCount=0;
+		int price = 0;
+		
+		try {
+			con=dataSource.getConnection();
+			pstmt=con.prepareStatement(insertQuery);
+			pstmt.setString(1,user_id);
+			
+			insertRowCount = pstmt.executeUpdate();
+		}finally {
+			if(con!=null) {
+				con.close();
+			}
+		}
+		return insertRowCount;
+	}
 	
 
 	
