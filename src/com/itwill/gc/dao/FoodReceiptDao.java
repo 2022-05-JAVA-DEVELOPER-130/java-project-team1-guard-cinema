@@ -29,9 +29,9 @@ public class FoodReceiptDao {
 							rs.getInt("food_rv_num"),
 							rs.getString("user_id"), 
 							rs.getInt("food_code"), 
-							rs.getInt("cart_qty"), 
-							rs.getInt("cart_price"), 
-							rs.getString("food_image")); 
+							rs.getInt("cart_qty"),
+							rs.getString("food_name"),
+							rs.getInt("food_price")); 
 		}
 		rs.close();
 		pstmt.close();
@@ -54,9 +54,9 @@ public class FoodReceiptDao {
 							rs.getInt("food_rv_num"),
 							rs.getString("user_id"), 
 							rs.getInt("food_code"), 
-							rs.getInt("cart_qty"), 
-							rs.getInt("cart_price"), 
-							rs.getString("food_image")); 
+							rs.getInt("cart_qty"),
+							rs.getString("food_name"),
+							rs.getInt("food_price"));  
 		}
 		rs.close();
 		pstmt.close();
