@@ -116,7 +116,21 @@ public class QuestionDao {
 	   pstmt = con.prepareStatement(QuestionSql.QUESTION_SELECT_BY_NO);
 	   pstmt.setString(1,question.getUser().getUserId());
 	   pstmt.setInt(2,question.getQuestion_no());
+	   ResultSet rs = pstmt.executeQuery();
+	   if(rs.next()) {
+		   question =
+	   				new Question(rs.getInt("question_no"), 
+	   							new User(rs.getString("user_id"), "", "", "", "", ""), 
+	   							rs.getString("question_title"), 
+	   							rs.getString("question_content"), 
+	   							rs.getString("question_cate_one"), 
+	   							rs.getString("question_cate_two"), 
+	   							rs.getDate("question_date"));
 	   
+	   }
+	   rs.close();
+	   pstmt.close();
+	   con.close();
 	   
 	   return question;
    }
@@ -151,6 +165,9 @@ public class QuestionDao {
 				   							rs.getDate("question_date"))
 				   );
 	   }
+	   rs.close();
+	   pstmt.close();
+	   con.close();
 	   return questionList;
    }
    
