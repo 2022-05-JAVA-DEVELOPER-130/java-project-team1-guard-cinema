@@ -13,18 +13,18 @@ public class MovieReserveServiceTest {
 		
 		
 		System.out.println("영화 예매하기");
-		System.out.println(">> "+movieReserveService.movieReserve(new MovieReserve(0,"2월5일",2,"11시~13시",0,"건대","서울",
+		System.out.println(">> "+movieReserveService.movieReserve(new MovieReserve(0,"2월5일",3,"11시~13시",0,"건대","서울",
 				new Movie(1,"",null,0,"","","",0,"",0,"",""),
-				new User("qkrrjsxo","","","","",""))));
+				new User("guard2","","","","",""))));
 		
 		
 		
-	//	System.out.println("내 예매목록 보기");
-	//	System.out.println(">> "+movieReserveService.myReserve("guard1"));
+		System.out.println("내 예매목록 보기");
+		System.out.println(">> "+movieReserveService.myReserve("guard1"));
 		
 		
-	//	System.out.println("예매번호로 예매 취소");
-	//	System.out.println(">> "+movieReserveService.movieCancleByNum(2));
+		System.out.println("예매번호로 예매 취소");
+		System.out.println(">> "+movieReserveService.movieCancleByNum(2));
 	}
 
 }

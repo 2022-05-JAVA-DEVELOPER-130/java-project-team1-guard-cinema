@@ -10,29 +10,29 @@ public class MovieReserveTestMain {
 	public static void main(String[] args) throws Exception{
 		
 		MovieReserveDao movieReserveDao = new MovieReserveDao();
-		//System.out.println("1.내 예매목록 아이디로 보기");
-		//List<MovieReserve> movieReserve1 = movieReserveDao.getMovieReserveListById("qkrrjsxo");
-		//System.out.println(movieReserve1);
+		System.out.println("1.내 예매목록 아이디로 보기");
+		List<MovieReserve> movieReserve1 = movieReserveDao.getMovieReserveListById("qkrrjsxo");
+		System.out.println(movieReserve1);
 		
 		
 		
-		//System.out.println("2.예매번호로 예매 삭제");
+		System.out.println("2.예매번호로 예매 삭제");
 		int rowCount = -999;
-		//rowCount = movieReserveDao.deleteMovieReserveByNo(1);
-		//System.out.println(">>"+rowCount);
+		rowCount = movieReserveDao.deleteMovieReserveByNo(1);
+		System.out.println(">>"+rowCount);
 		
 	/**********************************************************************id말고 예매번호로  	
 		System.out.println("3.아이디로 예매 삭제");
 		rowCount = movieReserveDao.deleteMovieReserveById("qkrrjsxo");
 		System.out.println(">>"+rowCount);
 	****************************************************************************************/	
-		//System.out.println("4.영화 예매 페이지");
+		System.out.println("4.영화 예매 페이지");
 	 
-		//rowCount = movieReserveDao.add(new MovieReserve(0,"2월5일",2,"11시~13시",0,"건대","서울",
-			//	new Movie(1,"",null,0,"","","",0,"",0,"",""),
-				//new User("guard1","","","","","")));
+		rowCount = movieReserveDao.add(new MovieReserve(0,"2월5일",2,"11시~13시",0,"건대","서울",
+				new Movie(1,"",null,0,"","","",0,"",0,"",""),
+				new User("guard1","","","","","")));
 	   
-		
+		//System.out.println(">>"+movieReserveDao.selectByMany(1, "2월5일", "11시~13시", "건대", "서울", 5));
 	
 		
 		

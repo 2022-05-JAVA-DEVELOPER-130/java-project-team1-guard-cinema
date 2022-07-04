@@ -139,7 +139,7 @@ public class MovieReserveDao {
 		if(rs.next()) {
 			findSeat = new MovieReserve(
 					rs.getInt("movie_rv_num"),
-					rs.getString("movie_movieday"),
+					rs.getString("movie_day"),
 					rs.getInt("movie_seat_num"),
 					rs.getString("movie_daytime"),
 					rs.getInt("movie_order_pr"),
