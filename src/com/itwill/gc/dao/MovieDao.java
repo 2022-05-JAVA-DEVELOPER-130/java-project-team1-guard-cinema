@@ -79,7 +79,7 @@ public class MovieDao {
 		return movieIngList;
 	}
 	/*
-	 * selelctByMovieTitle : 영화 이름으로 검색
+	 * selelctByMovieCode : 영화 코드로 검색
 	 */
 	public Movie selectByMovieCode(int movie_code) throws Exception{
 		Movie movie=null;
