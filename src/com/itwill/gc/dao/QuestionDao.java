@@ -43,7 +43,7 @@ public class QuestionDao {
    }
    
    //1:1문의 수정
-   public int update(String sUserId, int question_no, String question_title,String question_content)throws Exception{
+   public int update(String userId, int question_no, String question_title,String question_content)throws Exception{
       String updateQuestion = 
             "update question set question_title = ?,question_content = ? where question_no = ? and user_id = ?";
       Connection con = null;
@@ -55,7 +55,7 @@ public class QuestionDao {
          pstmt.setString(1, question_title);
          pstmt.setString(2, question_content);
          pstmt.setInt(3, question_no);
-         pstmt.setString(4, sUserId);
+         pstmt.setString(4, userId);
          updateRowCount = pstmt.executeUpdate();
       }finally {
          if(con!=null) {
@@ -88,7 +88,7 @@ public class QuestionDao {
    }
    
    //1:1문의 전체 삭제
-   public int deleteQuestionAll(String sUserId)throws Exception{
+   public int deleteQuestionAll(String userId)throws Exception{
       String deleteQustion = "delete question where user_id = ?";
       Connection con = null;
       PreparedStatement pstmt = null;
@@ -96,7 +96,7 @@ public class QuestionDao {
       try {
          con = dataSource.getConnection();
          pstmt = con.prepareStatement(deleteQustion);
-         pstmt.setString(1, sUserId);
+         pstmt.setString(1, userId);
          deleteRowCount = pstmt.executeUpdate();
       }finally {
          if(con!=null) {
@@ -109,7 +109,7 @@ public class QuestionDao {
    //1:1문의 보기(select)
    //선택한 문의 보기
    
-   public Question selectByNo(String sUserId, int question_no)throws Exception{
+   public Question selectByNo(String userId, int question_no)throws Exception{
 	   Question question = null;
 	   Connection con = null;
 	   PreparedStatement pstmt = null;
@@ -117,7 +117,7 @@ public class QuestionDao {
 	   try {
 	   con =dataSource.getConnection();
 	   pstmt = con.prepareStatement(QuestionSql.QUESTION_SELECT_BY_NO);
-	   pstmt.setString(1,sUserId);
+	   pstmt.setString(1,userId);
 	   pstmt.setInt(2,question_no);
 	   rs = pstmt.executeQuery();
 	   if(rs.next()) {
@@ -154,12 +154,12 @@ public class QuestionDao {
   QUESTION_DATE              DATE  
    */
    //사용자가 문의한 모든 문의내역보기
-   public List<Question> selectAll(String sUserId) throws Exception {
+   public List<Question> selectAll(String userId) throws Exception {
 	   List<Question> questionList = new ArrayList<Question>();
 	   
 	   Connection con = dataSource.getConnection();
 	   PreparedStatement pstmt= con.prepareStatement(QuestionSql.QUESTION_SELECT_ALL);
-	   pstmt.setString(1, sUserId);
+	   pstmt.setString(1, userId);
 	   ResultSet rs = pstmt.executeQuery();
 	   while(rs.next()) {
 		   questionList.add(
