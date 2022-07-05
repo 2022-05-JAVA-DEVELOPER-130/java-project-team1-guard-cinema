@@ -12,18 +12,13 @@ public class QuestionService {
 	}
 	/*
 	 * 로그인후 문의내역확인
-	 * - 존재하면 문의내역리스트로
-	 * - 존재 안하면 문의내용이 없습니다. 
 	 */
-	/*
-	public List<Question> selectAll(String userId) throws Exception{
-		
-		
-		
-		
+	
+	public List<Question> selectAll(String userId) throws Exception{	
+	return questionDao.selectAll(userId);	
 	}
 	
-	*/
+	
 	
 	
 	/*
@@ -43,8 +38,8 @@ public class QuestionService {
 	/*
 	 * 문의수정
 	 */
-	public int updateQuestion(String userId, int question_no, String question_title,String question_content) throws Exception{
-		return questionDao.update(userId, question_no,question_title, question_content);
+	public int updateQuestion(Question question) throws Exception{
+		return questionDao.update(question);
 	}
 	
 	/*
