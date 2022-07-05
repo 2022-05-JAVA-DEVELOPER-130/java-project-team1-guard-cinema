@@ -16,10 +16,22 @@ import java.awt.Color;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import com.itwill.gc.service.FaqService;
+import com.itwill.gc.service.GongjiService;
+import com.itwill.gc.service.QuestionService;
+import com.itwill.gc.vo.Gongji;
+
 import javax.swing.JTextArea;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.List;
+import java.util.Vector;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import java.awt.Font;
@@ -28,7 +40,15 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.ScrollPaneConstants;
 
-public class guardMainFrame extends JFrame {
+public class GuardMainFrame extends JFrame {
+	
+	/********************객체선언**********************/
+	private GongjiService gongjiService;
+	private FaqService faqService;
+	private QuestionService questionService;
+	/**************************************************/
+	/**************************************************/
+	/**************************************************/
 
 	private JPanel contentPane;
 	private JTextField idTF;
@@ -45,7 +65,6 @@ public class guardMainFrame extends JFrame {
 	private JTextField textField_9;
 	private JTextField textField_10;
 	private JTextField textField_11;
-	private JTable gongjiTable;
 	private JTextField g_noTF;
 	private JTextField g_categoryTF;
 	private JTextField g_titleTF;
@@ -61,6 +80,8 @@ public class guardMainFrame extends JFrame {
 	private JTextField p_twoCateTF;
 	private JTextField p_titleTF;
 	private JPanel foodListPanel;
+	private JTable gongjiTable;
+	private JTextArea g_contentTA;
 
 	/**
 	 * Launch the application.
@@ -69,7 +90,7 @@ public class guardMainFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					guardMainFrame frame = new guardMainFrame();
+					GuardMainFrame frame = new GuardMainFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -80,8 +101,9 @@ public class guardMainFrame extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws Exception 
 	 */
-	public guardMainFrame() {
+	public GuardMainFrame() throws Exception {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 416, 600);
 		contentPane = new JPanel();
@@ -96,43 +118,43 @@ public class guardMainFrame extends JFrame {
 		tabbedPane.addTab("영화", null, moviePanel, null);
 		moviePanel.setLayout(new BorderLayout(0, 0));
 		
-		JTabbedPane tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
-		moviePanel.add(tabbedPane_1);
+		JTabbedPane movieTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		moviePanel.add(movieTabbedPane);
 		
 		JPanel movieListIngPanel = new JPanel();
-		tabbedPane_1.addTab("상영영화", null, movieListIngPanel, null);
+		movieTabbedPane.addTab("상영영화", null, movieListIngPanel, null);
 		
 		JPanel movieListFeaPanel = new JPanel();
-		tabbedPane_1.addTab("개봉예정", null, movieListFeaPanel, null);
+		movieTabbedPane.addTab("개봉예정", null, movieListFeaPanel, null);
 		
 		JPanel reserveOnePanel = new JPanel();
-		tabbedPane_1.addTab("예매", null, reserveOnePanel, null);
+		movieTabbedPane.addTab("예매", null, reserveOnePanel, null);
 		
 		JPanel seatPanel = new JPanel();
-		tabbedPane_1.addTab("좌석", null, seatPanel, null);
+		movieTabbedPane.addTab("좌석", null, seatPanel, null);
 		
 		JPanel reserveListPanel = new JPanel();
-		tabbedPane_1.addTab("예매내역", null, reserveListPanel, null);
+		movieTabbedPane.addTab("예매내역", null, reserveListPanel, null);
 		
 		JPanel reviewPanel = new JPanel();
-		tabbedPane_1.addTab("리뷰", null, reviewPanel, null);
+		movieTabbedPane.addTab("리뷰", null, reviewPanel, null);
 		
 		JPanel productPanel = new JPanel();
 		tabbedPane.addTab("상품", null, productPanel, null);
 		productPanel.setLayout(new BorderLayout(0, 0));
 		
-		JTabbedPane tabbedPane_2 = new JTabbedPane(JTabbedPane.TOP);
-		productPanel.add(tabbedPane_2, BorderLayout.CENTER);
+		JTabbedPane productTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		productPanel.add(productTabbedPane, BorderLayout.CENTER);
 	/**************************************************************/
 		
 		JPanel cartPanel = new JPanel();
-		tabbedPane_2.addTab("장바구니", null, cartPanel, null);
+		productTabbedPane.addTab("장바구니", null, cartPanel, null);
 		
 		JPanel receiptPanel = new JPanel();
-		tabbedPane_2.addTab("구매내역", null, receiptPanel, null);
+		productTabbedPane.addTab("구매내역", null, receiptPanel, null);
 		
 		JPanel foodPanel = new JPanel();
-		tabbedPane_2.addTab("상품", null, foodPanel, null);
+		productTabbedPane.addTab("상품", null, foodPanel, null);
 		foodPanel.setLayout(new BorderLayout(0, 0));
 		
 		JScrollPane scrollPane_3 = new JScrollPane();
@@ -150,7 +172,7 @@ public class guardMainFrame extends JFrame {
 		
 		
 		JLabel productImageLB = new JLabel("");
-		productImageLB.setIcon(new ImageIcon(guardMainFrame.class.getResource("/images/50shaipei.jpg")));
+		productImageLB.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/images/50shaipei.jpg")));
 		productImageLB.setBounds(8, 4, 82, 73);
 		productItemPanel.add(productImageLB);
 		
@@ -177,11 +199,11 @@ public class guardMainFrame extends JFrame {
 		tabbedPane.addTab("회원", null, userPanel, null);
 		userPanel.setLayout(new BorderLayout(0, 0));
 		
-		JTabbedPane tabbedPane_3 = new JTabbedPane(JTabbedPane.TOP);
-		userPanel.add(tabbedPane_3, BorderLayout.CENTER);
+		JTabbedPane userTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		userPanel.add(userTabbedPane, BorderLayout.CENTER);
 		
 		JPanel joinPanel = new JPanel();
-		tabbedPane_3.addTab("회원가입", null, joinPanel, null);
+		userTabbedPane.addTab("회원가입", null, joinPanel, null);
 		joinPanel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("아이디");
@@ -268,7 +290,7 @@ public class guardMainFrame extends JFrame {
 		joinPanel.add(lblNewLabel_6);
 		
 		JPanel loginPanel = new JPanel();
-		tabbedPane_3.addTab("로그인", null, loginPanel, null);
+		userTabbedPane.addTab("로그인", null, loginPanel, null);
 		loginPanel.setLayout(null);
 		
 		JLabel lblNewLabel_7 = new JLabel("아이디");
@@ -298,7 +320,7 @@ public class guardMainFrame extends JFrame {
 		loginPanel.add(cancleBtn2);
 		
 		JPanel changePanel = new JPanel();
-		tabbedPane_3.addTab("정보수정", null, changePanel, null);
+		userTabbedPane.addTab("정보수정", null, changePanel, null);
 		changePanel.setLayout(null);
 		
 		JLabel lblNewLabel_8 = new JLabel("아이디");
@@ -367,11 +389,22 @@ public class guardMainFrame extends JFrame {
 		tabbedPane.addTab("고객센터", null, centerPanel, null);
 		centerPanel.setLayout(new BorderLayout(0, 0));
 		
-		JTabbedPane tabbedPane_4 = new JTabbedPane(JTabbedPane.TOP);
-		centerPanel.add(tabbedPane_4, BorderLayout.CENTER);
+		JTabbedPane gongjiTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		centerPanel.add(gongjiTabbedPane, BorderLayout.CENTER);
 		
 		JPanel gongjiPanel = new JPanel();
-		tabbedPane_4.addTab("공지사항", null, gongjiPanel, null);
+		/*************************공지테이블호출***************************/
+		gongjiPanel.addComponentListener(new ComponentAdapter() {
+			public void componentShown(ComponentEvent e) {
+				try {
+					gongjiListDisplay();
+				}catch(Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		/***************************************************************/
+		gongjiTabbedPane.addTab("공지사항", null, gongjiPanel, null);
 		gongjiPanel.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -379,6 +412,29 @@ public class guardMainFrame extends JFrame {
 		gongjiPanel.add(scrollPane);
 		
 		gongjiTable = new JTable();
+		/******************************************************/
+		gongjiTable.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				try {
+					int selectedRow = gongjiTable.getSelectedRow();
+					int selectedGongjiNo = (int)gongjiTable.getValueAt(selectedRow,0);
+					Gongji findGongji = gongjiService.selectByNo(selectedGongjiNo);
+					String noStr = findGongji.getGongji_no()+"";
+					g_noTF.setText(noStr);
+					g_titleTF.setText(findGongji.getGongji_title());
+					g_dateTF.setText(findGongji.getGongji_date().toLocaleString().substring(10));
+					g_categoryTF.setText(findGongji.getGongji_category());
+					g_contentTA.setText(findGongji.getGongji_content());
+					
+					
+				}catch(Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		/******************************************************/
+		gongjiTable.setToolTipText("");
+		
 		gongjiTable.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null, null},
@@ -421,7 +477,7 @@ public class guardMainFrame extends JFrame {
 		gongjiPanel.add(g_titleTF);
 		g_titleTF.setColumns(10);
 		
-		JTextArea g_contentTA = new JTextArea();
+		g_contentTA = new JTextArea();
 		g_contentTA.setBounds(12, 247, 356, 236);
 		gongjiPanel.add(g_contentTA);
 		
@@ -431,7 +487,7 @@ public class guardMainFrame extends JFrame {
 		g_dateTF.setColumns(10);
 		
 		JPanel faqPanel = new JPanel();
-		tabbedPane_4.addTab("자주찾는질문", null, faqPanel, null);
+		gongjiTabbedPane.addTab("자주찾는질문", null, faqPanel, null);
 		faqPanel.setLayout(null);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -482,7 +538,7 @@ public class guardMainFrame extends JFrame {
 		faqPanel.add(m_contentTA);
 		
 		JPanel questionPanel = new JPanel();
-		tabbedPane_4.addTab("1대1 문의", null, questionPanel, null);
+		gongjiTabbedPane.addTab("1대1 문의", null, questionPanel, null);
 		questionPanel.setLayout(null);
 		
 		JLabel lblNewLabel_9 = new JLabel("제목");
@@ -525,7 +581,7 @@ public class guardMainFrame extends JFrame {
 		questionPanel.add(q_cancleBtn);
 		
 		JPanel personalQPanel = new JPanel();
-		tabbedPane_4.addTab("문의목록", null, personalQPanel, null);
+		gongjiTabbedPane.addTab("문의목록", null, personalQPanel, null);
 		personalQPanel.setLayout(null);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
@@ -583,10 +639,40 @@ public class guardMainFrame extends JFrame {
 		p_contentTA.setBounds(12, 282, 356, 201);
 		personalQPanel.add(p_contentTA);
 		productList();
+
+		gongjiService = new GongjiService();
+	}//생성자끝
+	/********************공지리스트*********************/
+	public void gongjiListDisplay() throws Exception{
+		List<Gongji> gongjiList = gongjiService.selectAll();
+		Vector gongjiListVector = new Vector();
+		
+		for(Gongji gongji : gongjiList) {
+			Vector rowVector = new Vector();
+			rowVector.add(gongji.getGongji_no());
+			rowVector.add(gongji.getGongji_title());
+			rowVector.add(gongji.getGongji_category());
+			rowVector.add(gongji.getGongji_date());
+			
+			gongjiListVector.add(rowVector);
+		}
+		
+		Vector columnVector = new Vector();
+		columnVector.add("번호");
+		columnVector.add("내용");
+		columnVector.add("분류");
+		columnVector.add("게시날짜");
+		
+		DefaultTableModel defaultTableModel=
+				new DefaultTableModel(gongjiListVector, columnVector);
+		gongjiTable.setModel(defaultTableModel);
+		
+		
 	}
+	/***************************************************/
 	
 	
-	
+	/*******************얘는 뭐임**********************/
 	public  void productList() {
 		foodListPanel.removeAll();
 		for(int i=0;i<5;i++) {
@@ -596,7 +682,7 @@ public class guardMainFrame extends JFrame {
 			
 			
 			JLabel productImageLB = new JLabel("");
-			productImageLB.setIcon(new ImageIcon(guardMainFrame.class.getResource("/images/50shaipei.jpg")));
+			productImageLB.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/images/50shaipei.jpg")));
 			productImageLB.setBounds(8, 4, 82, 73);
 			productItemPanel.add(productImageLB);
 			
@@ -615,7 +701,9 @@ public class guardMainFrame extends JFrame {
 			foodListPanel.add(productItemPanel);
 		}
 		
-		
 	}
+
+	
+	
 	
 }
