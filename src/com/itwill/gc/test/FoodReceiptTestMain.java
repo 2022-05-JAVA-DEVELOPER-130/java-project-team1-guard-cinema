@@ -13,11 +13,11 @@ public class FoodReceiptTestMain {
 	public static void main(String[] args) throws Exception {
 		FoodReceiptDao foodReceiptDao = new FoodReceiptDao();
 		//아이디로 검색
-		System.out.println("selelctById 아이디로 검색:" + foodReceiptDao.selectById("guard1"));
+		//System.out.println("selelctById 아이디로 검색:" + foodReceiptDao.selectById("guard1"));
 		// 예약번호로 검색
-		System.out.println("selelctByNo 예약 번호로 검색:" + foodReceiptDao.selectByNo(1));
-		FoodDao foodDao = new FoodDao();
-		CartItemDao cartItemDao = new CartItemDao();
+		//System.out.println("selelctByNo 예약 번호로 검색:" + foodReceiptDao.selectByNo(1));
+		//FoodDao foodDao = new FoodDao();
+		//CartItemDao cartItemDao = new CartItemDao();
 		// 주문내역
 		System.out.println("카트를 영수증으로!!: "+foodReceiptDao.cartToReceipt("qkrrjsxo"));
 		// 주문내역 삭제

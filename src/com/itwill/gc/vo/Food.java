@@ -7,6 +7,7 @@ public class Food {
 	private int food_price;
 	private String food_image;
 	
+	
 	public Food() {
 		
 	}
