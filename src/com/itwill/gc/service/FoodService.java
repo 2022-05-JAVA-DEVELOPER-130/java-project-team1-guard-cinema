@@ -25,5 +25,6 @@ public class FoodService {
    public List<Food> selectAllFood() throws Exception {
       return foodDao.selectAllFood();
    }
+
    
 }
