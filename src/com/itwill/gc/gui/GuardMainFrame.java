@@ -1081,11 +1081,12 @@ public class GuardMainFrame extends JFrame {
 					String qCateTwo = (String)q_twoCateCB.getSelectedItem();					
 					String qContent = q_contentTA.getText();
 				
-				Question newQuestion = new Question(0, null, qTitle, qContent, qCateOne, qCateTwo, null);
+				Question newQuestion = new Question(0, new User("qkrrjsxo"), qTitle, qContent, qCateOne, qCateTwo, null);
+				QuestionService questionService = new QuestionService();
 				int isSuccess = 
 						questionService.addQuestion(newQuestion);
 				if(isSuccess==1) {
-					gongjiTabbedPane.setSelectedIndex(4);
+					gongjiTabbedPane.setSelectedIndex(3);
 				}else {
 					JOptionPane.showMessageDialog(null, "죄송합니다.잠시 후 이용부탁드립니다.");
 				}
@@ -1161,6 +1162,10 @@ public class GuardMainFrame extends JFrame {
 		JTextArea p_contentTA = new JTextArea();
 		p_contentTA.setBounds(12, 282, 356, 201);
 		personalQPanel.add(p_contentTA);
+		
+		JButton btnNewButton_24 = new JButton("삭제");
+		btnNewButton_24.setBounds(298, 250, 58, 23);
+		personalQPanel.add(btnNewButton_24);
 		productList();
 
 		gongjiService = new GongjiService();
