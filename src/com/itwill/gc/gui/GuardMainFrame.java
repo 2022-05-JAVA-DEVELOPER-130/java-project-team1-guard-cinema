@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JMenu;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -26,6 +27,7 @@ import com.itwill.gc.vo.Gongji;
 import com.itwill.gc.vo.Movie;
 import com.itwill.gc.vo.MovieItem;
 import com.itwill.gc.vo.MovieReserve;
+import com.itwill.gc.vo.Question;
 import com.itwill.gc.vo.User;
 
 import javax.swing.JTextArea;
@@ -1068,6 +1070,32 @@ public class GuardMainFrame extends JFrame {
 		questionPanel.add(q_twoCateCB);
 		
 		JButton q_insertBtn = new JButton("등록하기");
+		q_insertBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/*********************문의등록***********************/
+				//로그인해야만 쓸 수 있게 하고싶은데...
+				
+				try {
+					String qTitle = q_titleTF.getText();
+					String qCateOne = (String)q_oneCateCB.getSelectedItem();					
+					String qCateTwo = (String)q_twoCateCB.getSelectedItem();					
+					String qContent = q_contentTA.getText();
+				
+				Question newQuestion = new Question(0, null, qTitle, qContent, qCateOne, qCateTwo, null);
+				int isSuccess = 
+						questionService.addQuestion(newQuestion);
+				if(isSuccess==1) {
+					gongjiTabbedPane.setSelectedIndex(4);
+				}else {
+					JOptionPane.showMessageDialog(null, "죄송합니다.잠시 후 이용부탁드립니다.");
+				}
+					
+				}catch(Exception e1) {
+					
+				}
+				/*************************************************/
+			}
+		});
 		q_insertBtn.setBounds(39, 432, 97, 23);
 		questionPanel.add(q_insertBtn);
 		
