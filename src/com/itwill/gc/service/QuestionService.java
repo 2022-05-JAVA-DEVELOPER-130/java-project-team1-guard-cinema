@@ -22,6 +22,7 @@ public class QuestionService {
 			isExist = true;
 			System.out.println(questionDao.selectAll(sUserid));
 			//이러고 리스트가 뜨게 해줘야하는데....이럼 되나?
+			//아닌데..이럼 그냥 isExist만...리턴되는데...
 		}else {
 			isExist = false;
 		}
