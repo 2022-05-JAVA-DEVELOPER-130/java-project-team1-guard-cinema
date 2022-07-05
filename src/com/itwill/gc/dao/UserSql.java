@@ -1,5 +1,6 @@
 package com.itwill.gc.dao;
 
+
 public class UserSql {
    public static final String INSERT_USER_INFO= 
    "insert into user_info (user_id, user_name, user_ph_num, user_jumin, user_email, user_password) values(?,?,?,?,?,?)";
