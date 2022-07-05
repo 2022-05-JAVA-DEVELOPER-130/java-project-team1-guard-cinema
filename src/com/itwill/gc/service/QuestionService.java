@@ -1,6 +1,7 @@
 package com.itwill.gc.service;
 
 import com.itwill.gc.dao.QuestionDao;
+import com.itwill.gc.vo.Question;
 
 public class QuestionService {
 	private QuestionDao questionDao;
@@ -16,19 +17,36 @@ public class QuestionService {
 	
 	
 	/*
-	 * 문의내역답변확인(?)
+	 * 하나의 문의내역 답변확인(?)
 	 */
+	public Question selectByNo(String sUserId,int question_no)throws Exception{
+		return questionDao.selectByNo(sUserId, question_no);
+	}
 	
 	/*
 	 * 문의등록
 	 */
+	public int addQuestion(Question question) throws Exception {
+		return questionDao.add(question);
+	}
 	
 	/*
 	 * 문의수정
 	 */
+	public int updateQuestion(String sUserId, int question_no, String question_title,String question_content) throws Exception{
+		return questionDao.update(sUserId, question_no,question_title, question_content);
+	}
 	
 	/*
 	 * 문의삭제
 	 */
+	//하나의 문의 삭제
+	public int deleteQuestion(int question_no)throws Exception{
+		return questionDao.deleteQuestionByNo(question_no);
+	}
+	//유저한명의 모든 내역 삭제
+	public int deleteQuestionAll(String sUserId) throws Exception{
+		return questionDao.deleteQuestionAll(sUserId);
+	}
 	
 }
