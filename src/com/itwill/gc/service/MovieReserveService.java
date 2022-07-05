@@ -3,7 +3,9 @@ package com.itwill.gc.service;
 import java.util.List;
 
 import com.itwill.gc.dao.MovieReserveDao;
+import com.itwill.gc.vo.Movie;
 import com.itwill.gc.vo.MovieReserve;
+import com.itwill.gc.vo.User;
 
 public class MovieReserveService {
 
@@ -54,6 +56,11 @@ public class MovieReserveService {
 		
 		
 		
+		
+	}
+	public void movieReserve(int i, String i_day, int i_seat, String i_daytime, int i_price, String i_cname,
+			String i_cplace, Movie movie, User user) {
+		// TODO Auto-generated method stub
 		
 	}
 }
