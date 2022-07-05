@@ -21,6 +21,12 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+import java.awt.Font;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import javax.swing.ScrollPaneConstants;
 
 public class guardMainFrame extends JFrame {
 
@@ -54,6 +60,7 @@ public class guardMainFrame extends JFrame {
 	private JTextField p_oneCateTF;
 	private JTextField p_twoCateTF;
 	private JTextField p_titleTF;
+	private JPanel foodListPanel;
 
 	/**
 	 * Launch the application.
@@ -116,16 +123,55 @@ public class guardMainFrame extends JFrame {
 		
 		JTabbedPane tabbedPane_2 = new JTabbedPane(JTabbedPane.TOP);
 		productPanel.add(tabbedPane_2, BorderLayout.CENTER);
-		
-		JPanel foodListPanel = new JPanel();
-		tabbedPane_2.addTab("상품목록", null, foodListPanel, null);
-		foodListPanel.setLayout(null);
+	/**************************************************************/
 		
 		JPanel cartPanel = new JPanel();
 		tabbedPane_2.addTab("장바구니", null, cartPanel, null);
 		
 		JPanel receiptPanel = new JPanel();
 		tabbedPane_2.addTab("구매내역", null, receiptPanel, null);
+		
+		JPanel foodPanel = new JPanel();
+		tabbedPane_2.addTab("상품", null, foodPanel, null);
+		foodPanel.setLayout(new BorderLayout(0, 0));
+		
+		JScrollPane scrollPane_3 = new JScrollPane();
+		scrollPane_3.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		foodPanel.add(scrollPane_3, BorderLayout.CENTER);
+		
+		foodListPanel = new JPanel();
+		foodListPanel.setPreferredSize(new Dimension(10, 800));
+		foodListPanel.setBackground(Color.PINK);
+		scrollPane_3.setViewportView(foodListPanel);
+		/******************************************productItemPanel***************/
+		JPanel productItemPanel = new JPanel();
+		productItemPanel.setLayout(null);
+		productItemPanel.setPreferredSize(new Dimension(350, 130));
+		
+		
+		JLabel productImageLB = new JLabel("");
+		productImageLB.setIcon(new ImageIcon(guardMainFrame.class.getResource("/images/50shaipei.jpg")));
+		productImageLB.setBounds(8, 4, 82, 73);
+		productItemPanel.add(productImageLB);
+		
+		JLabel productNameLB = new JLabel("반반콤보");
+		productNameLB.setFont(new Font("굴림", Font.BOLD, 16));
+		productNameLB.setBounds(102, 4, 99, 15);
+		productItemPanel.add(productNameLB);
+		
+		JLabel productDescLB = new JLabel("<html>ㅇㄴㄹㄴ어ㅏ론어ㅏ런오ㅓㅏ론어ㅓ<br>란어ㅏㄹㄴㅇ</html>");
+		productDescLB.setBounds(100, 29, 214, 30);
+		productItemPanel.add(productDescLB);
+		
+		JLabel productPriceLB = new JLabel("16,000");
+		productPriceLB.setBounds(110, 69, 57, 15);
+		productItemPanel.add(productPriceLB);
+		foodListPanel.add(productItemPanel);
+	  /*************************************productItemPanel*******************/
+		
+		
+		
+		
 		
 		JPanel userPanel = new JPanel();
 		tabbedPane.addTab("회원", null, userPanel, null);
@@ -536,5 +582,40 @@ public class guardMainFrame extends JFrame {
 		JTextArea p_contentTA = new JTextArea();
 		p_contentTA.setBounds(12, 282, 356, 201);
 		personalQPanel.add(p_contentTA);
+		productList();
 	}
+	
+	
+	
+	public  void productList() {
+		foodListPanel.removeAll();
+		for(int i=0;i<5;i++) {
+			JPanel productItemPanel = new JPanel();
+			productItemPanel.setLayout(null);
+			productItemPanel.setPreferredSize(new Dimension(350, 130));
+			
+			
+			JLabel productImageLB = new JLabel("");
+			productImageLB.setIcon(new ImageIcon(guardMainFrame.class.getResource("/images/50shaipei.jpg")));
+			productImageLB.setBounds(8, 4, 82, 73);
+			productItemPanel.add(productImageLB);
+			
+			JLabel productNameLB = new JLabel("반반콤보");
+			productNameLB.setFont(new Font("굴림", Font.BOLD, 16));
+			productNameLB.setBounds(102, 4, 99, 15);
+			productItemPanel.add(productNameLB);
+			
+			JLabel productDescLB = new JLabel("<html>ㅇㄴㄹㄴ어ㅏ론어ㅏ런오ㅓㅏ론어ㅓ<br>란어ㅏㄹㄴㅇ</html>");
+			productDescLB.setBounds(100, 29, 214, 30);
+			productItemPanel.add(productDescLB);
+			
+			JLabel productPriceLB = new JLabel("16,000");
+			productPriceLB.setBounds(110, 69, 57, 15);
+			productItemPanel.add(productPriceLB);
+			foodListPanel.add(productItemPanel);
+		}
+		
+		
+	}
+	
 }
