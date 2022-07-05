@@ -19,7 +19,7 @@ public class FoodReceiptTestMain {
 		FoodDao foodDao = new FoodDao();
 		CartItemDao cartItemDao = new CartItemDao();
 		// 주문내역
-		System.out.println("카트를 영수증으로!!: "+foodReceiptDao.cartToReceipt("guard2"));
+		System.out.println("카트를 영수증으로!!: "+foodReceiptDao.cartToReceipt("qkrrjsxo"));
 		// 주문내역 삭제
 	//	System.out.println("deleteListById 주문내역삭제:" + foodReceiptDao.deleteListById(1));
 
