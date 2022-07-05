@@ -123,18 +123,271 @@ public class GuardMainFrame extends JFrame {
 		
 		JPanel movieListIngPanel = new JPanel();
 		movieTabbedPane.addTab("상영영화", null, movieListIngPanel, null);
+		movieListIngPanel.setLayout(new BorderLayout(0, 0));
+		
+		JScrollPane scrollPane_3_1 = new JScrollPane();
+		scrollPane_3_1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		movieListIngPanel.add(scrollPane_3_1);
+		
+		JPanel movieListPanel = new JPanel();
+		movieListPanel.setLayout(null);
+		movieListPanel.setPreferredSize(new Dimension(10, 800));
+		movieListPanel.setBackground(Color.DARK_GRAY);
+		scrollPane_3_1.setViewportView(movieListPanel);
+		
+		JPanel movieOnePanel = new JPanel();
+		movieOnePanel.setLayout(null);
+		movieOnePanel.setBounds(12, 154, 337, 131);
+		movieListPanel.add(movieOnePanel);
+		
+		JLabel lblNewLabel_12 = new JLabel("");
+		lblNewLabel_12.setBounds(12, 10, 94, 87);
+		movieOnePanel.add(lblNewLabel_12);
+		
+		JLabel lblNewLabel_13 = new JLabel("지구멸망");
+		lblNewLabel_13.setBounds(118, 10, 74, 22);
+		movieOnePanel.add(lblNewLabel_13);
+		
+		JLabel lblNewLabel_14 = new JLabel("<html>제~~~~~~~~~~~~~~~~~~~<br>~~~~~~~~~~~~~발</html>");
+		lblNewLabel_14.setBounds(118, 67, 178, 45);
+		movieOnePanel.add(lblNewLabel_14);
+		
+		JLabel lblNewLabel_15 = new JLabel("스릴러/전체이용가");
+		lblNewLabel_15.setBounds(118, 42, 114, 15);
+		movieOnePanel.add(lblNewLabel_15);
+		
+		JPanel movieTwoPanel = new JPanel();
+		movieTwoPanel.setLayout(null);
+		movieTwoPanel.setBounds(12, 10, 337, 131);
+		movieListPanel.add(movieTwoPanel);
+		
+		JLabel lblNewLabel_12_1 = new JLabel("");
+		lblNewLabel_12_1.setBounds(12, 10, 94, 87);
+		movieTwoPanel.add(lblNewLabel_12_1);
+		
+		JLabel lblNewLabel_13_1 = new JLabel("지구멸망");
+		lblNewLabel_13_1.setBounds(118, 10, 74, 22);
+		movieTwoPanel.add(lblNewLabel_13_1);
+		
+		JLabel lblNewLabel_14_1 = new JLabel("<html>제~~~~~~~~~~~~~~~~~~~<br>~~~~~~~~~~~~~발</html>");
+		lblNewLabel_14_1.setBounds(118, 67, 178, 45);
+		movieTwoPanel.add(lblNewLabel_14_1);
+		
+		JLabel lblNewLabel_15_1 = new JLabel("스릴러/전체이용가");
+		lblNewLabel_15_1.setBounds(118, 42, 114, 15);
+		movieTwoPanel.add(lblNewLabel_15_1);
+		
+		JPanel movieThreePanel = new JPanel();
+		movieThreePanel.setLayout(null);
+		movieThreePanel.setBounds(12, 299, 337, 131);
+		movieListPanel.add(movieThreePanel);
+		
+		JLabel lblNewLabel_12_1_1 = new JLabel("");
+		lblNewLabel_12_1_1.setBounds(12, 10, 94, 87);
+		movieThreePanel.add(lblNewLabel_12_1_1);
+		
+		JLabel lblNewLabel_13_1_1 = new JLabel("지구멸망");
+		lblNewLabel_13_1_1.setBounds(118, 10, 74, 22);
+		movieThreePanel.add(lblNewLabel_13_1_1);
+		
+		JLabel lblNewLabel_14_1_1 = new JLabel("<html>제~~~~~~~~~~~~~~~~~~~<br>~~~~~~~~~~~~~발</html>");
+		lblNewLabel_14_1_1.setBounds(118, 67, 178, 45);
+		movieThreePanel.add(lblNewLabel_14_1_1);
+		
+		JLabel lblNewLabel_15_1_1 = new JLabel("스릴러/전체이용가");
+		lblNewLabel_15_1_1.setBounds(118, 42, 114, 15);
+		movieThreePanel.add(lblNewLabel_15_1_1);
+		
+		JPanel movieLastPanel = new JPanel();
+		movieLastPanel.setLayout(null);
+		movieLastPanel.setBounds(12, 444, 337, 131);
+		movieListPanel.add(movieLastPanel);
+		
+		JLabel lblNewLabel_12_1_1_1 = new JLabel("");
+		lblNewLabel_12_1_1_1.setBounds(12, 10, 94, 87);
+		movieLastPanel.add(lblNewLabel_12_1_1_1);
+		
+		JLabel lblNewLabel_13_1_1_1 = new JLabel("지구멸망");
+		lblNewLabel_13_1_1_1.setBounds(118, 10, 74, 22);
+		movieLastPanel.add(lblNewLabel_13_1_1_1);
+		
+		JLabel lblNewLabel_14_1_1_1 = new JLabel("<html>제~~~~~~~~~~~~~~~~~~~<br>~~~~~~~~~~~~~발</html>");
+		lblNewLabel_14_1_1_1.setBounds(118, 67, 178, 45);
+		movieLastPanel.add(lblNewLabel_14_1_1_1);
+		
+		JLabel lblNewLabel_15_1_1_1 = new JLabel("스릴러/전체이용가");
+		lblNewLabel_15_1_1_1.setBounds(118, 42, 114, 15);
+		movieLastPanel.add(lblNewLabel_15_1_1_1);
 		
 		JPanel movieListFeaPanel = new JPanel();
 		movieTabbedPane.addTab("개봉예정", null, movieListFeaPanel, null);
+		movieListFeaPanel.setLayout(new BorderLayout(0, 0));
+		
+		JScrollPane scrollPane_3_1_1 = new JScrollPane();
+		scrollPane_3_1_1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		movieListFeaPanel.add(scrollPane_3_1_1, BorderLayout.CENTER);
+		
+		JPanel movieListPanel_1 = new JPanel();
+		movieListPanel_1.setLayout(null);
+		movieListPanel_1.setPreferredSize(new Dimension(10, 800));
+		movieListPanel_1.setBackground(Color.DARK_GRAY);
+		scrollPane_3_1_1.setViewportView(movieListPanel_1);
+		
+		JPanel movieOnePanel_1 = new JPanel();
+		movieOnePanel_1.setLayout(null);
+		movieOnePanel_1.setBounds(12, 154, 337, 131);
+		movieListPanel_1.add(movieOnePanel_1);
+		
+		JLabel lblNewLabel_12_2 = new JLabel("");
+		lblNewLabel_12_2.setBounds(12, 10, 94, 87);
+		movieOnePanel_1.add(lblNewLabel_12_2);
+		
+		JLabel lblNewLabel_13_2 = new JLabel("지구멸망");
+		lblNewLabel_13_2.setBounds(118, 10, 74, 22);
+		movieOnePanel_1.add(lblNewLabel_13_2);
+		
+		JLabel lblNewLabel_14_2 = new JLabel("<html>제~~~~~~~~~~~~~~~~~~~<br>~~~~~~~~~~~~~발</html>");
+		lblNewLabel_14_2.setBounds(118, 67, 178, 45);
+		movieOnePanel_1.add(lblNewLabel_14_2);
+		
+		JLabel lblNewLabel_15_2 = new JLabel("스릴러/전체이용가");
+		lblNewLabel_15_2.setBounds(118, 42, 114, 15);
+		movieOnePanel_1.add(lblNewLabel_15_2);
+		
+		JPanel movieTwoPanel_1 = new JPanel();
+		movieTwoPanel_1.setLayout(null);
+		movieTwoPanel_1.setBounds(12, 10, 337, 131);
+		movieListPanel_1.add(movieTwoPanel_1);
+		
+		JLabel lblNewLabel_12_1_2 = new JLabel("");
+		lblNewLabel_12_1_2.setBounds(12, 10, 94, 87);
+		movieTwoPanel_1.add(lblNewLabel_12_1_2);
+		
+		JLabel lblNewLabel_13_1_2 = new JLabel("지구멸망");
+		lblNewLabel_13_1_2.setBounds(118, 10, 74, 22);
+		movieTwoPanel_1.add(lblNewLabel_13_1_2);
+		
+		JLabel lblNewLabel_14_1_2 = new JLabel("<html>제~~~~~~~~~~~~~~~~~~~<br>~~~~~~~~~~~~~발</html>");
+		lblNewLabel_14_1_2.setBounds(118, 67, 178, 45);
+		movieTwoPanel_1.add(lblNewLabel_14_1_2);
+		
+		JLabel lblNewLabel_15_1_2 = new JLabel("스릴러/전체이용가");
+		lblNewLabel_15_1_2.setBounds(118, 42, 114, 15);
+		movieTwoPanel_1.add(lblNewLabel_15_1_2);
+		
+		JPanel movieThreePanel_1 = new JPanel();
+		movieThreePanel_1.setLayout(null);
+		movieThreePanel_1.setBounds(12, 299, 337, 131);
+		movieListPanel_1.add(movieThreePanel_1);
+		
+		JLabel lblNewLabel_12_1_1_2 = new JLabel("");
+		lblNewLabel_12_1_1_2.setBounds(12, 10, 94, 87);
+		movieThreePanel_1.add(lblNewLabel_12_1_1_2);
+		
+		JLabel lblNewLabel_13_1_1_2 = new JLabel("지구멸망");
+		lblNewLabel_13_1_1_2.setBounds(118, 10, 74, 22);
+		movieThreePanel_1.add(lblNewLabel_13_1_1_2);
+		
+		JLabel lblNewLabel_14_1_1_2 = new JLabel("<html>제~~~~~~~~~~~~~~~~~~~<br>~~~~~~~~~~~~~발</html>");
+		lblNewLabel_14_1_1_2.setBounds(118, 67, 178, 45);
+		movieThreePanel_1.add(lblNewLabel_14_1_1_2);
+		
+		JLabel lblNewLabel_15_1_1_2 = new JLabel("스릴러/전체이용가");
+		lblNewLabel_15_1_1_2.setBounds(118, 42, 114, 15);
+		movieThreePanel_1.add(lblNewLabel_15_1_1_2);
+		
+		JPanel movieLastPanel_1 = new JPanel();
+		movieLastPanel_1.setLayout(null);
+		movieLastPanel_1.setBounds(12, 444, 337, 131);
+		movieListPanel_1.add(movieLastPanel_1);
+		
+		JLabel lblNewLabel_12_1_1_1_1 = new JLabel("");
+		lblNewLabel_12_1_1_1_1.setBounds(12, 10, 94, 87);
+		movieLastPanel_1.add(lblNewLabel_12_1_1_1_1);
+		
+		JLabel lblNewLabel_13_1_1_1_1 = new JLabel("지구멸망");
+		lblNewLabel_13_1_1_1_1.setBounds(118, 10, 74, 22);
+		movieLastPanel_1.add(lblNewLabel_13_1_1_1_1);
+		
+		JLabel lblNewLabel_14_1_1_1_1 = new JLabel("<html>제~~~~~~~~~~~~~~~~~~~<br>~~~~~~~~~~~~~발</html>");
+		lblNewLabel_14_1_1_1_1.setBounds(118, 67, 178, 45);
+		movieLastPanel_1.add(lblNewLabel_14_1_1_1_1);
+		
+		JLabel lblNewLabel_15_1_1_1_1 = new JLabel("스릴러/전체이용가");
+		lblNewLabel_15_1_1_1_1.setBounds(118, 42, 114, 15);
+		movieLastPanel_1.add(lblNewLabel_15_1_1_1_1);
 		
 		JPanel reserveOnePanel = new JPanel();
-		movieTabbedPane.addTab("예매", null, reserveOnePanel, null);
+		reserveOnePanel.setLayout(null);
+		movieTabbedPane.addTab("영화예매", null, reserveOnePanel, null);
+		
+		JLabel lblNewLabel_16 = new JLabel("7월6일");
+		lblNewLabel_16.setBounds(12, 10, 49, 49);
+		reserveOnePanel.add(lblNewLabel_16);
+		
+		JLabel lblNewLabel_17 = new JLabel("상영시간");
+		lblNewLabel_17.setBounds(26, 90, 100, 100);
+		reserveOnePanel.add(lblNewLabel_17);
+		
+		JLabel lblNewLabel_16_1 = new JLabel("7월7일");
+		lblNewLabel_16_1.setBounds(86, 10, 49, 49);
+		reserveOnePanel.add(lblNewLabel_16_1);
+		
+		JLabel lblNewLabel_16_2 = new JLabel("7월8일");
+		lblNewLabel_16_2.setBounds(159, 10, 49, 49);
+		reserveOnePanel.add(lblNewLabel_16_2);
+		
+		JLabel lblNewLabel_16_2_1 = new JLabel("7월9일");
+		lblNewLabel_16_2_1.setBounds(240, 10, 49, 49);
+		reserveOnePanel.add(lblNewLabel_16_2_1);
+		
+		JLabel lblNewLabel_16_2_2 = new JLabel("7월10일");
+		lblNewLabel_16_2_2.setBounds(319, 10, 49, 49);
+		reserveOnePanel.add(lblNewLabel_16_2_2);
+		
+		JLabel lblNewLabel_17_1 = new JLabel("상영시간");
+		lblNewLabel_17_1.setBounds(142, 90, 100, 100);
+		reserveOnePanel.add(lblNewLabel_17_1);
+		
+		JLabel lblNewLabel_17_2 = new JLabel("상영시간");
+		lblNewLabel_17_2.setBounds(254, 90, 100, 100);
+		reserveOnePanel.add(lblNewLabel_17_2);
+		
+		JLabel lblNewLabel_17_2_1 = new JLabel("상영시간");
+		lblNewLabel_17_2_1.setBounds(254, 214, 100, 100);
+		reserveOnePanel.add(lblNewLabel_17_2_1);
+		
+		JLabel lblNewLabel_17_1_1 = new JLabel("상영시간");
+		lblNewLabel_17_1_1.setBounds(142, 214, 100, 100);
+		reserveOnePanel.add(lblNewLabel_17_1_1);
+		
+		JLabel lblNewLabel_17_3 = new JLabel("상영시간");
+		lblNewLabel_17_3.setBounds(26, 214, 100, 100);
+		reserveOnePanel.add(lblNewLabel_17_3);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(26, 324, 100, 23);
+		reserveOnePanel.add(comboBox);
+		
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setBounds(254, 324, 100, 23);
+		reserveOnePanel.add(comboBox_1);
+		
+		JButton btnNewButton = new JButton("좌석 선택");
+		btnNewButton.setBounds(142, 418, 97, 23);
+		reserveOnePanel.add(btnNewButton);
 		
 		JPanel seatPanel = new JPanel();
 		movieTabbedPane.addTab("좌석", null, seatPanel, null);
 		
 		JPanel reserveListPanel = new JPanel();
 		movieTabbedPane.addTab("예매내역", null, reserveListPanel, null);
+		reserveListPanel.setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.MAGENTA);
+		panel.setBounds(12, 25, 356, 115);
+		reserveListPanel.add(panel);
 		
 		JPanel reviewPanel = new JPanel();
 		movieTabbedPane.addTab("리뷰", null, reviewPanel, null);
@@ -702,8 +955,4 @@ public class GuardMainFrame extends JFrame {
 		}
 		
 	}
-
-	
-	
-	
 }
