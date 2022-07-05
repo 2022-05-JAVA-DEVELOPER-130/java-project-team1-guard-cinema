@@ -3,6 +3,7 @@ package com.itwill.gc.service;
 import com.itwill.gc.dao.UserDao;
 import com.itwill.gc.vo.User;
 
+
 public class UserService {
    
 
@@ -47,6 +48,10 @@ public class UserService {
    
    public User findUser(String userid) throws Exception{
       return userDao.findUser(userid);
+   }
+   //회원정보 아이디로 가져오기
+   public User finduserInfo(String userid) throws Exception{
+	   return userDao.finduserInfo(userid);
    }
    
    //회원 정보수정

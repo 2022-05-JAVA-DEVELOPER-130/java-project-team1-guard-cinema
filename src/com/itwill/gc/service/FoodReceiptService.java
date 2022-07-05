@@ -3,12 +3,13 @@ package com.itwill.gc.service;
 import java.util.List;
 
 import com.itwill.gc.dao.FoodReceiptDao;
+import com.itwill.gc.vo.CartItem;
 import com.itwill.gc.vo.FoodReceipt;
 
 public class FoodReceiptService {
 	private FoodReceiptDao foodReceiptDao;
 	
-	public FoodReceiptService() {
+	public FoodReceiptService() throws Exception {
 		FoodReceiptDao foodReceiptDao = new FoodReceiptDao();
 	}
 	/*
@@ -31,8 +32,21 @@ public class FoodReceiptService {
 	 * 구매내역추가
 	 */
 	
+	
+	
+	   /*
+	    * 카트담긴 물건 구매
+	    */
+	   
+	   
+	
 	/*
 	 * 구매내역삭제
 	 */
-	
+	/*
+	public FoodReceipt deleteListById(int food_rv_num) throws Exception {
+	      return foodReceiptDao.deleteListById(food_rv_num);
+	   }
+	*/
+
 }

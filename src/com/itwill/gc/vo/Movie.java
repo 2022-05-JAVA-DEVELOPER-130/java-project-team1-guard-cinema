@@ -21,6 +21,13 @@ public class Movie {
 	public Movie() {
 		
 	}
+	
+
+	public Movie(int movie_code) {
+		super();
+		this.movie_code = movie_code;
+	}
+
 
 	public Movie(int movie_code, String movie_title, Date movie_opening, double movie_grade, String movie_category,
 			String movie_content, String movie_genre, int movie_totaltime, String movie_country, int movie_audience,
