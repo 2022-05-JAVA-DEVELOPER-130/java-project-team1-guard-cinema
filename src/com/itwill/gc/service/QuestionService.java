@@ -38,8 +38,8 @@ public class QuestionService {
 	/*
 	 * 문의수정
 	 */
-	public int updateQuestion(String userId, int question_no, String question_title,String question_content) throws Exception{
-		return questionDao.update(userId, question_no,question_title, question_content);
+	public int updateQuestion(Question question) throws Exception{
+		return questionDao.update(question);
 	}
 	
 	/*

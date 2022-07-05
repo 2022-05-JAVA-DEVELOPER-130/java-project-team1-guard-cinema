@@ -43,7 +43,7 @@ public class QuestionDao {
    }
    
    //1:1문의 수정
-   public int update(String userId, int question_no, String question_title,String question_content)throws Exception{
+   public int update(Question question)throws Exception{
       String updateQuestion = 
             "update question set question_title = ?,question_content = ? where question_no = ? and user_id = ?";
       Connection con = null;
@@ -52,10 +52,10 @@ public class QuestionDao {
       try {
          con = dataSource.getConnection();
          pstmt = con.prepareStatement(updateQuestion);
-         pstmt.setString(1, question_title);
-         pstmt.setString(2, question_content);
-         pstmt.setInt(3, question_no);
-         pstmt.setString(4, userId);
+         pstmt.setString(1, question.getQuestion_title());
+         pstmt.setString(2, question.getQuestion_content());
+         pstmt.setInt(3, question.getQuestion_no());
+         pstmt.setString(4, question.getUser().getUserId());
          updateRowCount = pstmt.executeUpdate();
       }finally {
          if(con!=null) {
