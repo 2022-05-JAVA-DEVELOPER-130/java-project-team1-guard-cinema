@@ -22,5 +22,10 @@ public class GongjiService {
 	public List<Gongji> selectAllByCate(String gongji_category) throws Exception {
 		return gongjiDao.selectAllByCate(gongji_category);
 	}
+	
+	// 전체 공지사항 보기
+	public List<Gongji> selectAll() throws Exception {
+		return gongjiDao.selectAll();	
+	}
 
 }

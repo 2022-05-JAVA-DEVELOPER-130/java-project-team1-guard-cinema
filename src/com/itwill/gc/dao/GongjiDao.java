@@ -61,6 +61,7 @@ public class GongjiDao {
 		return gongjiList;
 	}
 	
+	//전체 공지 보기
 	public List<Gongji> selectAll() throws Exception{
 		List<Gongji> gongjiList = new ArrayList<Gongji>();
 		Connection con = dataSource.getConnection();

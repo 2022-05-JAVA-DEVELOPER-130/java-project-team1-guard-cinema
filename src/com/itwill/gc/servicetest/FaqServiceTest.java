@@ -11,5 +11,7 @@ public class FaqServiceTest {
 		System.out.println(">> "+faqService.selectByNo(1));
 		System.out.println("선택한 카테고리의 공지 전체보기");
 		System.out.println(">> "+faqService.selectAllByCate("카테고리1"));
+		System.out.println("전체 공지사항 보기");
+		System.out.println(">> "+faqService.selectAll());
 	}
 }
