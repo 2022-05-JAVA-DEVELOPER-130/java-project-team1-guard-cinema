@@ -39,7 +39,6 @@ public class FoodReceiptService {
 	    */
 	   
 	   
-
 	
 	/*
 	 * 구매내역삭제
