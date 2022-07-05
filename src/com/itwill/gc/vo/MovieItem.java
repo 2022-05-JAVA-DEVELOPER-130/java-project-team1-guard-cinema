@@ -9,6 +9,10 @@ public class MovieItem {
 	String i_cname;
 	String i_cplace;
 	
+	public MovieItem() {
+		super();
+	}
+
 	public MovieItem(int i_code, String i_day, String i_daytime, int i_seat, int i_price, String i_cname,
 			String i_cplace) {
 		super();
