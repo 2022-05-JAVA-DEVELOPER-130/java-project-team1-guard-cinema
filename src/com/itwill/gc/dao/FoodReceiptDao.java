@@ -49,11 +49,11 @@ public class FoodReceiptDao {
 	
 	  //selelctByID : 아이디로 검색
 	 
-	public List<FoodReceipt> selectById(String user_id) throws Exception{
+	public List<FoodReceipt> selectById(String userId) throws Exception{
 		ArrayList<FoodReceipt> foodReceipt=new ArrayList<FoodReceipt>();
 		Connection con=dataSource.getConnection();
 		PreparedStatement pstmt=con.prepareStatement(FoodReceiptSql.FOOD_RECEIPT_SELECT_BY_ID);
-		pstmt.setString(1, user_id);
+		pstmt.setString(1, userId);
 		ResultSet rs=pstmt.executeQuery();
 		while(rs.next()) {
 			
@@ -71,7 +71,7 @@ public class FoodReceiptDao {
 		return foodReceipt;
 	}
 	//카트담긴물건 구매 
-	public int cartToReceipt(String user_id)throws Exception{
+	public int cartToReceipt(String userId)throws Exception{
 		String insertQuery=FoodReceiptSql.INSERT_FOOD_RECEIPT;
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -81,7 +81,7 @@ public class FoodReceiptDao {
 		try {
 			con=dataSource.getConnection();
 			pstmt=con.prepareStatement(insertQuery);
-			pstmt.setString(1,user_id);
+			pstmt.setString(1,userId);
 			
 			insertRowCount = pstmt.executeUpdate();
 		}finally {

@@ -14,10 +14,11 @@ public class FoodReceiptService {
 	/*
 	 * 구매내역 확인
 	 */
-	public boolean selectFoodReceipt(String user_id) throws Exception{
+	public boolean selectFoodReceipt(String userId) throws Exception{
 		boolean isExist = false;
-		List<FoodReceipt> findFoodReceipt=foodReceiptDao.selectById(user_id);
+		List<FoodReceipt> findFoodReceipt=foodReceiptDao.selectById(userId);
 		if(findFoodReceipt!=null) {
+			foodReceiptDao.selectById(userId);
 			isExist = true;
 		}else {
 			isExist = false;
