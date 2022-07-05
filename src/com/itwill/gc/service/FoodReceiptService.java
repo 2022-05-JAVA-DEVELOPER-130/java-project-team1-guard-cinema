@@ -43,9 +43,10 @@ public class FoodReceiptService {
 	/*
 	 * 구매내역삭제
 	 */
+	/*
 	public FoodReceipt deleteListById(int food_rv_num) throws Exception {
-	      return foodReceiptDao.deleteListById(int food_rv_num);
+	      return foodReceiptDao.deleteListById(food_rv_num);
 	   }
-	
+	*/
 
 }
