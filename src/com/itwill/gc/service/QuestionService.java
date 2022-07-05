@@ -12,21 +12,10 @@ public class QuestionService {
 	}
 	/*
 	 * 로그인후 문의내역확인
-	 * - 존재하면 문의내역리스트로
-	 * - 존재 안하면 문의내용이 없습니다. 
 	 */
-	public boolean selectAll(String sUserid) throws Exception{
-		boolean isExist = false;
-		List<Question> findQuestion = questionDao.selectAll(sUserid);
-		if(findQuestion!=null) {
-			isExist = true;
-			System.out.println(questionDao.selectAll(sUserid));
-			//이러고 리스트가 뜨게 해줘야하는데....이럼 되나?
-			//아닌데..이럼 그냥 isExist만...리턴되는데...
-		}else {
-			isExist = false;
-		}
-		return isExist;
+	
+	public List<Question> selectAll(String userId) throws Exception{	
+	return questionDao.selectAll(userId);	
 	}
 	
 	
@@ -35,8 +24,8 @@ public class QuestionService {
 	/*
 	 * 하나의 문의내역 답변확인(?)
 	 */
-	public Question selectByNo(String sUserId,int question_no)throws Exception{
-		return questionDao.selectByNo(sUserId, question_no);
+	public Question selectByNo(String userId,int question_no)throws Exception{
+		return questionDao.selectByNo(userId, question_no);
 	}
 	
 	/*
@@ -49,8 +38,8 @@ public class QuestionService {
 	/*
 	 * 문의수정
 	 */
-	public int updateQuestion(String sUserId, int question_no, String question_title,String question_content) throws Exception{
-		return questionDao.update(sUserId, question_no,question_title, question_content);
+	public int updateQuestion(Question question) throws Exception{
+		return questionDao.update(question);
 	}
 	
 	/*
@@ -61,8 +50,8 @@ public class QuestionService {
 		return questionDao.deleteQuestionByNo(question_no);
 	}
 	//유저한명의 모든 내역 삭제
-	public int deleteQuestionAll(String sUserId) throws Exception{
-		return questionDao.deleteQuestionAll(sUserId);
+	public int deleteQuestionAll(String userId) throws Exception{
+		return questionDao.deleteQuestionAll(userId);
 	}
 	
 }

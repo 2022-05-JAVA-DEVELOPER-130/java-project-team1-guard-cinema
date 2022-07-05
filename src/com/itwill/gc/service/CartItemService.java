@@ -1,5 +1,12 @@
 package com.itwill.gc.service;
 
-public class CartItemService {
+import com.itwill.gc.dao.CartItemDao;
 
+public class CartItemService {
+	private CartItemDao cartItemDao;
+	public CartItemService()throws Exception{
+		cartItemDao = new CartItemDao();
+	}
+	
+	
 }

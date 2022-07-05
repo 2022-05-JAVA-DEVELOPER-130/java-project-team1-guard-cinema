@@ -1,7 +1,7 @@
 package com.itwill.gc.test;
 
-	import com.itwill.gc.dao.UserDao;
-	import com.itwill.gc.vo.User;
+   import com.itwill.gc.dao.UserDao;
+   import com.itwill.gc.vo.User;
 
 	public class UserTestMain {
 		

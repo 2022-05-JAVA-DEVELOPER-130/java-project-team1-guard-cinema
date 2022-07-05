@@ -1,4 +1,5 @@
-   package com.itwill.gc.vo;
+package com.itwill.gc.vo;
+
 
 public class User {
    private String userId;

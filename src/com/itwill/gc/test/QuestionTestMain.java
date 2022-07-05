@@ -22,7 +22,9 @@ public class QuestionTestMain {
       System.out.println(">>"+rowCount);
 /*****************문의수정***********************/
       System.out.println("2.update");
-      rowCount = questionDao.update("guard1", 6, "문의내용변경", "문의내용변경했어요");
+      Question question = new Question(23, new User("guard1", "", "", "", "", ""), 
+    		  								"문의변경", "문의내용변경", "", "", null);
+      questionDao.update(question);
       System.out.println(">>"+rowCount);
 
 /*******************문의삭제***********************/      
