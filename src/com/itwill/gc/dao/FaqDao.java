@@ -61,6 +61,7 @@ public class FaqDao {
 		return faqList;
 	}
 	
+	//전체 공지사항 보기
 	public List<Faq> selectAll() throws Exception{
 		List<Faq> faqList = new ArrayList<Faq>();
 		

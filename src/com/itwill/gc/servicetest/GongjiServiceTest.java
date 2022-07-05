@@ -11,6 +11,8 @@ public class GongjiServiceTest {
 		System.out.println(">> " + gongjiService.selectByNo(1));
 		System.out.println("선택한 카테고리의 공지 전체보기");
 		System.out.println(">> " + gongjiService.selectAllByCate("이벤트공지"));
+		System.out.println("전체 공지사항 보기");
+		System.out.println(">> " + gongjiService.selectAll());
 
 	}
 }
