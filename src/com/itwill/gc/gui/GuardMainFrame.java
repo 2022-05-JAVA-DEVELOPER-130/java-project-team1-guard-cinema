@@ -21,6 +21,7 @@ import com.itwill.gc.service.FaqService;
 import com.itwill.gc.service.GongjiService;
 import com.itwill.gc.service.MovieReserveService;
 import com.itwill.gc.service.QuestionService;
+import com.itwill.gc.vo.Faq;
 import com.itwill.gc.vo.Gongji;
 import com.itwill.gc.vo.Movie;
 import com.itwill.gc.vo.MovieItem;
@@ -83,7 +84,7 @@ public class GuardMainFrame extends JFrame {
 	private JTextField m_noTF;
 	private JTextField m_categoryTF;
 	private JTextField m_titleTF;
-	private JTable categoryTable;
+	private JTable faqTable;
 	private JTextField q_titleTF;
 	private JTable questionListTable;
 	private JTextField p_noTF;
@@ -93,6 +94,7 @@ public class GuardMainFrame extends JFrame {
 	private JPanel foodListPanel;
 	private JTable gongjiTable;
 	private JTextArea g_contentTA;
+	private JTextArea m_contentTA;
 
 	/**
 	 * Launch the application.
@@ -949,6 +951,17 @@ public class GuardMainFrame extends JFrame {
 		g_dateTF.setColumns(10);
 		
 		JPanel faqPanel = new JPanel();
+		/***********************faq테이블호출***********************/
+		faqPanel.addComponentListener(new ComponentAdapter() {
+			public void componentShown(ComponentEvent e) {
+				try {
+					faqListDisplay();
+				}catch(Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		/********************************************************/
 		gongjiTabbedPane.addTab("자주찾는질문", null, faqPanel, null);
 		faqPanel.setLayout(null);
 		
@@ -956,8 +969,28 @@ public class GuardMainFrame extends JFrame {
 		scrollPane_1.setBounds(12, 10, 356, 165);
 		faqPanel.add(scrollPane_1);
 		
-		categoryTable = new JTable();
-		categoryTable.setModel(new DefaultTableModel(
+		faqTable = new JTable();
+		/*******************************************************/
+		faqTable.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				try {
+					int selectedRow = faqTable.getSelectedRow();
+					int selectedFaqNo = (int)gongjiTable.getValueAt(selectedRow,0);
+					Faq findFaq = faqService.selectByNo(selectedFaqNo);
+					String noStr = findFaq.getFaq_no()+"";
+					m_noTF.setText(noStr);
+					m_titleTF.setText(findFaq.getFaq_title());
+					m_categoryTF.setText(findFaq.getFaq_category());
+					m_contentTA.setText(findFaq.getFaq_content());
+					
+					
+				}catch(Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		/*******************************************************/
+		faqTable.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null},
 				{null, null, null},
@@ -974,10 +1007,10 @@ public class GuardMainFrame extends JFrame {
 				"\uBC88\uD638", "\uCE74\uD14C\uACE0\uB9AC", "\uC81C\uBAA9"
 			}
 		));
-		categoryTable.getColumnModel().getColumn(0).setPreferredWidth(37);
-		categoryTable.getColumnModel().getColumn(1).setPreferredWidth(81);
-		categoryTable.getColumnModel().getColumn(2).setPreferredWidth(100);
-		scrollPane_1.setViewportView(categoryTable);
+		faqTable.getColumnModel().getColumn(0).setPreferredWidth(37);
+		faqTable.getColumnModel().getColumn(1).setPreferredWidth(81);
+		faqTable.getColumnModel().getColumn(2).setPreferredWidth(100);
+		scrollPane_1.setViewportView(faqTable);
 		
 		m_noTF = new JTextField();
 		m_noTF.setBackground(Color.WHITE);
@@ -995,7 +1028,7 @@ public class GuardMainFrame extends JFrame {
 		m_titleTF.setBounds(104, 216, 149, 21);
 		faqPanel.add(m_titleTF);
 		
-		JTextArea m_contentTA = new JTextArea();
+		m_contentTA = new JTextArea();
 		m_contentTA.setBounds(12, 247, 356, 236);
 		faqPanel.add(m_contentTA);
 		
@@ -1103,6 +1136,7 @@ public class GuardMainFrame extends JFrame {
 		productList();
 
 		gongjiService = new GongjiService();
+		faqService = new FaqService();
 	}//생성자끝
 	/********************공지리스트*********************/
 	public void gongjiListDisplay() throws Exception{
@@ -1128,6 +1162,33 @@ public class GuardMainFrame extends JFrame {
 		DefaultTableModel defaultTableModel=
 				new DefaultTableModel(gongjiListVector, columnVector);
 		gongjiTable.setModel(defaultTableModel);
+		
+		
+	}
+	/***************************************************/
+	/**********************Faq리스트**********************/
+	public void faqListDisplay() throws Exception{
+		List<Faq> faqList = faqService.selectAll();
+		Vector faqListVector = new Vector();
+		
+		for(Faq faq : faqList) {
+			Vector rowVector = new Vector();
+			rowVector.add(faq.getFaq_no());
+			rowVector.add(faq.getFaq_title());
+			rowVector.add(faq.getFaq_category());
+			
+			faqListVector.add(rowVector);
+		}
+		
+		Vector columnVector = new Vector();
+		columnVector.add("번호");
+		columnVector.add("제목");
+		columnVector.add("카테고리");
+		
+		
+		DefaultTableModel defaultTableModel=
+				new DefaultTableModel(faqListVector, columnVector);
+		faqTable.setModel(defaultTableModel);
 		
 		
 	}
