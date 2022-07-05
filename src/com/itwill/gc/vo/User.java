@@ -12,8 +12,15 @@ public class User {
    public User() {
       
    }
+   
 
-   public User(String userId, String userName, String userPhNum, String userJumin, String userEmail,
+   public User(String userId) {
+	super();
+	this.userId = userId;
+}
+
+
+public User(String userId, String userName, String userPhNum, String userJumin, String userEmail,
          String userPassword) {
       super();
       this.userId = userId;

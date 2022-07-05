@@ -19,8 +19,13 @@ import javax.swing.table.DefaultTableModel;
 
 import com.itwill.gc.service.FaqService;
 import com.itwill.gc.service.GongjiService;
+import com.itwill.gc.service.MovieReserveService;
 import com.itwill.gc.service.QuestionService;
 import com.itwill.gc.vo.Gongji;
+import com.itwill.gc.vo.Movie;
+import com.itwill.gc.vo.MovieItem;
+import com.itwill.gc.vo.MovieReserve;
+import com.itwill.gc.vo.User;
 
 import javax.swing.JTextArea;
 import javax.swing.JComboBox;
@@ -39,6 +44,9 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.JCheckBox;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
 
 public class GuardMainFrame extends JFrame {
 	
@@ -46,10 +54,13 @@ public class GuardMainFrame extends JFrame {
 	private GongjiService gongjiService;
 	private FaqService faqService;
 	private QuestionService questionService;
+	public MovieItem movieItem;
+	private MovieReserveService movieReserveService;
+	private MovieReserve movieReserve;
 	/**************************************************/
 	/**************************************************/
 	/**************************************************/
-
+	
 	private JPanel contentPane;
 	private JTextField idTF;
 	private JTextField passwordTF;
@@ -156,6 +167,16 @@ public class GuardMainFrame extends JFrame {
 		lblNewLabel_15.setBounds(118, 42, 114, 15);
 		movieOnePanel.add(lblNewLabel_15);
 		
+		JButton reserveBtn2 = new JButton("예매");
+		reserveBtn2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				movieTabbedPane.setSelectedIndex(2);
+				 movieItem.setI_code(2);
+			}
+		});
+		reserveBtn2.setBounds(264, 98, 61, 23);
+		movieOnePanel.add(reserveBtn2);
+		
 		JPanel movieTwoPanel = new JPanel();
 		movieTwoPanel.setLayout(null);
 		movieTwoPanel.setBounds(12, 10, 337, 131);
@@ -176,6 +197,19 @@ public class GuardMainFrame extends JFrame {
 		JLabel lblNewLabel_15_1 = new JLabel("스릴러/전체이용가");
 		lblNewLabel_15_1.setBounds(118, 42, 114, 15);
 		movieTwoPanel.add(lblNewLabel_15_1);
+		
+		/**********************************예매1**********************/
+		JButton reserveBtn1 = new JButton("예매");
+		reserveBtn1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				movieTabbedPane.setSelectedIndex(2);
+				 movieItem.setI_code(1);
+				
+			}
+		});
+		/********************************************************/
+		reserveBtn1.setBounds(264, 98, 61, 23);
+		movieTwoPanel.add(reserveBtn1);
 		
 		JPanel movieThreePanel = new JPanel();
 		movieThreePanel.setLayout(null);
@@ -198,6 +232,16 @@ public class GuardMainFrame extends JFrame {
 		lblNewLabel_15_1_1.setBounds(118, 42, 114, 15);
 		movieThreePanel.add(lblNewLabel_15_1_1);
 		
+		JButton reserveBtn3 = new JButton("예매");
+		reserveBtn3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				movieTabbedPane.setSelectedIndex(2);
+				 movieItem.setI_code(3);
+			}
+		});
+		reserveBtn3.setBounds(264, 98, 61, 23);
+		movieThreePanel.add(reserveBtn3);
+		
 		JPanel movieLastPanel = new JPanel();
 		movieLastPanel.setLayout(null);
 		movieLastPanel.setBounds(12, 444, 337, 131);
@@ -218,6 +262,16 @@ public class GuardMainFrame extends JFrame {
 		JLabel lblNewLabel_15_1_1_1 = new JLabel("스릴러/전체이용가");
 		lblNewLabel_15_1_1_1.setBounds(118, 42, 114, 15);
 		movieLastPanel.add(lblNewLabel_15_1_1_1);
+		
+		JButton reserveBtn4 = new JButton("예매");
+		reserveBtn4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				movieTabbedPane.setSelectedIndex(2);
+				 movieItem.setI_code(4);
+			}
+		});
+		reserveBtn4.setBounds(264, 98, 61, 23);
+		movieLastPanel.add(reserveBtn4);
 		
 		JPanel movieListFeaPanel = new JPanel();
 		movieTabbedPane.addTab("개봉예정", null, movieListFeaPanel, null);
@@ -321,64 +375,219 @@ public class GuardMainFrame extends JFrame {
 		reserveOnePanel.setLayout(null);
 		movieTabbedPane.addTab("영화예매", null, reserveOnePanel, null);
 		
-		JLabel lblNewLabel_16 = new JLabel("7월6일");
-		lblNewLabel_16.setBounds(12, 10, 49, 49);
-		reserveOnePanel.add(lblNewLabel_16);
+		JComboBox cinemaNameCB = new JComboBox();
+		cinemaNameCB.setModel(new DefaultComboBoxModel(new String[] {"가산디지털", "가양", "강동", "건대입구", "김포공항", "노원", "도곡", "독산", "브로드웨이", "서울대입구", "수락산", "수유", "신도림", "신림", "에비뉴엘", "영등포", "용산", "월드타워", "은평", "중랑", "청량리", "합정", "홍대입구"}));
+		cinemaNameCB.setBounds(28, 341, 100, 23);
+		reserveOnePanel.add(cinemaNameCB);
 		
-		JLabel lblNewLabel_17 = new JLabel("상영시간");
-		lblNewLabel_17.setBounds(26, 90, 100, 100);
-		reserveOnePanel.add(lblNewLabel_17);
-		
-		JLabel lblNewLabel_16_1 = new JLabel("7월7일");
-		lblNewLabel_16_1.setBounds(86, 10, 49, 49);
-		reserveOnePanel.add(lblNewLabel_16_1);
-		
-		JLabel lblNewLabel_16_2 = new JLabel("7월8일");
-		lblNewLabel_16_2.setBounds(159, 10, 49, 49);
-		reserveOnePanel.add(lblNewLabel_16_2);
-		
-		JLabel lblNewLabel_16_2_1 = new JLabel("7월9일");
-		lblNewLabel_16_2_1.setBounds(240, 10, 49, 49);
-		reserveOnePanel.add(lblNewLabel_16_2_1);
-		
-		JLabel lblNewLabel_16_2_2 = new JLabel("7월10일");
-		lblNewLabel_16_2_2.setBounds(319, 10, 49, 49);
-		reserveOnePanel.add(lblNewLabel_16_2_2);
-		
-		JLabel lblNewLabel_17_1 = new JLabel("상영시간");
-		lblNewLabel_17_1.setBounds(142, 90, 100, 100);
-		reserveOnePanel.add(lblNewLabel_17_1);
-		
-		JLabel lblNewLabel_17_2 = new JLabel("상영시간");
-		lblNewLabel_17_2.setBounds(254, 90, 100, 100);
-		reserveOnePanel.add(lblNewLabel_17_2);
-		
-		JLabel lblNewLabel_17_2_1 = new JLabel("상영시간");
-		lblNewLabel_17_2_1.setBounds(254, 214, 100, 100);
-		reserveOnePanel.add(lblNewLabel_17_2_1);
-		
-		JLabel lblNewLabel_17_1_1 = new JLabel("상영시간");
-		lblNewLabel_17_1_1.setBounds(142, 214, 100, 100);
-		reserveOnePanel.add(lblNewLabel_17_1_1);
-		
-		JLabel lblNewLabel_17_3 = new JLabel("상영시간");
-		lblNewLabel_17_3.setBounds(26, 214, 100, 100);
-		reserveOnePanel.add(lblNewLabel_17_3);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(26, 324, 100, 23);
-		reserveOnePanel.add(comboBox);
-		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(254, 324, 100, 23);
-		reserveOnePanel.add(comboBox_1);
+		JComboBox cinemaPlaceCB = new JComboBox();
+		cinemaPlaceCB.setModel(new DefaultComboBoxModel(new String[] {"1관", "2관", "3관", "4관", "5관", "6관", "7관", "8관", "9관"}));
+		cinemaPlaceCB.setBounds(256, 341, 100, 23);
+		reserveOnePanel.add(cinemaPlaceCB);
 		
 		JButton btnNewButton = new JButton("좌석 선택");
-		btnNewButton.setBounds(142, 418, 97, 23);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String cinemaNameStr=(String)cinemaNameCB.getSelectedItem();
+				String cinemaPlace=(String)cinemaPlaceCB.getSelectedItem();
+				movieItem.setI_cname(cinemaNameStr);
+				movieItem.setI_cplace(cinemaPlace);
+				movieTabbedPane.setSelectedIndex(3);
+				
+			}
+		});
+		btnNewButton.setBounds(144, 435, 97, 23);
 		reserveOnePanel.add(btnNewButton);
 		
+		JButton btnNewButton_1 = new JButton("7월6일");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				 movieItem.setI_day("7월6일");
+			}
+		});
+		btnNewButton_1.setBounds(12, 11, 69, 69);
+		reserveOnePanel.add(btnNewButton_1);
+		
+		JButton btnNewButton_1_1 = new JButton("7월7일");
+		btnNewButton_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 movieItem.setI_day("7월7일");
+			}
+		});
+		btnNewButton_1_1.setBounds(109, 11, 69, 69);
+		reserveOnePanel.add(btnNewButton_1_1);
+		
+		JButton btnNewButton_1_2 = new JButton("7월8일");
+		btnNewButton_1_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 movieItem.setI_day("7월6일");
+			}
+		});
+		btnNewButton_1_2.setBounds(203, 11, 69, 69);
+		reserveOnePanel.add(btnNewButton_1_2);
+		
+		JButton btnNewButton_1_3 = new JButton("7월9일");
+		btnNewButton_1_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 movieItem.setI_day("7월9일");
+			}
+		});
+		btnNewButton_1_3.setBounds(300, 11, 69, 69);
+		reserveOnePanel.add(btnNewButton_1_3);
+		
+		JButton btnNewButton_2 = new JButton("06시~08시");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 movieItem.setI_daytime("06시~08시");
+			}
+		});
+		btnNewButton_2.setBounds(12, 110, 97, 87);
+		reserveOnePanel.add(btnNewButton_2);
+		
+		JButton btnNewButton_2_1 = new JButton("13시~15시");
+		btnNewButton_2_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 movieItem.setI_daytime("13시~15시");
+			}
+		});
+		btnNewButton_2_1.setBounds(272, 110, 97, 87);
+		reserveOnePanel.add(btnNewButton_2_1);
+		
+		JButton btnNewButton_2_2 = new JButton("09시~11시");
+		btnNewButton_2_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 movieItem.setI_daytime("09시~11시");
+			}
+		});
+		btnNewButton_2_2.setBounds(142, 110, 97, 87);
+		reserveOnePanel.add(btnNewButton_2_2);
+		
+		JButton btnNewButton_2_3 = new JButton("16시~18시");
+		btnNewButton_2_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 movieItem.setI_daytime("16시~18시");
+			}
+		});
+		btnNewButton_2_3.setBounds(12, 227, 97, 87);
+		reserveOnePanel.add(btnNewButton_2_3);
+		
+		JButton btnNewButton_2_2_1 = new JButton("19시~21시");
+		btnNewButton_2_2_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 movieItem.setI_daytime("19시~21시");
+			}
+		});
+		btnNewButton_2_2_1.setBounds(142, 227, 97, 87);
+		reserveOnePanel.add(btnNewButton_2_2_1);
+		
+		JButton btnNewButton_2_1_1 = new JButton("22시~24시");
+		btnNewButton_2_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 movieItem.setI_daytime("22시~24시");
+			}
+		});
+		btnNewButton_2_1_1.setBounds(272, 227, 97, 87);
+		reserveOnePanel.add(btnNewButton_2_1_1);
+		
 		JPanel seatPanel = new JPanel();
+		seatPanel.setBackground(Color.BLUE);
 		movieTabbedPane.addTab("좌석", null, seatPanel, null);
+		seatPanel.setLayout(null);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(12, 10, 356, 404);
+		seatPanel.add(panel_1);
+		panel_1.setLayout(new GridLayout(0, 5, 0, 0));
+		
+		JButton btnNewButton_3 = new JButton("New button");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				movieItem.setI_seat(1);
+				movieItem.setI_price(10000);
+				
+			}
+		});
+		panel_1.add(btnNewButton_3);
+		
+		JButton btnNewButton_4 = new JButton("New button");
+		panel_1.add(btnNewButton_4);
+		
+		JButton btnNewButton_5 = new JButton("New button");
+		panel_1.add(btnNewButton_5);
+		
+		JButton btnNewButton_6 = new JButton("New button");
+		panel_1.add(btnNewButton_6);
+		
+		JButton btnNewButton_7 = new JButton("New button");
+		panel_1.add(btnNewButton_7);
+		
+		JButton btnNewButton_8 = new JButton("New button");
+		panel_1.add(btnNewButton_8);
+		
+		JButton btnNewButton_9 = new JButton("New button");
+		panel_1.add(btnNewButton_9);
+		
+		JButton btnNewButton_10 = new JButton("New button");
+		panel_1.add(btnNewButton_10);
+		
+		JButton btnNewButton_11 = new JButton("New button");
+		panel_1.add(btnNewButton_11);
+		
+		JButton btnNewButton_12 = new JButton("New button");
+		panel_1.add(btnNewButton_12);
+		
+		JButton btnNewButton_13 = new JButton("New button");
+		panel_1.add(btnNewButton_13);
+		
+		JButton btnNewButton_14 = new JButton("New button");
+		panel_1.add(btnNewButton_14);
+		
+		JButton btnNewButton_15 = new JButton("New button");
+		panel_1.add(btnNewButton_15);
+		
+		JButton btnNewButton_16 = new JButton("New button");
+		panel_1.add(btnNewButton_16);
+		
+		JButton btnNewButton_17 = new JButton("New button");
+		panel_1.add(btnNewButton_17);
+		
+		JButton btnNewButton_18 = new JButton("New button");
+		panel_1.add(btnNewButton_18);
+		
+		JButton btnNewButton_19 = new JButton("New button");
+		panel_1.add(btnNewButton_19);
+		
+		JButton btnNewButton_20 = new JButton("New button");
+		panel_1.add(btnNewButton_20);
+		
+		JButton btnNewButton_21 = new JButton("New button");
+		panel_1.add(btnNewButton_21);
+		
+		JButton btnNewButton_22 = new JButton("New button");
+		panel_1.add(btnNewButton_22);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBounds(12, 424, 356, 59);
+		seatPanel.add(panel_2);
+		panel_2.setLayout(null);
+		
+		JButton btnNewButton_23 = new JButton("예매!!");
+		btnNewButton_23.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				movieReserve = new MovieReserve(0,movieItem.getI_day(),movieItem.getI_seat(),movieItem.getI_daytime(),movieItem.getI_price(),movieItem.getI_cname(),movieItem.getI_cplace(),
+						new Movie(movieItem.getI_code()),new User("qkrrjsxo"));
+				try {
+					movieReserveService.movieReserve(movieReserve);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				movieTabbedPane.setSelectedIndex(4);
+			}
+		});
+		btnNewButton_23.setBounds(129, 10, 97, 39);
+		panel_2.add(btnNewButton_23);
 		
 		JPanel reserveListPanel = new JPanel();
 		movieTabbedPane.addTab("예매내역", null, reserveListPanel, null);
