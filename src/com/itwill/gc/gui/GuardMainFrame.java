@@ -28,7 +28,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.ScrollPaneConstants;
 
-public class guardMainFrame extends JFrame {
+public class GuardMainFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField idTF;
@@ -69,7 +69,7 @@ public class guardMainFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					guardMainFrame frame = new guardMainFrame();
+					GuardMainFrame frame = new GuardMainFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -81,7 +81,7 @@ public class guardMainFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public guardMainFrame() {
+	public GuardMainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 416, 600);
 		contentPane = new JPanel();
@@ -125,12 +125,6 @@ public class guardMainFrame extends JFrame {
 		productPanel.add(tabbedPane_2, BorderLayout.CENTER);
 	/**************************************************************/
 		
-		JPanel cartPanel = new JPanel();
-		tabbedPane_2.addTab("장바구니", null, cartPanel, null);
-		
-		JPanel receiptPanel = new JPanel();
-		tabbedPane_2.addTab("구매내역", null, receiptPanel, null);
-		
 		JPanel foodPanel = new JPanel();
 		tabbedPane_2.addTab("상품", null, foodPanel, null);
 		foodPanel.setLayout(new BorderLayout(0, 0));
@@ -143,14 +137,13 @@ public class guardMainFrame extends JFrame {
 		foodListPanel.setPreferredSize(new Dimension(10, 800));
 		foodListPanel.setBackground(Color.PINK);
 		scrollPane_3.setViewportView(foodListPanel);
-		/******************************************productItemPanel***************/
 		JPanel productItemPanel = new JPanel();
 		productItemPanel.setLayout(null);
 		productItemPanel.setPreferredSize(new Dimension(350, 130));
 		
 		
 		JLabel productImageLB = new JLabel("");
-		productImageLB.setIcon(new ImageIcon(guardMainFrame.class.getResource("/images/50shaipei.jpg")));
+		productImageLB.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/images/50shaipei.jpg")));
 		productImageLB.setBounds(8, 4, 82, 73);
 		productItemPanel.add(productImageLB);
 		
@@ -167,6 +160,13 @@ public class guardMainFrame extends JFrame {
 		productPriceLB.setBounds(110, 69, 57, 15);
 		productItemPanel.add(productPriceLB);
 		foodListPanel.add(productItemPanel);
+		
+		JPanel cartPanel = new JPanel();
+		tabbedPane_2.addTab("장바구니", null, cartPanel, null);
+		
+		JPanel receiptPanel = new JPanel();
+		tabbedPane_2.addTab("구매내역", null, receiptPanel, null);
+		/******************************************productItemPanel***************/
 	  /*************************************productItemPanel*******************/
 		
 		
@@ -596,7 +596,7 @@ public class guardMainFrame extends JFrame {
 			
 			
 			JLabel productImageLB = new JLabel("");
-			productImageLB.setIcon(new ImageIcon(guardMainFrame.class.getResource("/images/50shaipei.jpg")));
+			productImageLB.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/images/50shaipei.jpg")));
 			productImageLB.setBounds(8, 4, 82, 73);
 			productItemPanel.add(productImageLB);
 			
