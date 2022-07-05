@@ -1,5 +1,7 @@
 package com.itwill.gc.service;
 
+import java.util.List;
+
 import com.itwill.gc.dao.QuestionDao;
 import com.itwill.gc.vo.Question;
 
@@ -13,6 +15,19 @@ public class QuestionService {
 	 * - 존재하면 문의내역리스트로
 	 * - 존재 안하면 문의내용이 없습니다. 
 	 */
+	public boolean selectAll(String sUserid) throws Exception{
+		boolean isExist = false;
+		List<Question> findQuestion = questionDao.selectAll(sUserid);
+		if(findQuestion!=null) {
+			isExist = true;
+			System.out.println(questionDao.selectAll(sUserid));
+			//이러고 리스트가 뜨게 해줘야하는데....이럼 되나?
+		}else {
+			isExist = false;
+		}
+		return isExist;
+	}
+	
 	
 	
 	
