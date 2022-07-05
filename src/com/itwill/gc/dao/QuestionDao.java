@@ -24,7 +24,7 @@ public class QuestionDao {
       Connection con = null;
       PreparedStatement pstmt = null;
       int insertRowCount = 0;
-      //왜 트라이가 들어가는거지
+      
       try {
          con = dataSource.getConnection();
          pstmt = con.prepareStatement(insertQuestion);

@@ -15,21 +15,15 @@ public class QuestionService {
 	 * - 존재하면 문의내역리스트로
 	 * - 존재 안하면 문의내용이 없습니다. 
 	 */
-	public boolean selectAll(String userId) throws Exception{
-		boolean isExist = false;
-		List<Question> findQuestion = questionDao.selectAll(userId);
-		if(findQuestion!=null) {
-			isExist = true;
-			System.out.println(questionDao.selectAll(userId));
-			//이러고 리스트가 뜨게 해줘야하는데....이럼 되나?
-			//아닌데..이럼 그냥 isExist만...리턴되는데...
-		}else {
-			isExist = false;
-		}
-		return isExist;
+	/*
+	public List<Question> selectAll(String userId) throws Exception{
+		
+		
+		
+		
 	}
 	
-	
+	*/
 	
 	
 	/*
