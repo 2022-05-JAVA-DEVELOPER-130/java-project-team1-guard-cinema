@@ -12,18 +12,13 @@ public class QuestionService {
 	}
 	/*
 	 * 로그인후 문의내역확인
-	 * - 존재하면 문의내역리스트로
-	 * - 존재 안하면 문의내용이 없습니다. 
 	 */
-	/*
-	public List<Question> selectAll(String userId) throws Exception{
-		
-		
-		
-		
+	
+	public List<Question> selectAll(String userId) throws Exception{	
+	return questionDao.selectAll(userId);	
 	}
 	
-	*/
+	
 	
 	
 	/*
