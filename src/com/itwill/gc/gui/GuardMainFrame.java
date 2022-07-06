@@ -51,6 +51,10 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.JCheckBox;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
+import javax.swing.JMenuItem;
+import javax.swing.JSeparator;
+import java.awt.Component;
+import javax.swing.SwingConstants;
 
 public class GuardMainFrame extends JFrame {
    
@@ -134,6 +138,34 @@ public class GuardMainFrame extends JFrame {
    public GuardMainFrame() throws Exception {
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       setBounds(100, 100, 416, 600);
+      
+      JMenuBar menuBar = new JMenuBar();
+      menuBar.setAlignmentX(Component.LEFT_ALIGNMENT);
+      setJMenuBar(menuBar);
+      
+      JMenuItem mntmNewMenuItem = new JMenuItem("");
+      menuBar.add(mntmNewMenuItem);
+      
+      JMenu mainMenu = new JMenu("");
+      mainMenu.setHorizontalAlignment(SwingConstants.RIGHT);
+      mainMenu.setIcon(new ImageIcon("C:\\Users\\itwill05\\Downloads\\menu (1).png"));
+      mainMenu.setHorizontalTextPosition(SwingConstants.RIGHT);
+      menuBar.add(mainMenu);
+      
+      JMenuItem movieMenuItem = new JMenuItem("영화");
+      mainMenu.add(movieMenuItem);
+      
+      JSeparator separator = new JSeparator();
+      mainMenu.add(separator);
+      
+      JMenuItem loginMenuItem = new JMenuItem("로그인");
+      loginMenuItem.setHorizontalAlignment(SwingConstants.LEFT);
+      mainMenu.add(loginMenuItem);
+      
+      JMenuItem logoutMenuItem = new JMenuItem("로그아웃");
+      logoutMenuItem.setHorizontalTextPosition(SwingConstants.LEFT);
+      logoutMenuItem.setHorizontalAlignment(SwingConstants.LEFT);
+      mainMenu.add(logoutMenuItem);
       contentPane = new JPanel();
       contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
       contentPane.setLayout(new BorderLayout(0, 0));
