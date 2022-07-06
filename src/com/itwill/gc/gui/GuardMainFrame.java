@@ -70,7 +70,7 @@ public class GuardMainFrame extends JFrame {
    private MovieItem movieItem = new MovieItem();
    private MovieReserveService movieReserveService =null;
    private MovieReserve movieReserve = null;
-   private User loginUser;
+   private User loginUser = null;
    private UserService userService;
    private JLabel messageLB; 
    private JLabel loginMessageLB;
@@ -120,6 +120,11 @@ public class GuardMainFrame extends JFrame {
    private JTabbedPane gongjiTabbedPane;
    private JTabbedPane movieTabbedPane;
    private JTabbedPane tabbedPane;
+   private JMenuItem logoutMenuItem;
+   private JButton reserveBtn1;
+   private JButton reserveBtn2;
+   private JButton reserveBtn3;
+   private JButton reserveBtn4;
 
    /**
     * Launch the application.
@@ -154,7 +159,7 @@ public class GuardMainFrame extends JFrame {
       
       JMenu mainMenu = new JMenu("");
       mainMenu.setHorizontalAlignment(SwingConstants.RIGHT);
-      mainMenu.setIcon(new ImageIcon("C:\\Users\\itwill05\\Downloads\\menu (1).png"));
+      mainMenu.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_icon/menu1 (1).png")));
       mainMenu.setHorizontalTextPosition(SwingConstants.RIGHT);
       menuBar.add(mainMenu);
       
@@ -168,9 +173,16 @@ public class GuardMainFrame extends JFrame {
       loginMenuItem.setHorizontalAlignment(SwingConstants.LEFT);
       mainMenu.add(loginMenuItem);
       
-      JMenuItem logoutMenuItem = new JMenuItem("로그아웃");
+      logoutMenuItem = new JMenuItem("로그아웃");
       logoutMenuItem.setHorizontalTextPosition(SwingConstants.LEFT);
       logoutMenuItem.setHorizontalAlignment(SwingConstants.LEFT);
+     /*********************로그아웃*********************/
+      logoutMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				logoutProcess();
+			}
+		});
+     /***************************************************/ 
       mainMenu.add(logoutMenuItem);
       contentPane = new JPanel();
       contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -229,7 +241,7 @@ public class GuardMainFrame extends JFrame {
       lblNewLabel_15.setBounds(118, 42, 114, 15);
       movieOnePanel.add(lblNewLabel_15);
       
-      JButton reserveBtn2 = new JButton("예매");
+      reserveBtn2 = new JButton("예매");
       reserveBtn2.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
         	 movieItem = new MovieItem(); 
@@ -263,7 +275,7 @@ public class GuardMainFrame extends JFrame {
       movieTwoPanel.add(lblNewLabel_15_1);
       
       /**********************************예매1**********************/
-      JButton reserveBtn1 = new JButton("예매");
+      reserveBtn1 = new JButton("예매");
       reserveBtn1.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
             
@@ -300,7 +312,7 @@ public class GuardMainFrame extends JFrame {
       lblNewLabel_15_1_1.setBounds(118, 42, 114, 15);
       movieThreePanel.add(lblNewLabel_15_1_1);
       
-      JButton reserveBtn3 = new JButton("예매");
+      reserveBtn3 = new JButton("예매");
       reserveBtn3.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
         	 movieItem = new MovieItem();
@@ -333,7 +345,7 @@ public class GuardMainFrame extends JFrame {
       lblNewLabel_15_1_1_1.setBounds(118, 42, 114, 15);
       movieLastPanel.add(lblNewLabel_15_1_1_1);
       
-      JButton reserveBtn4 = new JButton("예매");
+      reserveBtn4 = new JButton("예매");
       reserveBtn4.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
         	 movieItem = new MovieItem();
@@ -1183,6 +1195,17 @@ public class GuardMainFrame extends JFrame {
       questionPanel.add(q_cancleBtn);
       
       JPanel personalQPanel = new JPanel();
+      /*******************1대1문의***********************/
+      faqPanel.addComponentListener(new ComponentAdapter() {
+          public void componentShown(ComponentEvent e) {
+             try {
+                questionListDisplay();
+             }catch(Exception e1) {
+                e1.printStackTrace();
+             }
+          }
+       });
+      /**************************************************/
       gongjiTabbedPane.addTab("문의목록", null, personalQPanel, null);
       personalQPanel.setLayout(null);
       
@@ -1248,9 +1271,13 @@ public class GuardMainFrame extends JFrame {
 
       gongjiService = new GongjiService();
       faqService = new FaqService();
+      questionService = new QuestionService();
       movieReserveService=new MovieReserveService();
-     // movieItem = new MovieItem();
-     
+
+      movieItem = new MovieItem();
+      seatListDisplay(movieItem.getI_code(),movieItem.getI_day(),movieItem.getI_daytime(),movieItem.getI_cname(),movieItem.getI_cplace());
+      logoutProcess();
+
    }//생성자끝
    /******************* 좌석리스트 *************/
 	
@@ -1389,6 +1416,37 @@ public class GuardMainFrame extends JFrame {
       
    }
    /***************************************************/
+   /**********************Question리스트**********************/
+   public void questionListDisplay() throws Exception{
+      List<Question> questionList = questionService.selectAll(loginUser.getUserId());
+      Vector questionListVector = new Vector();
+      
+      for(Question question : questionList) {
+         Vector rowVector = new Vector();
+         rowVector.add(question.getQuestion_no());
+         rowVector.add(question.getQuestion_cate_one());
+         rowVector.add(question.getQuestion_cate_two());
+         rowVector.add(question.getQuestion_title());
+         rowVector.add(question.getQuestion_date());
+         
+         questionListVector.add(rowVector);
+      }
+      
+      Vector columnVector = new Vector();
+      columnVector.add("번호");
+      columnVector.add("대분류");
+      columnVector.add("소분류");
+      columnVector.add("문의제목");
+      columnVector.add("문의날짜");
+      
+      
+      DefaultTableModel defaultTableModel=
+            new DefaultTableModel(questionListVector, columnVector);
+      questionListTable.setModel(defaultTableModel);
+      
+      
+   }
+   /***************************************************/
    /*****************로그인시 호출할메소드********************/
    public void loginProcess(String id)throws Exception {
       /*
@@ -1403,8 +1461,15 @@ public class GuardMainFrame extends JFrame {
       loginUser = loginSuccessUser;
       setTitle(loginUser.getUserId());
       
+      reserveBtn1.setEnabled(true);
+	  reserveBtn2.setEnabled(true);
+	  reserveBtn3.setEnabled(true);
+	  reserveBtn4.setEnabled(true);
       userTabbedPane.setEnabledAt(0, false);
       userTabbedPane.setEnabledAt(1, false);
+      movieTabbedPane.setEnabledAt(2, true);
+	  movieTabbedPane.setEnabledAt(3, true);
+	  movieTabbedPane.setEnabledAt(4, true);
       gongjiTabbedPane.setEnabledAt(2, true);
       gongjiTabbedPane.setEnabledAt(3, true);
       tabbedPane.setSelectedIndex(0);
@@ -1415,6 +1480,35 @@ public class GuardMainFrame extends JFrame {
       //memberTabbedPane.setEnabledAt(2, true);
       //memberTabbedPane.setSelectedIndex(2);
    }
+   /*******************로그아웃시호출할메쏘드******************/
+	public void logoutProcess() {
+		/*
+		 * 1.로그인멤버객체 삭제
+		 * 2.MemberMainFrame타이틀변경
+		 * 3.로그인,회원가입 tab 활성화
+		 * 4.로그아웃메뉴아이템 불활성화
+		 * 5.회원리스트탭 불활성화
+		 */
+		this.loginUser = null;
+		setTitle("");
+		
+		reserveBtn1.setEnabled(false);
+		reserveBtn2.setEnabled(false);
+		reserveBtn3.setEnabled(false);
+		reserveBtn4.setEnabled(false);
+		userTabbedPane.setEnabledAt(0, true);
+	    userTabbedPane.setEnabledAt(1, true);
+	    movieTabbedPane.setEnabledAt(2, false);
+	    movieTabbedPane.setEnabledAt(3, false);
+	    movieTabbedPane.setEnabledAt(4, false);
+	    gongjiTabbedPane.setEnabledAt(2, false);
+	    gongjiTabbedPane.setEnabledAt(3, false);
+	    tabbedPane.setSelectedIndex(0);
+	      
+		
+		
+	}
+   
    /*******************얘는 뭐임**********************/
    /*
    public  void productList() {
