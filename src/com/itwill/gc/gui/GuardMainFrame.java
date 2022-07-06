@@ -118,6 +118,7 @@ public class GuardMainFrame extends JFrame {
    private JTabbedPane gongjiTabbedPane;
    private JTabbedPane movieTabbedPane;
    private JTabbedPane tabbedPane;
+   private JMenuItem logoutMenuItem;
 
    /**
     * Launch the application.
@@ -166,9 +167,10 @@ public class GuardMainFrame extends JFrame {
       loginMenuItem.setHorizontalAlignment(SwingConstants.LEFT);
       mainMenu.add(loginMenuItem);
       
-      JMenuItem logoutMenuItem = new JMenuItem("로그아웃");
+      logoutMenuItem = new JMenuItem("로그아웃");
       logoutMenuItem.setHorizontalTextPosition(SwingConstants.LEFT);
       logoutMenuItem.setHorizontalAlignment(SwingConstants.LEFT);
+      
       mainMenu.add(logoutMenuItem);
       contentPane = new JPanel();
       contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -1154,6 +1156,17 @@ public class GuardMainFrame extends JFrame {
       questionPanel.add(q_cancleBtn);
       
       JPanel personalQPanel = new JPanel();
+      /*******************1대1문의***********************/
+      faqPanel.addComponentListener(new ComponentAdapter() {
+          public void componentShown(ComponentEvent e) {
+             try {
+                questionListDisplay();
+             }catch(Exception e1) {
+                e1.printStackTrace();
+             }
+          }
+       });
+      /**************************************************/
       gongjiTabbedPane.addTab("문의목록", null, personalQPanel, null);
       personalQPanel.setLayout(null);
       
@@ -1219,6 +1232,7 @@ public class GuardMainFrame extends JFrame {
 
       gongjiService = new GongjiService();
       faqService = new FaqService();
+      questionService = new QuestionService();
       movieReserveService=new MovieReserveService();
       movieItem = new MovieItem();
       seatListDisplay(movieItem.getI_code(),movieItem.getI_day(),movieItem.getI_daytime(),movieItem.getI_cname(),movieItem.getI_cplace());
@@ -1346,6 +1360,37 @@ public class GuardMainFrame extends JFrame {
       
    }
    /***************************************************/
+   /**********************Question리스트**********************/
+   public void questionListDisplay() throws Exception{
+      List<Question> questionList = questionService.selectAll(loginUser.getUserId());
+      Vector questionListVector = new Vector();
+      
+      for(Question question : questionList) {
+         Vector rowVector = new Vector();
+         rowVector.add(question.getQuestion_no());
+         rowVector.add(question.getQuestion_title());
+         rowVector.add(question.getQuestion_cate_one());
+         rowVector.add(question.getQuestion_cate_two());
+         rowVector.add(question.getQuestion_date());
+         
+         questionListVector.add(rowVector);
+      }
+      
+      Vector columnVector = new Vector();
+      columnVector.add("번호");
+      columnVector.add("제목");
+      columnVector.add("카테고리1");
+      columnVector.add("카테고리2");
+      columnVector.add("문의날짜");
+      
+      
+      DefaultTableModel defaultTableModel=
+            new DefaultTableModel(questionListVector, columnVector);
+      questionListTable.setModel(defaultTableModel);
+      
+      
+   }
+   /***************************************************/
    /*****************로그인시 호출할메소드********************/
    public void loginProcess(String id)throws Exception {
       /*
@@ -1372,6 +1417,7 @@ public class GuardMainFrame extends JFrame {
       //memberTabbedPane.setEnabledAt(2, true);
       //memberTabbedPane.setSelectedIndex(2);
    }
+   
    /*******************얘는 뭐임**********************/
    /*
    public  void productList() {
