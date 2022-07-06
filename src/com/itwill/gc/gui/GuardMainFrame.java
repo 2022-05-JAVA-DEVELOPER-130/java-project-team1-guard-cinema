@@ -22,6 +22,7 @@ import com.itwill.gc.service.FaqService;
 import com.itwill.gc.service.GongjiService;
 import com.itwill.gc.service.MovieReserveService;
 import com.itwill.gc.service.QuestionService;
+import com.itwill.gc.service.UserService;
 import com.itwill.gc.vo.Faq;
 import com.itwill.gc.vo.Gongji;
 import com.itwill.gc.vo.Movie;
@@ -60,7 +61,14 @@ public class GuardMainFrame extends JFrame {
    public MovieItem movieItem = null;
    private MovieReserveService movieReserveService =null;
    private MovieReserve movieReserve = null;
-   /**************************************************/
+   private User loginUser;
+   private UserService userService;
+   private JLabel messageLB; 
+   private JLabel loginMessageLB;
+   private JLabel updateLB;
+
+   /**************************
+    *************************/
    /**************************************************/
    /**************************************************/
    
@@ -73,12 +81,12 @@ public class GuardMainFrame extends JFrame {
    private JTextField emailTF;
    private JTextField loginIdTF;
    private JTextField loginPasswordTF;
-   private JTextField textField_6;
-   private JTextField textField_7;
-   private JTextField textField_8;
-   private JTextField textField_9;
-   private JTextField textField_10;
-   private JTextField textField_11;
+   private JTextField c_idTF;
+   private JTextField c_passwordTF;
+   private JTextField c_nameTF;
+   private JTextField c_juminTF;
+   private JTextField c_phoneTF;
+   private JTextField c_emailTF;
    private JTextField g_noTF;
    private JTextField g_categoryTF;
    private JTextField g_titleTF;
@@ -97,6 +105,11 @@ public class GuardMainFrame extends JFrame {
    private JTextArea g_contentTA;
    private JTextArea m_contentTA;
    private JTable reserveTable;
+   private JLabel updateMessageLB;
+   private JTabbedPane userTabbedPane;
+   private JTabbedPane gongjiTabbedPane;
+   private JTabbedPane movieTabbedPane;
+   private JTabbedPane tabbedPane;
 
    /**
     * Launch the application.
@@ -126,14 +139,14 @@ public class GuardMainFrame extends JFrame {
       contentPane.setLayout(new BorderLayout(0, 0));
       setContentPane(contentPane);
       
-      JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+      tabbedPane = new JTabbedPane(JTabbedPane.TOP);
       contentPane.add(tabbedPane, BorderLayout.CENTER);
       
       JPanel moviePanel = new JPanel();
       tabbedPane.addTab("영화", null, moviePanel, null);
       moviePanel.setLayout(new BorderLayout(0, 0));
       
-      JTabbedPane movieTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+      movieTabbedPane = new JTabbedPane(JTabbedPane.TOP);
       moviePanel.add(movieTabbedPane);
       
       JPanel movieListIngPanel = new JPanel();
@@ -156,18 +169,19 @@ public class GuardMainFrame extends JFrame {
       movieListPanel.add(movieOnePanel);
       
       JLabel lblNewLabel_12 = new JLabel("");
+      lblNewLabel_12.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/범죄도시2.jpg")));
       lblNewLabel_12.setBounds(12, 10, 94, 87);
       movieOnePanel.add(lblNewLabel_12);
       
-      JLabel lblNewLabel_13 = new JLabel("지구멸망");
+      JLabel lblNewLabel_13 = new JLabel("범죄도시2");
       lblNewLabel_13.setBounds(118, 10, 74, 22);
       movieOnePanel.add(lblNewLabel_13);
       
-      JLabel lblNewLabel_14 = new JLabel("<html>제~~~~~~~~~~~~~~~~~~~<br>~~~~~~~~~~~~~발</html>");
+      JLabel lblNewLabel_14 = new JLabel("<html>스포 방지</html>");
       lblNewLabel_14.setBounds(118, 67, 178, 45);
       movieOnePanel.add(lblNewLabel_14);
       
-      JLabel lblNewLabel_15 = new JLabel("스릴러/전체이용가");
+      JLabel lblNewLabel_15 = new JLabel("액션/15세 이용가");
       lblNewLabel_15.setBounds(118, 42, 114, 15);
       movieOnePanel.add(lblNewLabel_15);
       
@@ -187,18 +201,19 @@ public class GuardMainFrame extends JFrame {
       movieListPanel.add(movieTwoPanel);
       
       JLabel lblNewLabel_12_1 = new JLabel("");
+      lblNewLabel_12_1.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/마녀.jpg")));
       lblNewLabel_12_1.setBounds(12, 10, 94, 87);
       movieTwoPanel.add(lblNewLabel_12_1);
       
-      JLabel lblNewLabel_13_1 = new JLabel("지구멸망");
+      JLabel lblNewLabel_13_1 = new JLabel("마녀2");
       lblNewLabel_13_1.setBounds(118, 10, 74, 22);
       movieTwoPanel.add(lblNewLabel_13_1);
       
-      JLabel lblNewLabel_14_1 = new JLabel("<html>제~~~~~~~~~~~~~~~~~~~<br>~~~~~~~~~~~~~발</html>");
+      JLabel lblNewLabel_14_1 = new JLabel("<html>스포 방지</html>");
       lblNewLabel_14_1.setBounds(118, 67, 178, 45);
       movieTwoPanel.add(lblNewLabel_14_1);
       
-      JLabel lblNewLabel_15_1 = new JLabel("스릴러/전체이용가");
+      JLabel lblNewLabel_15_1 = new JLabel("액션/15세 이용가");
       lblNewLabel_15_1.setBounds(118, 42, 114, 15);
       movieTwoPanel.add(lblNewLabel_15_1);
       
@@ -224,18 +239,19 @@ public class GuardMainFrame extends JFrame {
       movieListPanel.add(movieThreePanel);
       
       JLabel lblNewLabel_12_1_1 = new JLabel("");
+      lblNewLabel_12_1_1.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/브로커2.jpg")));
       lblNewLabel_12_1_1.setBounds(12, 10, 94, 87);
       movieThreePanel.add(lblNewLabel_12_1_1);
       
-      JLabel lblNewLabel_13_1_1 = new JLabel("지구멸망");
+      JLabel lblNewLabel_13_1_1 = new JLabel("브로커");
       lblNewLabel_13_1_1.setBounds(118, 10, 74, 22);
       movieThreePanel.add(lblNewLabel_13_1_1);
       
-      JLabel lblNewLabel_14_1_1 = new JLabel("<html>제~~~~~~~~~~~~~~~~~~~<br>~~~~~~~~~~~~~발</html>");
+      JLabel lblNewLabel_14_1_1 = new JLabel("<html>스포 방지</html>");
       lblNewLabel_14_1_1.setBounds(118, 67, 178, 45);
       movieThreePanel.add(lblNewLabel_14_1_1);
       
-      JLabel lblNewLabel_15_1_1 = new JLabel("스릴러/전체이용가");
+      JLabel lblNewLabel_15_1_1 = new JLabel("드라마/12세 이용가");
       lblNewLabel_15_1_1.setBounds(118, 42, 114, 15);
       movieThreePanel.add(lblNewLabel_15_1_1);
       
@@ -255,18 +271,19 @@ public class GuardMainFrame extends JFrame {
       movieListPanel.add(movieLastPanel);
       
       JLabel lblNewLabel_12_1_1_1 = new JLabel("");
+      lblNewLabel_12_1_1_1.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/탑건.jpg")));
       lblNewLabel_12_1_1_1.setBounds(12, 10, 94, 87);
       movieLastPanel.add(lblNewLabel_12_1_1_1);
       
-      JLabel lblNewLabel_13_1_1_1 = new JLabel("지구멸망");
+      JLabel lblNewLabel_13_1_1_1 = new JLabel("탑건");
       lblNewLabel_13_1_1_1.setBounds(118, 10, 74, 22);
       movieLastPanel.add(lblNewLabel_13_1_1_1);
       
-      JLabel lblNewLabel_14_1_1_1 = new JLabel("<html>제~~~~~~~~~~~~~~~~~~~<br>~~~~~~~~~~~~~발</html>");
+      JLabel lblNewLabel_14_1_1_1 = new JLabel("<html>스포 방지</html>");
       lblNewLabel_14_1_1_1.setBounds(118, 67, 178, 45);
       movieLastPanel.add(lblNewLabel_14_1_1_1);
       
-      JLabel lblNewLabel_15_1_1_1 = new JLabel("스릴러/전체이용가");
+      JLabel lblNewLabel_15_1_1_1 = new JLabel("액션/12세 이용가");
       lblNewLabel_15_1_1_1.setBounds(118, 42, 114, 15);
       movieLastPanel.add(lblNewLabel_15_1_1_1);
       
@@ -300,18 +317,19 @@ public class GuardMainFrame extends JFrame {
       movieListPanel_1.add(movieOnePanel_1);
       
       JLabel lblNewLabel_12_2 = new JLabel("");
+      lblNewLabel_12_2.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/한산 용의 출현.jpg")));
       lblNewLabel_12_2.setBounds(12, 10, 94, 87);
       movieOnePanel_1.add(lblNewLabel_12_2);
       
-      JLabel lblNewLabel_13_2 = new JLabel("지구멸망");
-      lblNewLabel_13_2.setBounds(118, 10, 74, 22);
+      JLabel lblNewLabel_13_2 = new JLabel("한산 용의 출현");
+      lblNewLabel_13_2.setBounds(118, 10, 80, 22);
       movieOnePanel_1.add(lblNewLabel_13_2);
       
-      JLabel lblNewLabel_14_2 = new JLabel("<html>제~~~~~~~~~~~~~~~~~~~<br>~~~~~~~~~~~~~발</html>");
+      JLabel lblNewLabel_14_2 = new JLabel("<html>스포 방지</html>");
       lblNewLabel_14_2.setBounds(118, 67, 178, 45);
       movieOnePanel_1.add(lblNewLabel_14_2);
       
-      JLabel lblNewLabel_15_2 = new JLabel("스릴러/전체이용가");
+      JLabel lblNewLabel_15_2 = new JLabel("액션/12세 이용가");
       lblNewLabel_15_2.setBounds(118, 42, 114, 15);
       movieOnePanel_1.add(lblNewLabel_15_2);
       
@@ -321,18 +339,19 @@ public class GuardMainFrame extends JFrame {
       movieListPanel_1.add(movieTwoPanel_1);
       
       JLabel lblNewLabel_12_1_2 = new JLabel("");
+      lblNewLabel_12_1_2.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/토르 러브 앤 썬더.jpg")));
       lblNewLabel_12_1_2.setBounds(12, 10, 94, 87);
       movieTwoPanel_1.add(lblNewLabel_12_1_2);
       
-      JLabel lblNewLabel_13_1_2 = new JLabel("지구멸망");
-      lblNewLabel_13_1_2.setBounds(118, 10, 74, 22);
+      JLabel lblNewLabel_13_1_2 = new JLabel("토르 러브 앤 썬더");
+      lblNewLabel_13_1_2.setBounds(118, 10, 96, 22);
       movieTwoPanel_1.add(lblNewLabel_13_1_2);
       
-      JLabel lblNewLabel_14_1_2 = new JLabel("<html>제~~~~~~~~~~~~~~~~~~~<br>~~~~~~~~~~~~~발</html>");
+      JLabel lblNewLabel_14_1_2 = new JLabel("<html>스포 방지</html>");
       lblNewLabel_14_1_2.setBounds(118, 67, 178, 45);
       movieTwoPanel_1.add(lblNewLabel_14_1_2);
       
-      JLabel lblNewLabel_15_1_2 = new JLabel("스릴러/전체이용가");
+      JLabel lblNewLabel_15_1_2 = new JLabel("액션/12세 이용가");
       lblNewLabel_15_1_2.setBounds(118, 42, 114, 15);
       movieTwoPanel_1.add(lblNewLabel_15_1_2);
       
@@ -342,19 +361,20 @@ public class GuardMainFrame extends JFrame {
       movieListPanel_1.add(movieThreePanel_1);
       
       JLabel lblNewLabel_12_1_1_2 = new JLabel("");
+      lblNewLabel_12_1_1_2.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/헤어질 결심.jpg")));
       lblNewLabel_12_1_1_2.setBounds(12, 10, 94, 87);
       movieThreePanel_1.add(lblNewLabel_12_1_1_2);
       
-      JLabel lblNewLabel_13_1_1_2 = new JLabel("지구멸망");
+      JLabel lblNewLabel_13_1_1_2 = new JLabel("헤어질 결심");
       lblNewLabel_13_1_1_2.setBounds(118, 10, 74, 22);
       movieThreePanel_1.add(lblNewLabel_13_1_1_2);
       
-      JLabel lblNewLabel_14_1_1_2 = new JLabel("<html>제~~~~~~~~~~~~~~~~~~~<br>~~~~~~~~~~~~~발</html>");
+      JLabel lblNewLabel_14_1_1_2 = new JLabel("<html>스포 방지</html>");
       lblNewLabel_14_1_1_2.setBounds(118, 67, 178, 45);
       movieThreePanel_1.add(lblNewLabel_14_1_1_2);
       
-      JLabel lblNewLabel_15_1_1_2 = new JLabel("스릴러/전체이용가");
-      lblNewLabel_15_1_1_2.setBounds(118, 42, 114, 15);
+      JLabel lblNewLabel_15_1_1_2 = new JLabel("미스터리,멜로/15세 이용가");
+      lblNewLabel_15_1_1_2.setBounds(118, 42, 154, 15);
       movieThreePanel_1.add(lblNewLabel_15_1_1_2);
       
       JPanel movieLastPanel_1 = new JPanel();
@@ -363,18 +383,19 @@ public class GuardMainFrame extends JFrame {
       movieListPanel_1.add(movieLastPanel_1);
       
       JLabel lblNewLabel_12_1_1_1_1 = new JLabel("");
+      lblNewLabel_12_1_1_1_1.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/버즈 라이트이어.jpg")));
       lblNewLabel_12_1_1_1_1.setBounds(12, 10, 94, 87);
       movieLastPanel_1.add(lblNewLabel_12_1_1_1_1);
       
-      JLabel lblNewLabel_13_1_1_1_1 = new JLabel("지구멸망");
-      lblNewLabel_13_1_1_1_1.setBounds(118, 10, 74, 22);
+      JLabel lblNewLabel_13_1_1_1_1 = new JLabel("버즈 라이트이어");
+      lblNewLabel_13_1_1_1_1.setBounds(118, 10, 94, 22);
       movieLastPanel_1.add(lblNewLabel_13_1_1_1_1);
       
-      JLabel lblNewLabel_14_1_1_1_1 = new JLabel("<html>제~~~~~~~~~~~~~~~~~~~<br>~~~~~~~~~~~~~발</html>");
+      JLabel lblNewLabel_14_1_1_1_1 = new JLabel("<html>스포 방지</html>");
       lblNewLabel_14_1_1_1_1.setBounds(118, 67, 178, 45);
       movieLastPanel_1.add(lblNewLabel_14_1_1_1_1);
       
-      JLabel lblNewLabel_15_1_1_1_1 = new JLabel("스릴러/전체이용가");
+      JLabel lblNewLabel_15_1_1_1_1 = new JLabel("애니메이션/전체이용가");
       lblNewLabel_15_1_1_1_1.setBounds(118, 42, 114, 15);
       movieLastPanel_1.add(lblNewLabel_15_1_1_1_1);
       
@@ -749,7 +770,7 @@ public class GuardMainFrame extends JFrame {
       tabbedPane.addTab("회원", null, userPanel, null);
       userPanel.setLayout(new BorderLayout(0, 0));
       
-      JTabbedPane userTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+      userTabbedPane = new JTabbedPane(JTabbedPane.TOP);
       userPanel.add(userTabbedPane, BorderLayout.CENTER);
       
       JPanel joinPanel = new JPanel();
@@ -812,21 +833,43 @@ public class GuardMainFrame extends JFrame {
       
       JButton joinBtn = new JButton("가입");
       joinBtn.addActionListener(new ActionListener() {
+    /**********************회원가입**************************/
          public void actionPerformed(ActionEvent e) {
-            String id = idTF.getText();
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-         }
-      });
+        	 try {
+
+                 String id = idTF.getText();
+                 String password = passwordTF.getText();
+                 String name = nameTF.getText();
+                 String jumin = juminTF.getText();
+                 String phone = phoneTF.getText();
+                 String email = emailTF.getText();
+                 
+                 if (id.equals("") || password.equals("") || name.equals("") || jumin.equals("") || phone.equals("")
+                       || email.equals("")) {
+                    messageLB.setText("* 내용을 입력하세요");
+                    return;
+                 }else {
+                	 User createUser = new User(id,name,phone,jumin,email,password);
+                	 UserService userservice = new UserService();
+              
+                	 int isSuccess = 
+                	 userservice.create(createUser);
+                if(isSuccess==1) {
+                	userTabbedPane.setSelectedIndex(1);
+                }else {
+                	JOptionPane.showMessageDialog(null, "다시 시도해주십시오.");
+                	idTF.requestFocus();
+					idTF.setSelectionStart(0);
+					idTF.setSelectionEnd(id.length());
+                }
+                 }
+              } catch (Exception e1) {
+            	  e1.printStackTrace();
+              }
+        	 /******************************/
+           }
+        });
+
       joinBtn.setBounds(72, 410, 97, 23);
       joinPanel.add(joinBtn);
       
@@ -862,6 +905,30 @@ public class GuardMainFrame extends JFrame {
       loginPanel.add(loginPasswordTF);
       
       JButton loginBtn = new JButton("로그인");
+      loginBtn.addActionListener(new ActionListener() {
+      	public void actionPerformed(ActionEvent e) {
+      /********************로그인**********************/
+            try {
+                String id = loginIdTF.getText();
+                String password = loginPasswordTF.getText();
+                UserService loginService = new UserService();
+                int result = loginService.login(id, password);
+                if (result == 1) {
+                   loginMessageLB.setText("로그인완료");
+                   loginProcess(id);
+                  
+                } else if (result == 0) {
+                   loginMessageLB.setText("로그인실패");
+                }
+             } catch (Exception e1) {
+
+             }
+          }
+       });
+        loginMessageLB = new JLabel("");
+		loginMessageLB.setBounds(141, 235, 181, 21);
+		loginPanel.add(loginMessageLB);
+
       loginBtn.setBounds(64, 303, 97, 23);
       loginPanel.add(loginBtn);
       
@@ -897,49 +964,90 @@ public class GuardMainFrame extends JFrame {
       lblNewLabel_8_5.setBounds(45, 310, 57, 15);
       changePanel.add(lblNewLabel_8_5);
       
-      textField_6 = new JTextField();
-      textField_6.setBounds(182, 46, 116, 21);
-      changePanel.add(textField_6);
-      textField_6.setColumns(10);
+      c_idTF = new JTextField();
+      c_idTF.setBounds(182, 46, 116, 21);
+      changePanel.add(c_idTF);
+      c_idTF.setColumns(10);
       
-      textField_7 = new JTextField();
-      textField_7.setColumns(10);
-      textField_7.setBounds(182, 92, 116, 21);
-      changePanel.add(textField_7);
+      c_passwordTF = new JTextField();
+      c_passwordTF.setColumns(10);
+      c_passwordTF.setBounds(182, 92, 116, 21);
+      changePanel.add(c_passwordTF);
       
-      textField_8 = new JTextField();
-      textField_8.setColumns(10);
-      textField_8.setBounds(182, 142, 116, 21);
-      changePanel.add(textField_8);
+      c_nameTF = new JTextField();
+      c_nameTF.setColumns(10);
+      c_nameTF.setBounds(182, 142, 116, 21);
+      changePanel.add(c_nameTF);
       
-      textField_9 = new JTextField();
-      textField_9.setColumns(10);
-      textField_9.setBounds(182, 196, 116, 21);
-      changePanel.add(textField_9);
+      c_juminTF = new JTextField();
+      c_juminTF.setColumns(10);
+      c_juminTF.setBounds(182, 196, 116, 21);
+      changePanel.add(c_juminTF);
       
-      textField_10 = new JTextField();
-      textField_10.setColumns(10);
-      textField_10.setBounds(182, 253, 116, 21);
-      changePanel.add(textField_10);
+      c_phoneTF = new JTextField();
+      c_phoneTF.setColumns(10);
+      c_phoneTF.setBounds(182, 253, 116, 21);
+      changePanel.add(c_phoneTF);
       
-      textField_11 = new JTextField();
-      textField_11.setColumns(10);
-      textField_11.setBounds(182, 307, 116, 21);
-      changePanel.add(textField_11);
+      c_emailTF = new JTextField();
+      c_emailTF.setColumns(10);
+      c_emailTF.setBounds(182, 307, 116, 21);
+      changePanel.add(c_emailTF);
       
       JButton memberUpdateBtn = new JButton("수정");
+      memberUpdateBtn.addActionListener(new ActionListener() {
+      	public void actionPerformed(ActionEvent e) {
+            try {
+                c_idTF.setText(loginUser.getUserId());
+                c_juminTF.setText(loginUser.getUserJumin());
+                String password = c_passwordTF.getText();
+                String email = c_emailTF.getText();
+                String name = c_nameTF.getText();
+                String phone = c_phoneTF.getText();
+                
+               loginUser.setUserPassword(password);
+               loginUser.setUserEmail(email);
+               loginUser.setUserName(name);
+               loginUser.setUserPhNum(phone);
+               
+                UserService upservice = new UserService();
+                upservice.update(loginUser);
+                updateMessageLB.setText("수정완료");
+
+             } catch (Exception e1) {
+                updateMessageLB.setText("수정실패");
+             }
+          }
+       });
+
       memberUpdateBtn.setBounds(64, 396, 97, 23);
       changePanel.add(memberUpdateBtn);
       
       JButton memberDeleteBtn = new JButton("삭제");
+      memberDeleteBtn.addActionListener(new ActionListener() {
+      	public void actionPerformed(ActionEvent e) {
+            try {
+                String c_id = c_idTF.getText();
+                userService.remove(c_id);
+
+             } catch (Exception e1) {
+                JOptionPane.showMessageDialog(null, e1.getMessage());
+             }
+          }
+       });
+
       memberDeleteBtn.setBounds(210, 396, 97, 23);
       changePanel.add(memberDeleteBtn);
+      
+      updateMessageLB = new JLabel("");
+      updateMessageLB.setBounds(98, 352, 200, 21);
+      changePanel.add(updateMessageLB);
       
       JPanel centerPanel = new JPanel();
       tabbedPane.addTab("고객센터", null, centerPanel, null);
       centerPanel.setLayout(new BorderLayout(0, 0));
       
-      JTabbedPane gongjiTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+      gongjiTabbedPane = new JTabbedPane(JTabbedPane.TOP);
       centerPanel.add(gongjiTabbedPane, BorderLayout.CENTER);
       
       JPanel gongjiPanel = new JPanel();
@@ -1157,7 +1265,7 @@ public class GuardMainFrame extends JFrame {
       q_insertBtn.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
             /*********************문의등록***********************/
-            //로그인해야만 쓸 수 있게 하고싶은데...
+            //아이디가 입력되어야하는데...
             
             try {
                String qTitle = q_titleTF.getText();
@@ -1165,18 +1273,17 @@ public class GuardMainFrame extends JFrame {
                String qCateTwo = (String)q_twoCateCB.getSelectedItem();               
                String qContent = q_contentTA.getText();
             
-            Question newQuestion = new Question(0, new User("qkrrjsxo"), qTitle, qContent, qCateOne, qCateTwo, null);
+            Question newQuestion = new Question(0, new User(loginUser.getUserId()), qTitle, qContent, qCateOne, qCateTwo, null);
             QuestionService questionService = new QuestionService();
+
+            System.out.println("dd");
             int isSuccess = 
+
                   questionService.addQuestion(newQuestion);
-            if(isSuccess==1) {
-               gongjiTabbedPane.setSelectedIndex(3);
-            }else {
-               JOptionPane.showMessageDialog(null, "죄송합니다.잠시 후 이용부탁드립니다.");
-            }
+            
                
             }catch(Exception e1) {
-               
+            	e1.printStackTrace();
             }
             /*************************************************/
          }
@@ -1310,8 +1417,32 @@ public class GuardMainFrame extends JFrame {
       
    }
    /***************************************************/
-   
-   
+   /*****************로그인시 호출할메소드********************/
+   public void loginProcess(String id)throws Exception {
+		/*
+		 * 1.로그인멤버객체 저장
+		 * 2.MemberMainFrame타이틀변경
+		 * 3.로그인,회원가입 tab 불활성화 
+		 * 4.로그아웃메뉴아이템 활성화
+		 * 5.상영영화페이지로 이동
+		 */
+	   UserService inService = new UserService();
+		User loginSuccessUser=inService.finduserInfo(id);
+		loginUser = loginSuccessUser;
+		setTitle(loginUser.getUserId());
+		
+		userTabbedPane.setEnabledAt(0, false);
+		userTabbedPane.setEnabledAt(1, false);
+		gongjiTabbedPane.setEnabledAt(2, true);
+		gongjiTabbedPane.setEnabledAt(3, true);
+		tabbedPane.setSelectedIndex(0);
+		
+		//setTitle(loginSuccessUser.getUserName());
+		//memberTabbedPane.setEnabledAt(0, false);
+		//memberTabbedPane.setEnabledAt(1, false);
+		//memberTabbedPane.setEnabledAt(2, true);
+		//memberTabbedPane.setSelectedIndex(2);
+	}
    /*******************얘는 뭐임**********************/
    /*
    public  void productList() {
