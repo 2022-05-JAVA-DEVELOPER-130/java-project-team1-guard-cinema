@@ -169,15 +169,15 @@ public class GuardMainFrame extends JFrame {
       lblNewLabel_12.setBounds(12, 10, 94, 87);
       movieOnePanel.add(lblNewLabel_12);
       
-      JLabel lblNewLabel_13 = new JLabel("지구멸망");
+      JLabel lblNewLabel_13 = new JLabel("범죄도시2");
       lblNewLabel_13.setBounds(118, 10, 74, 22);
       movieOnePanel.add(lblNewLabel_13);
       
-      JLabel lblNewLabel_14 = new JLabel("<html>제~~~~~~~~~~~~~~~~~~~<br>~~~~~~~~~~~~~발</html>");
+      JLabel lblNewLabel_14 = new JLabel("<html>스포 방지</html>");
       lblNewLabel_14.setBounds(118, 67, 178, 45);
       movieOnePanel.add(lblNewLabel_14);
       
-      JLabel lblNewLabel_15 = new JLabel("스릴러/전체이용가");
+      JLabel lblNewLabel_15 = new JLabel("액션/15세 이용가");
       lblNewLabel_15.setBounds(118, 42, 114, 15);
       movieOnePanel.add(lblNewLabel_15);
       
@@ -201,15 +201,15 @@ public class GuardMainFrame extends JFrame {
       lblNewLabel_12_1.setBounds(12, 10, 94, 87);
       movieTwoPanel.add(lblNewLabel_12_1);
       
-      JLabel lblNewLabel_13_1 = new JLabel("지구멸망");
+      JLabel lblNewLabel_13_1 = new JLabel("마녀2");
       lblNewLabel_13_1.setBounds(118, 10, 74, 22);
       movieTwoPanel.add(lblNewLabel_13_1);
       
-      JLabel lblNewLabel_14_1 = new JLabel("<html>제~~~~~~~~~~~~~~~~~~~<br>~~~~~~~~~~~~~발</html>");
+      JLabel lblNewLabel_14_1 = new JLabel("<html>스포 방지</html>");
       lblNewLabel_14_1.setBounds(118, 67, 178, 45);
       movieTwoPanel.add(lblNewLabel_14_1);
       
-      JLabel lblNewLabel_15_1 = new JLabel("스릴러/전체이용가");
+      JLabel lblNewLabel_15_1 = new JLabel("액션/15세 이용가");
       lblNewLabel_15_1.setBounds(118, 42, 114, 15);
       movieTwoPanel.add(lblNewLabel_15_1);
       
@@ -239,15 +239,15 @@ public class GuardMainFrame extends JFrame {
       lblNewLabel_12_1_1.setBounds(12, 10, 94, 87);
       movieThreePanel.add(lblNewLabel_12_1_1);
       
-      JLabel lblNewLabel_13_1_1 = new JLabel("지구멸망");
+      JLabel lblNewLabel_13_1_1 = new JLabel("브로커");
       lblNewLabel_13_1_1.setBounds(118, 10, 74, 22);
       movieThreePanel.add(lblNewLabel_13_1_1);
       
-      JLabel lblNewLabel_14_1_1 = new JLabel("<html>제~~~~~~~~~~~~~~~~~~~<br>~~~~~~~~~~~~~발</html>");
+      JLabel lblNewLabel_14_1_1 = new JLabel("<html>스포 방지</html>");
       lblNewLabel_14_1_1.setBounds(118, 67, 178, 45);
       movieThreePanel.add(lblNewLabel_14_1_1);
       
-      JLabel lblNewLabel_15_1_1 = new JLabel("스릴러/전체이용가");
+      JLabel lblNewLabel_15_1_1 = new JLabel("드라마/12세 이용가");
       lblNewLabel_15_1_1.setBounds(118, 42, 114, 15);
       movieThreePanel.add(lblNewLabel_15_1_1);
       
@@ -271,15 +271,15 @@ public class GuardMainFrame extends JFrame {
       lblNewLabel_12_1_1_1.setBounds(12, 10, 94, 87);
       movieLastPanel.add(lblNewLabel_12_1_1_1);
       
-      JLabel lblNewLabel_13_1_1_1 = new JLabel("지구멸망");
+      JLabel lblNewLabel_13_1_1_1 = new JLabel("탑건");
       lblNewLabel_13_1_1_1.setBounds(118, 10, 74, 22);
       movieLastPanel.add(lblNewLabel_13_1_1_1);
       
-      JLabel lblNewLabel_14_1_1_1 = new JLabel("<html>제~~~~~~~~~~~~~~~~~~~<br>~~~~~~~~~~~~~발</html>");
+      JLabel lblNewLabel_14_1_1_1 = new JLabel("<html>스포 방지</html>");
       lblNewLabel_14_1_1_1.setBounds(118, 67, 178, 45);
       movieLastPanel.add(lblNewLabel_14_1_1_1);
       
-      JLabel lblNewLabel_15_1_1_1 = new JLabel("스릴러/전체이용가");
+      JLabel lblNewLabel_15_1_1_1 = new JLabel("액션/12세 이용가");
       lblNewLabel_15_1_1_1.setBounds(118, 42, 114, 15);
       movieLastPanel.add(lblNewLabel_15_1_1_1);
       
@@ -317,15 +317,15 @@ public class GuardMainFrame extends JFrame {
       lblNewLabel_12_2.setBounds(12, 10, 94, 87);
       movieOnePanel_1.add(lblNewLabel_12_2);
       
-      JLabel lblNewLabel_13_2 = new JLabel("지구멸망");
-      lblNewLabel_13_2.setBounds(118, 10, 74, 22);
+      JLabel lblNewLabel_13_2 = new JLabel("한산 용의 출현");
+      lblNewLabel_13_2.setBounds(118, 10, 80, 22);
       movieOnePanel_1.add(lblNewLabel_13_2);
       
-      JLabel lblNewLabel_14_2 = new JLabel("<html>제~~~~~~~~~~~~~~~~~~~<br>~~~~~~~~~~~~~발</html>");
+      JLabel lblNewLabel_14_2 = new JLabel("<html>스포 방지</html>");
       lblNewLabel_14_2.setBounds(118, 67, 178, 45);
       movieOnePanel_1.add(lblNewLabel_14_2);
       
-      JLabel lblNewLabel_15_2 = new JLabel("스릴러/전체이용가");
+      JLabel lblNewLabel_15_2 = new JLabel("액션/12세 이용가");
       lblNewLabel_15_2.setBounds(118, 42, 114, 15);
       movieOnePanel_1.add(lblNewLabel_15_2);
       
@@ -339,15 +339,15 @@ public class GuardMainFrame extends JFrame {
       lblNewLabel_12_1_2.setBounds(12, 10, 94, 87);
       movieTwoPanel_1.add(lblNewLabel_12_1_2);
       
-      JLabel lblNewLabel_13_1_2 = new JLabel("지구멸망");
-      lblNewLabel_13_1_2.setBounds(118, 10, 74, 22);
+      JLabel lblNewLabel_13_1_2 = new JLabel("토르 러브 앤 썬더");
+      lblNewLabel_13_1_2.setBounds(118, 10, 96, 22);
       movieTwoPanel_1.add(lblNewLabel_13_1_2);
       
-      JLabel lblNewLabel_14_1_2 = new JLabel("<html>제~~~~~~~~~~~~~~~~~~~<br>~~~~~~~~~~~~~발</html>");
+      JLabel lblNewLabel_14_1_2 = new JLabel("<html>스포 방지</html>");
       lblNewLabel_14_1_2.setBounds(118, 67, 178, 45);
       movieTwoPanel_1.add(lblNewLabel_14_1_2);
       
-      JLabel lblNewLabel_15_1_2 = new JLabel("스릴러/전체이용가");
+      JLabel lblNewLabel_15_1_2 = new JLabel("액션/12세 이용가");
       lblNewLabel_15_1_2.setBounds(118, 42, 114, 15);
       movieTwoPanel_1.add(lblNewLabel_15_1_2);
       
@@ -361,16 +361,16 @@ public class GuardMainFrame extends JFrame {
       lblNewLabel_12_1_1_2.setBounds(12, 10, 94, 87);
       movieThreePanel_1.add(lblNewLabel_12_1_1_2);
       
-      JLabel lblNewLabel_13_1_1_2 = new JLabel("지구멸망");
+      JLabel lblNewLabel_13_1_1_2 = new JLabel("헤어질 결심");
       lblNewLabel_13_1_1_2.setBounds(118, 10, 74, 22);
       movieThreePanel_1.add(lblNewLabel_13_1_1_2);
       
-      JLabel lblNewLabel_14_1_1_2 = new JLabel("<html>제~~~~~~~~~~~~~~~~~~~<br>~~~~~~~~~~~~~발</html>");
+      JLabel lblNewLabel_14_1_1_2 = new JLabel("<html>스포 방지</html>");
       lblNewLabel_14_1_1_2.setBounds(118, 67, 178, 45);
       movieThreePanel_1.add(lblNewLabel_14_1_1_2);
       
-      JLabel lblNewLabel_15_1_1_2 = new JLabel("스릴러/전체이용가");
-      lblNewLabel_15_1_1_2.setBounds(118, 42, 114, 15);
+      JLabel lblNewLabel_15_1_1_2 = new JLabel("미스터리,멜로/15세 이용가");
+      lblNewLabel_15_1_1_2.setBounds(118, 42, 154, 15);
       movieThreePanel_1.add(lblNewLabel_15_1_1_2);
       
       JPanel movieLastPanel_1 = new JPanel();
@@ -383,15 +383,15 @@ public class GuardMainFrame extends JFrame {
       lblNewLabel_12_1_1_1_1.setBounds(12, 10, 94, 87);
       movieLastPanel_1.add(lblNewLabel_12_1_1_1_1);
       
-      JLabel lblNewLabel_13_1_1_1_1 = new JLabel("지구멸망");
-      lblNewLabel_13_1_1_1_1.setBounds(118, 10, 74, 22);
+      JLabel lblNewLabel_13_1_1_1_1 = new JLabel("버즈 라이트이어");
+      lblNewLabel_13_1_1_1_1.setBounds(118, 10, 94, 22);
       movieLastPanel_1.add(lblNewLabel_13_1_1_1_1);
       
-      JLabel lblNewLabel_14_1_1_1_1 = new JLabel("<html>제~~~~~~~~~~~~~~~~~~~<br>~~~~~~~~~~~~~발</html>");
+      JLabel lblNewLabel_14_1_1_1_1 = new JLabel("<html>스포 방지</html>");
       lblNewLabel_14_1_1_1_1.setBounds(118, 67, 178, 45);
       movieLastPanel_1.add(lblNewLabel_14_1_1_1_1);
       
-      JLabel lblNewLabel_15_1_1_1_1 = new JLabel("스릴러/전체이용가");
+      JLabel lblNewLabel_15_1_1_1_1 = new JLabel("애니메이션/전체이용가");
       lblNewLabel_15_1_1_1_1.setBounds(118, 42, 114, 15);
       movieLastPanel_1.add(lblNewLabel_15_1_1_1_1);
       
