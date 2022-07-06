@@ -1246,6 +1246,7 @@ public class GuardMainFrame extends JFrame {
       movieReserveService=new MovieReserveService();
       movieItem = new MovieItem();
       seatListDisplay(movieItem.getI_code(),movieItem.getI_day(),movieItem.getI_daytime(),movieItem.getI_cname(),movieItem.getI_cplace());
+      logoutProcess();
    }//생성자끝
    /******************* 좌석리스트 *************/
 	
