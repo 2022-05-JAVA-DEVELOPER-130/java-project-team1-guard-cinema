@@ -60,6 +60,11 @@ import java.awt.Container;
 import javax.swing.SwingConstants;
 import java.awt.Cursor;
 import java.awt.Insets;
+import java.awt.Rectangle;
+import javax.swing.UIManager;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
+import java.awt.SystemColor;
 
 public class GuardMainFrame extends JFrame {
    
@@ -233,13 +238,16 @@ public class GuardMainFrame extends JFrame {
       scrollPane_3_1.setViewportView(movieListPanel);
       
       JPanel movieOnePanel = new JPanel();
+      movieOnePanel.setBackground(new Color(255, 255, 255));
       movieOnePanel.setLayout(null);
       movieOnePanel.setBounds(12, 154, 337, 131);
       movieListPanel.add(movieOnePanel);
+      movieOnePanel.setLayout(null);
+      
       
       JLabel lblNewLabel_12 = new JLabel("");
       lblNewLabel_12.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/범죄도시2.jpg")));
-      lblNewLabel_12.setBounds(12, 10, 94, 87);
+      lblNewLabel_12.setBounds(12, 10, 94, 111);
       movieOnePanel.add(lblNewLabel_12);
       
       JLabel lblNewLabel_13 = new JLabel("범죄도시2");
@@ -255,6 +263,10 @@ public class GuardMainFrame extends JFrame {
       movieOnePanel.add(lblNewLabel_15);
       
       reserveBtn2 = new JButton("예매");
+      reserveBtn2.setBorderPainted(false);
+      reserveBtn2.setForeground(new Color(255, 255, 255));
+      reserveBtn2.setBackground(new Color(255, 255, 255));
+      reserveBtn2.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_icon/예매1.png")));
       reserveBtn2.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
         	 movieItem = new MovieItem(); 
@@ -262,17 +274,21 @@ public class GuardMainFrame extends JFrame {
              movieItem.setI_code(2);
          }
       });
-      reserveBtn2.setBounds(264, 98, 61, 23);
+      reserveBtn2.setBounds(245, 91, 80, 30);
       movieOnePanel.add(reserveBtn2);
-      
+      //***********************************************************************꾸
       JPanel movieTwoPanel = new JPanel();
+      movieTwoPanel.setBackground(new Color(255, 255, 255));
+      movieTwoPanel.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(255, 255, 255), new Color(255, 255, 255), new Color(255, 255, 255), new Color(255, 255, 255)));
       movieTwoPanel.setLayout(null);
       movieTwoPanel.setBounds(12, 10, 337, 131);
       movieListPanel.add(movieTwoPanel);
       
+      //*************************************************************꾸
+      
       JLabel lblNewLabel_12_1 = new JLabel("");
       lblNewLabel_12_1.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/마녀.jpg")));
-      lblNewLabel_12_1.setBounds(12, 10, 94, 87);
+      lblNewLabel_12_1.setBounds(12, 10, 94, 111);
       movieTwoPanel.add(lblNewLabel_12_1);
       
       JLabel lblNewLabel_13_1 = new JLabel("마녀2");
@@ -289,6 +305,10 @@ public class GuardMainFrame extends JFrame {
       
       /**********************************예매1**********************/
       reserveBtn1 = new JButton("예매");
+      reserveBtn1.setBorderPainted(false);
+      reserveBtn1.setForeground(new Color(255, 255, 255));
+      reserveBtn1.setBackground(new Color(255, 255, 255));
+      reserveBtn1.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_icon/예매1.png")));
       reserveBtn1.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
             
@@ -300,17 +320,19 @@ public class GuardMainFrame extends JFrame {
          }
       });
       /********************************************************/
-      reserveBtn1.setBounds(264, 98, 61, 23);
+      reserveBtn1.setBounds(245, 82, 80, 39);
       movieTwoPanel.add(reserveBtn1);
       
       JPanel movieThreePanel = new JPanel();
+      movieThreePanel.setBackground(new Color(255, 255, 255));
       movieThreePanel.setLayout(null);
       movieThreePanel.setBounds(12, 299, 337, 131);
       movieListPanel.add(movieThreePanel);
+      movieThreePanel.setLayout(null);
       
       JLabel lblNewLabel_12_1_1 = new JLabel("");
       lblNewLabel_12_1_1.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/브로커2.jpg")));
-      lblNewLabel_12_1_1.setBounds(12, 10, 94, 87);
+      lblNewLabel_12_1_1.setBounds(12, 10, 94, 111);
       movieThreePanel.add(lblNewLabel_12_1_1);
       
       JLabel lblNewLabel_13_1_1 = new JLabel("브로커");
@@ -326,6 +348,9 @@ public class GuardMainFrame extends JFrame {
       movieThreePanel.add(lblNewLabel_15_1_1);
       
       reserveBtn3 = new JButton("예매");
+      reserveBtn3.setBackground(new Color(255, 255, 255));
+      reserveBtn3.setBorderPainted(false);
+      reserveBtn3.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_icon/예매1.png")));
       reserveBtn3.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
         	 movieItem = new MovieItem();
@@ -333,17 +358,19 @@ public class GuardMainFrame extends JFrame {
              movieItem.setI_code(3);
          }
       });
-      reserveBtn3.setBounds(264, 98, 61, 23);
+      reserveBtn3.setBounds(245, 91, 80, 30);
       movieThreePanel.add(reserveBtn3);
       
       JPanel movieLastPanel = new JPanel();
+      movieLastPanel.setBackground(new Color(255, 255, 255));
       movieLastPanel.setLayout(null);
       movieLastPanel.setBounds(12, 444, 337, 131);
       movieListPanel.add(movieLastPanel);
+      movieLastPanel.setLayout(null);
       
       JLabel lblNewLabel_12_1_1_1 = new JLabel("");
       lblNewLabel_12_1_1_1.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/탑건.jpg")));
-      lblNewLabel_12_1_1_1.setBounds(12, 10, 94, 87);
+      lblNewLabel_12_1_1_1.setBounds(12, 10, 94, 111);
       movieLastPanel.add(lblNewLabel_12_1_1_1);
       
       JLabel lblNewLabel_13_1_1_1 = new JLabel("탑건");
@@ -359,6 +386,9 @@ public class GuardMainFrame extends JFrame {
       movieLastPanel.add(lblNewLabel_15_1_1_1);
       
       reserveBtn4 = new JButton("예매");
+      reserveBtn4.setBackground(new Color(255, 255, 255));
+      reserveBtn4.setBorderPainted(false);
+      reserveBtn4.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_icon/예매1.png")));
       reserveBtn4.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
         	 movieItem = new MovieItem();
@@ -366,7 +396,7 @@ public class GuardMainFrame extends JFrame {
              movieItem.setI_code(4);
          }
       });
-      reserveBtn4.setBounds(264, 98, 61, 23);
+      reserveBtn4.setBounds(245, 91, 80, 30);
       movieLastPanel.add(reserveBtn4);
       
       JPanel movieListFeaPanel = new JPanel();
@@ -384,6 +414,7 @@ public class GuardMainFrame extends JFrame {
       scrollPane_3_1_1.setViewportView(movieListPanel_1);
       
       JPanel movieOnePanel_1 = new JPanel();
+      movieOnePanel_1.setBackground(Color.WHITE);
       movieOnePanel_1.setLayout(null);
       movieOnePanel_1.setBounds(12, 154, 337, 131);
       movieListPanel_1.add(movieOnePanel_1);
@@ -406,6 +437,7 @@ public class GuardMainFrame extends JFrame {
       movieOnePanel_1.add(lblNewLabel_15_2);
       
       JPanel movieTwoPanel_1 = new JPanel();
+      movieTwoPanel_1.setBackground(Color.WHITE);
       movieTwoPanel_1.setLayout(null);
       movieTwoPanel_1.setBounds(12, 10, 337, 131);
       movieListPanel_1.add(movieTwoPanel_1);
@@ -428,6 +460,7 @@ public class GuardMainFrame extends JFrame {
       movieTwoPanel_1.add(lblNewLabel_15_1_2);
       
       JPanel movieThreePanel_1 = new JPanel();
+      movieThreePanel_1.setBackground(Color.WHITE);
       movieThreePanel_1.setLayout(null);
       movieThreePanel_1.setBounds(12, 299, 337, 131);
       movieListPanel_1.add(movieThreePanel_1);
@@ -450,6 +483,7 @@ public class GuardMainFrame extends JFrame {
       movieThreePanel_1.add(lblNewLabel_15_1_1_2);
       
       JPanel movieLastPanel_1 = new JPanel();
+      movieLastPanel_1.setBackground(Color.WHITE);
       movieLastPanel_1.setLayout(null);
       movieLastPanel_1.setBounds(12, 444, 337, 131);
       movieListPanel_1.add(movieLastPanel_1);
@@ -472,6 +506,7 @@ public class GuardMainFrame extends JFrame {
       movieLastPanel_1.add(lblNewLabel_15_1_1_1_1);
       
       JPanel reserveOnePanel = new JPanel();
+      reserveOnePanel.setBackground(Color.WHITE);
       reserveOnePanel.setLayout(null);
       movieTabbedPane.addTab("영화예매", null, reserveOnePanel, null);
       
@@ -486,6 +521,9 @@ public class GuardMainFrame extends JFrame {
       reserveOnePanel.add(cinemaPlaceCB);
       
       JButton btnNewButton = new JButton("좌석 선택");
+      btnNewButton.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_icon/좌석선택1.png")));
+      btnNewButton.setBorderPainted(false);
+      btnNewButton.setBackground(new Color(255, 255, 255));
       btnNewButton.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
             String cinemaNameStr=(String)cinemaNameCB.getSelectedItem();
@@ -497,10 +535,13 @@ public class GuardMainFrame extends JFrame {
             
          }
       });
-      btnNewButton.setBounds(144, 435, 97, 23);
+      btnNewButton.setBounds(125, 398, 127, 41);
       reserveOnePanel.add(btnNewButton);
       
       JButton btnNewButton_1 = new JButton("7월6일");
+      btnNewButton_1.setBackground(Color.WHITE);
+      btnNewButton_1.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/6일.png")));
+      btnNewButton_1.setBorderPainted(false);
       btnNewButton_1.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
             
@@ -508,88 +549,116 @@ public class GuardMainFrame extends JFrame {
              
          }
       });
-      btnNewButton_1.setBounds(12, 11, 69, 69);
+      btnNewButton_1.setBounds(7, 24, 89, 65);
       reserveOnePanel.add(btnNewButton_1);
       
       JButton btnNewButton_1_1 = new JButton("7월7일");
+      btnNewButton_1_1.setBackground(Color.WHITE);
+      btnNewButton_1_1.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+      btnNewButton_1_1.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/7.png")));
+      btnNewButton_1_1.setBorderPainted(false);
       btnNewButton_1_1.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
              movieItem.setI_day("7월7일");
          }
       });
-      btnNewButton_1_1.setBounds(109, 11, 69, 69);
+      btnNewButton_1_1.setBounds(97, 24, 89, 65);
       reserveOnePanel.add(btnNewButton_1_1);
       
       JButton btnNewButton_1_2 = new JButton("7월8일");
+      btnNewButton_1_2.setBackground(Color.WHITE);
+      btnNewButton_1_2.setBorderPainted(false);
+      btnNewButton_1_2.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/8.png")));
       btnNewButton_1_2.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
              movieItem.setI_day("7월8일");
          }
       });
-      btnNewButton_1_2.setBounds(203, 11, 69, 69);
+      btnNewButton_1_2.setBounds(197, 24, 89, 65);
       reserveOnePanel.add(btnNewButton_1_2);
       
       JButton btnNewButton_1_3 = new JButton("7월9일");
+      btnNewButton_1_3.setBackground(Color.WHITE);
+      btnNewButton_1_3.setBorderPainted(false);
+      btnNewButton_1_3.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/9.png")));
       btnNewButton_1_3.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
              movieItem.setI_day("7월9일");
          }
       });
-      btnNewButton_1_3.setBounds(300, 11, 69, 69);
+      btnNewButton_1_3.setBounds(286, 24, 89, 65);
       reserveOnePanel.add(btnNewButton_1_3);
       
       JButton btnNewButton_2 = new JButton("06시~08시");
+      btnNewButton_2.setBackground(Color.WHITE);
+      btnNewButton_2.setBorderPainted(false);
+      btnNewButton_2.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/KakaoTalk_20220707_040931163.png")));
       btnNewButton_2.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
              movieItem.setI_daytime("06시~08시");
          }
       });
-      btnNewButton_2.setBounds(12, 110, 97, 87);
+      btnNewButton_2.setBounds(24, 110, 92, 87);
       reserveOnePanel.add(btnNewButton_2);
       
       JButton btnNewButton_2_1 = new JButton("13시~15시");
+      btnNewButton_2_1.setBackground(Color.WHITE);
+      btnNewButton_2_1.setBorderPainted(false);
+      btnNewButton_2_1.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/KakaoTalk_20220707_040931163_02.png")));
       btnNewButton_2_1.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
              movieItem.setI_daytime("13시~15시");
          }
       });
-      btnNewButton_2_1.setBounds(272, 110, 97, 87);
+      btnNewButton_2_1.setBounds(256, 110, 92, 87);
       reserveOnePanel.add(btnNewButton_2_1);
       
       JButton btnNewButton_2_2 = new JButton("09시~11시");
+      btnNewButton_2_2.setBackground(Color.WHITE);
+      btnNewButton_2_2.setBorderPainted(false);
+      btnNewButton_2_2.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/ㄱㄱ.png")));
       btnNewButton_2_2.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
              movieItem.setI_daytime("09시~11시");
          }
       });
-      btnNewButton_2_2.setBounds(142, 110, 97, 87);
+      btnNewButton_2_2.setBounds(142, 110, 92, 87);
       reserveOnePanel.add(btnNewButton_2_2);
       
       JButton btnNewButton_2_3 = new JButton("16시~18시");
+      btnNewButton_2_3.setBackground(Color.WHITE);
+      btnNewButton_2_3.setBorderPainted(false);
+      btnNewButton_2_3.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/ㄴㄴ.png")));
       btnNewButton_2_3.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
              movieItem.setI_daytime("16시~18시");
          }
       });
-      btnNewButton_2_3.setBounds(12, 227, 97, 87);
+      btnNewButton_2_3.setBounds(28, 227, 92, 87);
       reserveOnePanel.add(btnNewButton_2_3);
       
       JButton btnNewButton_2_2_1 = new JButton("19시~21시");
+      btnNewButton_2_2_1.setBackground(Color.WHITE);
+      btnNewButton_2_2_1.setBorderPainted(false);
+      btnNewButton_2_2_1.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/KakaoTalk_20220707_040931163_04.png")));
       btnNewButton_2_2_1.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
              movieItem.setI_daytime("19시~21시");
          }
       });
-      btnNewButton_2_2_1.setBounds(142, 227, 97, 87);
+      btnNewButton_2_2_1.setBounds(142, 227, 92, 87);
       reserveOnePanel.add(btnNewButton_2_2_1);
       
       JButton btnNewButton_2_1_1 = new JButton("22시~24시");
+      btnNewButton_2_1_1.setBackground(Color.WHITE);
+      btnNewButton_2_1_1.setBorderPainted(false);
+      btnNewButton_2_1_1.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/KakaoTalk_20220707_040931163_05.png")));
       btnNewButton_2_1_1.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
              movieItem.setI_daytime("22시~24시");
          }
       });
-      btnNewButton_2_1_1.setBounds(272, 227, 97, 87);
+      btnNewButton_2_1_1.setBounds(256, 227, 92, 87);
       reserveOnePanel.add(btnNewButton_2_1_1);
       
       JPanel seatPanel = new JPanel();
@@ -609,7 +678,7 @@ public class GuardMainFrame extends JFrame {
       seatPanel.setLayout(null);
       
       panel = new JPanel();
-      panel.setBounds(12, 10, 356, 404);
+      panel.setBounds(12, 80, 356, 334);
       seatPanel.add(panel);
       panel.setLayout(new GridLayout(0, 5, 5, 5));
       
@@ -619,15 +688,19 @@ public class GuardMainFrame extends JFrame {
       btnNewButton_3.setBorder(new EmptyBorder(0, 0, 0, 0));
       btnNewButton_3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
       btnNewButton_3.setBackground(Color.WHITE);
-      btnNewButton_3.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/images/seat.png")));
+      btnNewButton_3.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/images/pang.png")));
       panel.add(btnNewButton_3);
       
       JPanel panel_2 = new JPanel();
+      panel_2.setBackground(Color.WHITE);
       panel_2.setBounds(12, 424, 356, 59);
       seatPanel.add(panel_2);
       panel_2.setLayout(null);
       
-      JButton btnNewButton_23 = new JButton("예매!!");
+      JButton btnNewButton_23 = new JButton("");
+      btnNewButton_23.setBorderPainted(false);
+      btnNewButton_23.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_icon/예매2.png")));
+      btnNewButton_23.setBackground(Color.WHITE);
       btnNewButton_23.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
             movieReserve = new MovieReserve(0,movieItem.getI_day(),movieItem.getI_seat(),movieItem.getI_daytime(),movieItem.getI_price(),movieItem.getI_cname(),movieItem.getI_cplace(),
@@ -643,8 +716,15 @@ public class GuardMainFrame extends JFrame {
             movieTabbedPane.setSelectedIndex(4);
          }
       });
-      btnNewButton_23.setBounds(129, 10, 97, 39);
+      btnNewButton_23.setBounds(128, 10, 97, 39);
       panel_2.add(btnNewButton_23);
+      
+      JLabel lblNewLabel_16 = new JLabel("SCREEN");
+      lblNewLabel_16.setHorizontalAlignment(SwingConstants.CENTER);
+      lblNewLabel_16.setBackground(Color.LIGHT_GRAY);
+      lblNewLabel_16.setIcon(null);
+      lblNewLabel_16.setBounds(12, 10, 356, 45);
+      seatPanel.add(lblNewLabel_16);
       
       JPanel reserveListPanel = new JPanel();
       /************************************************/
@@ -755,6 +835,9 @@ public class GuardMainFrame extends JFrame {
       joinPanel.add(emailTF);
       
       JButton joinBtn = new JButton("가입");
+      joinBtn.setBackground(SystemColor.control);
+      joinBtn.setBorderPainted(false);
+      joinBtn.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_icon/가입2.png")));
       joinBtn.addActionListener(new ActionListener() {
     /**********************회원가입**************************/
          public void actionPerformed(ActionEvent e) {
@@ -793,11 +876,14 @@ public class GuardMainFrame extends JFrame {
            }
         });
 
-      joinBtn.setBounds(72, 410, 97, 23);
+      joinBtn.setBounds(74, 395, 103, 38);
       joinPanel.add(joinBtn);
       
       JButton cancleBtn = new JButton("취소");
-      cancleBtn.setBounds(214, 410, 97, 23);
+      cancleBtn.setBackground(SystemColor.control);
+      cancleBtn.setBorderPainted(false);
+      cancleBtn.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_icon/취소1.png")));
+      cancleBtn.setBounds(207, 395, 103, 38);
       joinPanel.add(cancleBtn);
       
       JLabel lblNewLabel_6 = new JLabel("*");
@@ -828,6 +914,9 @@ public class GuardMainFrame extends JFrame {
       loginPanel.add(loginPasswordTF);
       
       JButton loginBtn = new JButton("로그인");
+      loginBtn.setBackground(SystemColor.control);
+      loginBtn.setBorderPainted(false);
+      loginBtn.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_icon/로그인.png")));
       loginBtn.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
       /********************로그인**********************/
@@ -852,11 +941,14 @@ public class GuardMainFrame extends JFrame {
       loginMessageLB.setBounds(141, 235, 181, 21);
       loginPanel.add(loginMessageLB);
 
-      loginBtn.setBounds(64, 303, 97, 23);
+      loginBtn.setBounds(64, 291, 103, 47);
       loginPanel.add(loginBtn);
       
       JButton cancleBtn2 = new JButton("취소");
-      cancleBtn2.setBounds(214, 303, 97, 23);
+      cancleBtn2.setBackground(SystemColor.control);
+      cancleBtn2.setBorderPainted(false);
+      cancleBtn2.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_icon/취소1.png")));
+      cancleBtn2.setBounds(214, 291, 103, 47);
       loginPanel.add(cancleBtn2);
       
       changePanel = new JPanel();
@@ -918,6 +1010,9 @@ public class GuardMainFrame extends JFrame {
       changePanel.add(c_emailTF);
       
       JButton memberUpdateBtn = new JButton("수정");
+      memberUpdateBtn.setBackground(SystemColor.control);
+      memberUpdateBtn.setBorderPainted(false);
+      memberUpdateBtn.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_icon/수정1.png")));
       memberUpdateBtn.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
             try {
@@ -943,10 +1038,13 @@ public class GuardMainFrame extends JFrame {
           }
        });
 
-      memberUpdateBtn.setBounds(64, 396, 97, 23);
+      memberUpdateBtn.setBounds(64, 372, 116, 47);
       changePanel.add(memberUpdateBtn);
       
       JButton memberDeleteBtn = new JButton("삭제");
+      memberDeleteBtn.setBackground(SystemColor.control);
+      memberDeleteBtn.setBorderPainted(false);
+      memberDeleteBtn.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_icon/삭제.png")));
       memberDeleteBtn.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
             try {
@@ -959,7 +1057,7 @@ public class GuardMainFrame extends JFrame {
           }
        });
 
-      memberDeleteBtn.setBounds(210, 396, 97, 23);
+      memberDeleteBtn.setBounds(210, 372, 110, 47);
       changePanel.add(memberDeleteBtn);
       
       updateMessageLB = new JLabel("");
@@ -1185,6 +1283,9 @@ public class GuardMainFrame extends JFrame {
       questionPanel.add(q_twoCateCB);
       
       JButton q_insertBtn = new JButton("등록하기");
+      q_insertBtn.setBackground(SystemColor.control);
+      q_insertBtn.setBorderPainted(false);
+      q_insertBtn.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_icon/등록.png")));
       q_insertBtn.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
             /*********************문의등록***********************/
@@ -1213,11 +1314,14 @@ public class GuardMainFrame extends JFrame {
             /*************************************************/
          }
       });
-      q_insertBtn.setBounds(39, 432, 97, 23);
+      q_insertBtn.setBounds(39, 414, 114, 41);
       questionPanel.add(q_insertBtn);
       
       JButton q_cancleBtn = new JButton("취소하기");
-      q_cancleBtn.setBounds(242, 432, 97, 23);
+      q_cancleBtn.setBackground(SystemColor.control);
+      q_cancleBtn.setBorderPainted(false);
+      q_cancleBtn.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_icon/취소1.png")));
+      q_cancleBtn.setBounds(227, 414, 114, 41);
       questionPanel.add(q_cancleBtn);
       
       JPanel personalQPanel = new JPanel();
@@ -1317,6 +1421,9 @@ public class GuardMainFrame extends JFrame {
       personalQPanel.add(p_contentTA);
       
       questionDeleteBtn = new JButton("삭제");
+      questionDeleteBtn.setBackground(SystemColor.control);
+      questionDeleteBtn.setBorderPainted(false);
+      questionDeleteBtn.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_icon/삭제444.png")));
       /*****************1:1문의삭제버튼******************/
       questionDeleteBtn.addActionListener(new ActionListener() {
 		
@@ -1343,7 +1450,7 @@ public class GuardMainFrame extends JFrame {
 	});
       
       
-      questionDeleteBtn.setBounds(298, 250, 58, 23);
+      questionDeleteBtn.setBounds(298, 251, 70, 22);
       personalQPanel.add(questionDeleteBtn);
       //productList();
 
@@ -1405,7 +1512,7 @@ public class GuardMainFrame extends JFrame {
 		for (int i = 0; i < 20; i++) {
 			int b=i+1;
 			JButton btnNewButton_3 = new JButton((i + 1) + "");
-			btnNewButton_3.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/images/seat.png")));
+			btnNewButton_3.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/images/pang.png")));
 			btnNewButton_3.addActionListener(new ActionListener() {
 
 				@Override
