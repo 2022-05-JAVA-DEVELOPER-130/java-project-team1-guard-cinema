@@ -39,6 +39,7 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 import java.awt.event.ActionEvent;
@@ -54,6 +55,8 @@ import java.awt.GridBagConstraints;
 import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
 import java.awt.Component;
+import java.awt.Container;
+
 import javax.swing.SwingConstants;
 
 public class GuardMainFrame extends JFrame {
@@ -70,6 +73,7 @@ public class GuardMainFrame extends JFrame {
    private JLabel messageLB; 
    private JLabel loginMessageLB;
    private JLabel updateLB;
+   private JPanel panel;
 
    /**************************
     *************************/
@@ -556,191 +560,13 @@ public class GuardMainFrame extends JFrame {
       movieTabbedPane.addTab("좌석", null, seatPanel, null);
       seatPanel.setLayout(null);
       
-      JPanel panel_1 = new JPanel();
-      panel_1.setBounds(12, 10, 356, 404);
-      seatPanel.add(panel_1);
-      panel_1.setLayout(new GridLayout(0, 5, 0, 0));
+      panel = new JPanel();
+      panel.setBounds(12, 10, 356, 404);
+      seatPanel.add(panel);
+      panel.setLayout(new GridLayout(0, 5, 0, 0));
       
-      JButton btnNewButton_3 = new JButton("New button");
-      btnNewButton_3.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            movieItem.setI_seat(1);
-            movieItem.setI_price(10000);
-            
-         }
-      });
-      panel_1.add(btnNewButton_3);
-      
-      JButton btnNewButton_4 = new JButton("New button");
-      btnNewButton_4.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            movieItem.setI_seat(2);
-            movieItem.setI_price(10000);
-         }
-      });
-      panel_1.add(btnNewButton_4);
-      
-      JButton btnNewButton_5 = new JButton("New button");
-      btnNewButton_5.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            movieItem.setI_seat(3);
-            movieItem.setI_price(10000);
-         }
-      });
-      panel_1.add(btnNewButton_5);
-      
-      JButton btnNewButton_6 = new JButton("New button");
-      btnNewButton_6.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            movieItem.setI_seat(4);
-            movieItem.setI_price(10000);
-         }
-      });
-      panel_1.add(btnNewButton_6);
-      
-      JButton btnNewButton_7 = new JButton("New button");
-      btnNewButton_7.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            movieItem.setI_seat(5);
-            movieItem.setI_price(10000);
-         }
-      });
-      panel_1.add(btnNewButton_7);
-      
-      JButton btnNewButton_8 = new JButton("New button");
-      btnNewButton_8.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            movieItem.setI_seat(6);
-            movieItem.setI_price(10000);
-         }
-      });
-      panel_1.add(btnNewButton_8);
-      
-      JButton btnNewButton_9 = new JButton("New button");
-      btnNewButton_9.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            movieItem.setI_seat(7);
-            movieItem.setI_price(10000);
-         }
-      });
-      panel_1.add(btnNewButton_9);
-      
-      JButton btnNewButton_10 = new JButton("New button");
-      btnNewButton_10.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            movieItem.setI_seat(8);
-            movieItem.setI_price(10000);
-         }
-      });
-      panel_1.add(btnNewButton_10);
-      
-      JButton btnNewButton_11 = new JButton("New button");
-      btnNewButton_11.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            movieItem.setI_seat(9);
-            movieItem.setI_price(10000);
-         }
-      });
-      panel_1.add(btnNewButton_11);
-      
-      JButton btnNewButton_12 = new JButton("New button");
-      btnNewButton_12.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            movieItem.setI_seat(10);
-            movieItem.setI_price(10000);
-         }
-      });
-      panel_1.add(btnNewButton_12);
-      
-      JButton btnNewButton_13 = new JButton("New button");
-      btnNewButton_13.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            movieItem.setI_seat(11);
-            movieItem.setI_price(10000);
-         }
-      });
-      panel_1.add(btnNewButton_13);
-      
-      JButton btnNewButton_14 = new JButton("New button");
-      btnNewButton_14.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            movieItem.setI_seat(12);
-            movieItem.setI_price(10000);
-         }
-      });
-      panel_1.add(btnNewButton_14);
-      
-      JButton btnNewButton_15 = new JButton("New button");
-      btnNewButton_15.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            movieItem.setI_seat(13);
-            movieItem.setI_price(10000);
-         }
-      });
-      panel_1.add(btnNewButton_15);
-      
-      JButton btnNewButton_16 = new JButton("New button");
-      btnNewButton_16.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            movieItem.setI_seat(14);
-            movieItem.setI_price(10000);
-         }
-      });
-      panel_1.add(btnNewButton_16);
-      
-      JButton btnNewButton_17 = new JButton("New button");
-      btnNewButton_17.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            movieItem.setI_seat(15);
-            movieItem.setI_price(10000);
-         }
-      });
-      panel_1.add(btnNewButton_17);
-      
-      JButton btnNewButton_18 = new JButton("New button");
-      btnNewButton_18.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            movieItem.setI_seat(16);
-            movieItem.setI_price(10000);
-         }
-      });
-      panel_1.add(btnNewButton_18);
-      
-      JButton btnNewButton_19 = new JButton("New button");
-      btnNewButton_19.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            movieItem.setI_seat(17);
-            movieItem.setI_price(10000);
-         }
-      });
-      panel_1.add(btnNewButton_19);
-      
-      JButton btnNewButton_20 = new JButton("New button");
-      btnNewButton_20.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            movieItem.setI_seat(18);
-            movieItem.setI_price(10000);
-         }
-      });
-      panel_1.add(btnNewButton_20);
-      
-      JButton btnNewButton_21 = new JButton("New button");
-      btnNewButton_21.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            movieItem.setI_seat(19);
-            movieItem.setI_price(10000);
-         }
-      });
-      panel_1.add(btnNewButton_21);
-      
-      JButton btnNewButton_22 = new JButton("New button");
-      btnNewButton_22.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            movieItem.setI_seat(20);
-            movieItem.setI_price(10000);
-         }
-      });
-      panel_1.add(btnNewButton_22);
+      JButton btnNewButton_3 = new JButton("1");
+      panel.add(btnNewButton_3);
       
       JPanel panel_2 = new JPanel();
       panel_2.setBounds(12, 424, 356, 59);
@@ -757,7 +583,6 @@ public class GuardMainFrame extends JFrame {
                MovieReserveService movieRe = new MovieReserveService();
                movieRe.movieReserve(movieReserve);
             } catch (Exception e1) {
-               // TODO Auto-generated catch block
                e1.printStackTrace();
             }
             movieTabbedPane.setSelectedIndex(4);
@@ -1393,7 +1218,68 @@ public class GuardMainFrame extends JFrame {
 
       gongjiService = new GongjiService();
       faqService = new FaqService();
+      movieReserveService=new MovieReserveService();
+      seatListDisplay();
    }//생성자끝
+   /******************* 좌석리스트 *************/
+	
+   JButton[] buttonArray = new JButton[20];
+
+	public void seatListDisplay() throws Exception {
+		List<MovieReserve> final_mv=new ArrayList<MovieReserve>();
+		
+		String cinema_place="1관";
+		String daytime="09시~11시";
+		
+		List<MovieReserve> mv1= movieReserveService.myReserve("guard1");
+		List<MovieReserve> mv2= movieReserveService.myReserve("guard2");
+		List<MovieReserve> mv3= movieReserveService.myReserve("guard3");
+		mv1.addAll(mv2);
+		mv1.addAll(mv3);
+		
+		System.out.println(mv1.size());
+		for(MovieReserve mv:mv1) {
+			
+			if(mv.getCinema_place().equals(cinema_place) && mv.getMovie_daytime().equals(daytime)) {
+				final_mv.add(mv);
+				System.out.println(mv);
+			}
+		}
+		
+		
+		
+		
+		
+		
+		panel.removeAll();
+		for (int i = 0; i < 20; i++) {
+			JButton btnNewButton_3 = new JButton((i + 1) + "");
+			btnNewButton_3.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					JButton selectecButton = (JButton) e.getSource();
+					System.out.println(selectecButton.getText() + "번좌석");
+				}
+			});
+			panel.add(btnNewButton_3);
+			buttonArray[i] = btnNewButton_3;
+		}
+		
+		for(int i=1;i<=20;i++) {
+			
+			for (MovieReserve movieReserve : final_mv) {
+				if(i==movieReserve.getMovie_seat_num()) {
+					if(movieReserve.getUser().getUserId().equals("guard1")) {
+						buttonArray[i+1].setText(buttonArray[i+1].getText()+"[내예약]");
+					}
+					buttonArray[i+1].setEnabled(false);
+				}
+			}
+		}
+		
+	}
+
    /********************공지리스트*********************/
    public void gongjiListDisplay() throws Exception{
       List<Gongji> gongjiList = gongjiService.selectAll();
