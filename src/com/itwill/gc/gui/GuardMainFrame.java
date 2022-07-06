@@ -68,7 +68,7 @@ public class GuardMainFrame extends JFrame {
    public MovieItem movieItem = null;
    private MovieReserveService movieReserveService =null;
    private MovieReserve movieReserve = null;
-   private User loginUser;
+   private User loginUser = null;
    private UserService userService;
    private JLabel messageLB; 
    private JLabel loginMessageLB;
@@ -119,6 +119,10 @@ public class GuardMainFrame extends JFrame {
    private JTabbedPane movieTabbedPane;
    private JTabbedPane tabbedPane;
    private JMenuItem logoutMenuItem;
+   private JButton reserveBtn1;
+   private JButton reserveBtn2;
+   private JButton reserveBtn3;
+   private JButton reserveBtn4;
 
    /**
     * Launch the application.
@@ -170,7 +174,13 @@ public class GuardMainFrame extends JFrame {
       logoutMenuItem = new JMenuItem("로그아웃");
       logoutMenuItem.setHorizontalTextPosition(SwingConstants.LEFT);
       logoutMenuItem.setHorizontalAlignment(SwingConstants.LEFT);
-      
+     /*********************로그아웃*********************/
+      logoutMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				logoutProcess();
+			}
+		});
+     /***************************************************/ 
       mainMenu.add(logoutMenuItem);
       contentPane = new JPanel();
       contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -193,7 +203,7 @@ public class GuardMainFrame extends JFrame {
       
       JScrollPane scrollPane_3_1 = new JScrollPane();
       scrollPane_3_1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-      movieListIngPanel.add(scrollPane_3_1);
+      movieListIngPanel.add(scrollPane_3_1, BorderLayout.NORTH);
       
       JPanel movieListPanel = new JPanel();
       movieListPanel.setLayout(null);
@@ -223,7 +233,7 @@ public class GuardMainFrame extends JFrame {
       lblNewLabel_15.setBounds(118, 42, 114, 15);
       movieOnePanel.add(lblNewLabel_15);
       
-      JButton reserveBtn2 = new JButton("예매");
+      reserveBtn2 = new JButton("예매");
       reserveBtn2.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
             movieTabbedPane.setSelectedIndex(2);
@@ -256,7 +266,7 @@ public class GuardMainFrame extends JFrame {
       movieTwoPanel.add(lblNewLabel_15_1);
       
       /**********************************예매1**********************/
-      JButton reserveBtn1 = new JButton("예매");
+      reserveBtn1 = new JButton("예매");
       reserveBtn1.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
             
@@ -293,7 +303,7 @@ public class GuardMainFrame extends JFrame {
       lblNewLabel_15_1_1.setBounds(118, 42, 114, 15);
       movieThreePanel.add(lblNewLabel_15_1_1);
       
-      JButton reserveBtn3 = new JButton("예매");
+      reserveBtn3 = new JButton("예매");
       reserveBtn3.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
             movieTabbedPane.setSelectedIndex(2);
@@ -325,7 +335,7 @@ public class GuardMainFrame extends JFrame {
       lblNewLabel_15_1_1_1.setBounds(118, 42, 114, 15);
       movieLastPanel.add(lblNewLabel_15_1_1_1);
       
-      JButton reserveBtn4 = new JButton("예매");
+      reserveBtn4 = new JButton("예매");
       reserveBtn4.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
             movieTabbedPane.setSelectedIndex(2);
@@ -1405,8 +1415,15 @@ public class GuardMainFrame extends JFrame {
       loginUser = loginSuccessUser;
       setTitle(loginUser.getUserId());
       
+      reserveBtn1.setEnabled(true);
+	  reserveBtn2.setEnabled(true);
+	  reserveBtn3.setEnabled(true);
+	  reserveBtn4.setEnabled(true);
       userTabbedPane.setEnabledAt(0, false);
       userTabbedPane.setEnabledAt(1, false);
+      movieTabbedPane.setEnabledAt(2, true);
+	  movieTabbedPane.setEnabledAt(3, true);
+	  movieTabbedPane.setEnabledAt(4, true);
       gongjiTabbedPane.setEnabledAt(2, true);
       gongjiTabbedPane.setEnabledAt(3, true);
       tabbedPane.setSelectedIndex(0);
@@ -1417,6 +1434,34 @@ public class GuardMainFrame extends JFrame {
       //memberTabbedPane.setEnabledAt(2, true);
       //memberTabbedPane.setSelectedIndex(2);
    }
+   /*******************로그아웃시호출할메쏘드******************/
+	public void logoutProcess() {
+		/*
+		 * 1.로그인멤버객체 삭제
+		 * 2.MemberMainFrame타이틀변경
+		 * 3.로그인,회원가입 tab 활성화
+		 * 4.로그아웃메뉴아이템 불활성화
+		 * 5.회원리스트탭 불활성화
+		 */
+		this.loginUser = null;
+		setTitle("");
+		
+		reserveBtn1.setEnabled(false);
+		reserveBtn2.setEnabled(false);
+		reserveBtn3.setEnabled(false);
+		reserveBtn4.setEnabled(false);
+		userTabbedPane.setEnabledAt(0, true);
+	    userTabbedPane.setEnabledAt(1, true);
+	    movieTabbedPane.setEnabledAt(2, false);
+	    movieTabbedPane.setEnabledAt(3, false);
+	    movieTabbedPane.setEnabledAt(4, false);
+	    gongjiTabbedPane.setEnabledAt(2, false);
+	    gongjiTabbedPane.setEnabledAt(3, false);
+	    tabbedPane.setSelectedIndex(0);
+	      
+		
+		
+	}
    
    /*******************얘는 뭐임**********************/
    /*
