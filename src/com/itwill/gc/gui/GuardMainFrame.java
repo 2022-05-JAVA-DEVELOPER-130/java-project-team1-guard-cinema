@@ -125,6 +125,8 @@ public class GuardMainFrame extends JFrame {
    private JButton reserveBtn2;
    private JButton reserveBtn3;
    private JButton reserveBtn4;
+   private JTextArea p_contentTA;
+   private JButton questionDeleteBtn;
 
    /**
     * Launch the application.
@@ -634,6 +636,17 @@ public class GuardMainFrame extends JFrame {
       panel_2.add(btnNewButton_23);
       
       JPanel reserveListPanel = new JPanel();
+      /************************************************/
+      reserveListPanel.addComponentListener(new ComponentAdapter() {
+          public void componentShown(ComponentEvent e) {
+             try {
+                movieRListDisplay();
+             }catch(Exception e1) {
+                e1.printStackTrace();
+             }
+          }
+       });
+      /************************************************/
       movieTabbedPane.addTab("예매내역", null, reserveListPanel, null);
       reserveListPanel.setLayout(null);
       
@@ -1195,17 +1208,20 @@ public class GuardMainFrame extends JFrame {
       questionPanel.add(q_cancleBtn);
       
       JPanel personalQPanel = new JPanel();
-      /*******************1대1문의***********************/
-      faqPanel.addComponentListener(new ComponentAdapter() {
-          public void componentShown(ComponentEvent e) {
-             try {
-                questionListDisplay();
-             }catch(Exception e1) {
-                e1.printStackTrace();
-             }
-          }
-       });
+      personalQPanel.addComponentListener(new ComponentAdapter() {
+    /*******************1대1문의***********************/
+      	@Override
+      	public void componentShown(ComponentEvent e) {
+      		try {
+				questionListDisplay();
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+      	}
+      });
       /**************************************************/
+    
       gongjiTabbedPane.addTab("문의목록", null, personalQPanel, null);
       personalQPanel.setLayout(null);
       
@@ -1214,6 +1230,29 @@ public class GuardMainFrame extends JFrame {
       personalQPanel.add(scrollPane_2);
       
       questionListTable = new JTable();
+      /*******************************************************/
+      questionListTable.addMouseListener(new MouseAdapter() {
+         public void mouseClicked(MouseEvent e) {
+            try {
+               int selectedRow = questionListTable.getSelectedRow();
+               int selectedQuestionNo = (int)questionListTable.getValueAt(selectedRow,0);
+               String UserId = loginUser.getUserId();
+               Question findQuestion = questionService.selectByNo(UserId, selectedQuestionNo);
+               String noStr = findQuestion.getQuestion_no()+"";
+               
+               p_noTF.setText(noStr);
+               p_oneCateTF.setText(findQuestion.getQuestion_cate_one());
+               p_twoCateTF.setText(findQuestion.getQuestion_cate_two());
+               p_titleTF.setText(findQuestion.getQuestion_title());
+               p_contentTA.setText(findQuestion.getQuestion_content());
+              
+               
+            }catch(Exception e1) {
+               e1.printStackTrace();
+            }
+         }
+      });
+      /*******************************************************/
       questionListTable.setModel(new DefaultTableModel(
          new Object[][] {
             {null, null, null, null, null},
@@ -1260,13 +1299,15 @@ public class GuardMainFrame extends JFrame {
       p_titleTF.setBounds(154, 251, 139, 21);
       personalQPanel.add(p_titleTF);
       
-      JTextArea p_contentTA = new JTextArea();
+      p_contentTA = new JTextArea();
       p_contentTA.setBounds(12, 282, 356, 201);
       personalQPanel.add(p_contentTA);
       
-      JButton btnNewButton_24 = new JButton("삭제");
-      btnNewButton_24.setBounds(298, 250, 58, 23);
-      personalQPanel.add(btnNewButton_24);
+      questionDeleteBtn = new JButton("삭제");
+      /*****************1:1문의삭제버튼******************/
+      
+      questionDeleteBtn.setBounds(298, 250, 58, 23);
+      personalQPanel.add(questionDeleteBtn);
       //productList();
 
       gongjiService = new GongjiService();
@@ -1447,6 +1488,37 @@ public class GuardMainFrame extends JFrame {
       
    }
    /***************************************************/
+   /**********************에매내역리스트***********************/
+   public void movieRListDisplay() throws Exception{
+	   List<MovieReserve> movieReserveList = movieReserveService.myReserve(loginUser.getUserId());
+	   Vector movieRListVector = new Vector();
+	   
+	   for(MovieReserve movieReserve : movieReserveList) {
+		   Vector rowVector = new Vector();
+		   rowVector.add(movieReserve.getMovie().getMovie_title());
+		   rowVector.add(movieReserve.getMovie_day());
+		   rowVector.add(movieReserve.getMovie_daytime());
+		   rowVector.add(movieReserve.getCinema_name());
+		   rowVector.add(movieReserve.getCinema_place());
+		   rowVector.add(movieReserve.getMovie_seat_num());
+	       
+	       movieRListVector.add(rowVector);
+	   }
+	   	Vector columnVector = new Vector();
+	       columnVector.add("영화제목");
+	       columnVector.add("상영날짜");
+	       columnVector.add("상영시간");
+	       columnVector.add("영화관");
+	       columnVector.add("상영관");
+	       columnVector.add("좌석");
+	       
+	       DefaultTableModel defaultTableModel=
+	               new DefaultTableModel(movieRListVector, columnVector);
+	         reserveTable.setModel(defaultTableModel);
+	         
+   }
+   
+   /***********************************************************/
    /*****************로그인시 호출할메소드********************/
    public void loginProcess(String id)throws Exception {
       /*
