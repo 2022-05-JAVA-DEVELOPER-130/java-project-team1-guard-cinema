@@ -165,6 +165,7 @@ public class GuardMainFrame extends JFrame {
       movieListPanel.add(movieOnePanel);
       
       JLabel lblNewLabel_12 = new JLabel("");
+      lblNewLabel_12.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/범죄도시2.jpg")));
       lblNewLabel_12.setBounds(12, 10, 94, 87);
       movieOnePanel.add(lblNewLabel_12);
       
@@ -196,7 +197,7 @@ public class GuardMainFrame extends JFrame {
       movieListPanel.add(movieTwoPanel);
       
       JLabel lblNewLabel_12_1 = new JLabel("");
-      lblNewLabel_12_1.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/images/50dalma.jpg")));
+      lblNewLabel_12_1.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/마녀.jpg")));
       lblNewLabel_12_1.setBounds(12, 10, 94, 87);
       movieTwoPanel.add(lblNewLabel_12_1);
       
@@ -234,6 +235,7 @@ public class GuardMainFrame extends JFrame {
       movieListPanel.add(movieThreePanel);
       
       JLabel lblNewLabel_12_1_1 = new JLabel("");
+      lblNewLabel_12_1_1.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/브로커2.jpg")));
       lblNewLabel_12_1_1.setBounds(12, 10, 94, 87);
       movieThreePanel.add(lblNewLabel_12_1_1);
       
@@ -265,6 +267,7 @@ public class GuardMainFrame extends JFrame {
       movieListPanel.add(movieLastPanel);
       
       JLabel lblNewLabel_12_1_1_1 = new JLabel("");
+      lblNewLabel_12_1_1_1.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/탑건.jpg")));
       lblNewLabel_12_1_1_1.setBounds(12, 10, 94, 87);
       movieLastPanel.add(lblNewLabel_12_1_1_1);
       
@@ -310,6 +313,7 @@ public class GuardMainFrame extends JFrame {
       movieListPanel_1.add(movieOnePanel_1);
       
       JLabel lblNewLabel_12_2 = new JLabel("");
+      lblNewLabel_12_2.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/한산 용의 출현.jpg")));
       lblNewLabel_12_2.setBounds(12, 10, 94, 87);
       movieOnePanel_1.add(lblNewLabel_12_2);
       
@@ -331,6 +335,7 @@ public class GuardMainFrame extends JFrame {
       movieListPanel_1.add(movieTwoPanel_1);
       
       JLabel lblNewLabel_12_1_2 = new JLabel("");
+      lblNewLabel_12_1_2.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/토르 러브 앤 썬더.jpg")));
       lblNewLabel_12_1_2.setBounds(12, 10, 94, 87);
       movieTwoPanel_1.add(lblNewLabel_12_1_2);
       
@@ -352,6 +357,7 @@ public class GuardMainFrame extends JFrame {
       movieListPanel_1.add(movieThreePanel_1);
       
       JLabel lblNewLabel_12_1_1_2 = new JLabel("");
+      lblNewLabel_12_1_1_2.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/헤어질 결심.jpg")));
       lblNewLabel_12_1_1_2.setBounds(12, 10, 94, 87);
       movieThreePanel_1.add(lblNewLabel_12_1_1_2);
       
@@ -373,6 +379,7 @@ public class GuardMainFrame extends JFrame {
       movieListPanel_1.add(movieLastPanel_1);
       
       JLabel lblNewLabel_12_1_1_1_1 = new JLabel("");
+      lblNewLabel_12_1_1_1_1.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_movie_image/버즈 라이트이어.jpg")));
       lblNewLabel_12_1_1_1_1.setBounds(12, 10, 94, 87);
       movieLastPanel_1.add(lblNewLabel_12_1_1_1_1);
       
