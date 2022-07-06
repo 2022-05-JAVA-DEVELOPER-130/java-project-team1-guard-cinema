@@ -152,7 +152,7 @@ public class GuardMainFrame extends JFrame {
       
       JMenu mainMenu = new JMenu("");
       mainMenu.setHorizontalAlignment(SwingConstants.RIGHT);
-      mainMenu.setIcon(new ImageIcon("C:\\Users\\itwill05\\Downloads\\menu (1).png"));
+      mainMenu.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/team1_icon/menu1 (1).png")));
       mainMenu.setHorizontalTextPosition(SwingConstants.RIGHT);
       menuBar.add(mainMenu);
       
