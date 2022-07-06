@@ -1220,19 +1220,20 @@ public class GuardMainFrame extends JFrame {
       gongjiService = new GongjiService();
       faqService = new FaqService();
       movieReserveService=new MovieReserveService();
-      seatListDisplay();
+      movieItem = new MovieItem();
+      seatListDisplay(movieItem.getI_code(),movieItem.getI_day(),movieItem.getI_daytime(),movieItem.getI_cname(),movieItem.getI_cplace());
    }//생성자끝
    /******************* 좌석리스트 *************/
 	
    JButton[] buttonArray = new JButton[20];
 
-	public void seatListDisplay() throws Exception {
+	public void seatListDisplay(int movieCode,String movieDay,String movieDT,String movieCname,String movieCplace) throws Exception {
 		List<MovieReserve> final_mv=new ArrayList<MovieReserve>();
 		
-		String cinema_place="1관";
+		//String cinema_place="1관";
 		//String cinema_name = movieItem.getI_cname();
 		//int mov_code = movieItem.getI_code();
-		String daytime="09시~11시";
+		//String daytime="09시~11시";
 		//String dayd =movieItem.getI_day();
 		
 		List<MovieReserve> mv1= movieReserveService.myReserve("guard1");
@@ -1248,7 +1249,7 @@ public class GuardMainFrame extends JFrame {
 		System.out.println(mv1.size());
 		for(MovieReserve mv:mv1) {
 			
-			if(mv.getCinema_place().equals(cinema_place) && mv.getMovie_daytime().equals(daytime)) {
+			if(mv.getCinema_place().equals(movieCplace) && mv.getMovie_daytime().equals(movieDT)&& mv.getMovie_day().equals(movieDay) && mv.getMovie().getMovie_code() == movieCode && mv.getCinema_name().equals(movieCname)) {
 				final_mv.add(mv);
 				System.out.println(mv);
 			}
@@ -1261,6 +1262,7 @@ public class GuardMainFrame extends JFrame {
 		
 		panel.removeAll();
 		for (int i = 0; i < 20; i++) {
+			int b=i+1;
 			JButton btnNewButton_3 = new JButton((i + 1) + "");
 			btnNewButton_3.addActionListener(new ActionListener() {
 
@@ -1268,6 +1270,7 @@ public class GuardMainFrame extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					JButton selectecButton = (JButton) e.getSource();
 					System.out.println(selectecButton.getText() + "번좌석");
+					movieItem.setI_seat(b);
 				}
 			});
 			panel.add(btnNewButton_3);
@@ -1279,7 +1282,7 @@ public class GuardMainFrame extends JFrame {
 			for (MovieReserve movieReserve : final_mv) {
 				if(i==movieReserve.getMovie_seat_num()) {
 					if(movieReserve.getUser().getUserId().equals("guard1")) {
-						buttonArray[i+1].setText(buttonArray[i+1].getText()+"[내예약]");
+						buttonArray[i+1].setText(buttonArray[i+1].getText()+"[내 예약]");
 					}
 					buttonArray[i+1].setEnabled(false);
 				}
