@@ -716,7 +716,7 @@ public class GuardMainFrame extends JFrame {
             movieTabbedPane.setSelectedIndex(4);
          }
       });
-      btnNewButton_23.setBounds(128, 10, 97, 39);
+      btnNewButton_23.setBounds(124, 0, 97, 39);
       panel_2.add(btnNewButton_23);
       
       JLabel lblNewLabel_16 = new JLabel("SCREEN");
