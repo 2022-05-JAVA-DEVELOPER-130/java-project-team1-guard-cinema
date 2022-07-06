@@ -166,13 +166,23 @@ public class GuardMainFrame extends JFrame {
       menuBar.add(mainMenu);
       
       JMenuItem movieMenuItem = new JMenuItem("영화");
+      movieMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				tabbedPane.setSelectedIndex(0);
+			}
+		});
       mainMenu.add(movieMenuItem);
       
       JSeparator separator = new JSeparator();
       mainMenu.add(separator);
       
       JMenuItem loginMenuItem = new JMenuItem("로그인");
-      loginMenuItem.setHorizontalAlignment(SwingConstants.LEFT);
+      loginMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				tabbedPane.setSelectedIndex(1);
+				userTabbedPane.setSelectedIndex(1);
+			}
+		});
       mainMenu.add(loginMenuItem);
       
       logoutMenuItem = new JMenuItem("로그아웃");
@@ -1192,7 +1202,9 @@ public class GuardMainFrame extends JFrame {
             int isSuccess = 
 
                   questionService.addQuestion(newQuestion);
-            
+            	  JOptionPane.showMessageDialog(null, "문의등록이 완료되었습니다.");
+            	  gongjiTabbedPane.setSelectedIndex(3);
+            	  
                
             }catch(Exception e1) {
                e1.printStackTrace();
@@ -1305,6 +1317,30 @@ public class GuardMainFrame extends JFrame {
       
       questionDeleteBtn = new JButton("삭제");
       /*****************1:1문의삭제버튼******************/
+      questionDeleteBtn.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			try {
+				String p_no = p_noTF.getText();
+				questionService.deleteQuestion(Integer.parseInt(p_no));
+				questionListDisplay();
+				
+				p_noTF.setText("");
+	            p_oneCateTF.setText("");
+	            p_twoCateTF.setText("");
+	            p_titleTF.setText("");
+	            p_contentTA.setText("");
+	            questionDeleteBtn.setSelected(false);
+				
+				
+			} catch (Exception e1) {
+				JOptionPane.showMessageDialog(null, e1.getMessage());
+			}
+			
+		}
+	});
+      
       
       questionDeleteBtn.setBounds(298, 250, 58, 23);
       personalQPanel.add(questionDeleteBtn);
