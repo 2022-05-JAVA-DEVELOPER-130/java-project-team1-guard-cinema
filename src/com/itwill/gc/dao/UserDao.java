@@ -3,8 +3,11 @@ package com.itwill.gc.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.itwill.gc.common.DataSource;
+import com.itwill.gc.vo.Food;
 import com.itwill.gc.vo.User;
 
 
@@ -108,4 +111,22 @@ public class UserDao {
          return false;
       }
    }
+   
+   // 유저 전체 리스트
+   public List<User> selectAllUser() throws Exception {
+		List<User> userList = new ArrayList<User>();
+
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(UserSql.USER_LIST);
+		ResultSet rs = pstmt.executeQuery();
+		while (rs.next()) {
+			User user = new User(rs.getString("user_id"), rs.getString("user_name"), rs.getString("user_ph_num"),
+					rs.getString("user_jumin"), rs.getString("user_email"), rs.getString("user_password"));
+			userList.add(user);
+		}
+		rs.close();
+		pstmt.close();
+		con.close();
+		return userList;
+	}
 }
