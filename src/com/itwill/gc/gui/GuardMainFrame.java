@@ -1157,7 +1157,7 @@ public class GuardMainFrame extends JFrame {
       q_insertBtn.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
             /*********************문의등록***********************/
-            //로그인해야만 쓸 수 있게 하고싶은데...
+            //아이디가 입력되어야하는데...
             
             try {
                String qTitle = q_titleTF.getText();
@@ -1167,13 +1167,9 @@ public class GuardMainFrame extends JFrame {
             
             Question newQuestion = new Question(0, new User("qkrrjsxo"), qTitle, qContent, qCateOne, qCateTwo, null);
             QuestionService questionService = new QuestionService();
-            int isSuccess = 
+           
                   questionService.addQuestion(newQuestion);
-            if(isSuccess==1) {
-               gongjiTabbedPane.setSelectedIndex(3);
-            }else {
-               JOptionPane.showMessageDialog(null, "죄송합니다.잠시 후 이용부탁드립니다.");
-            }
+            
                
             }catch(Exception e1) {
                
