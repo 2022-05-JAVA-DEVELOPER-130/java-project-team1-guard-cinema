@@ -106,6 +106,10 @@ public class GuardMainFrame extends JFrame {
    private JTextArea m_contentTA;
    private JTable reserveTable;
    private JLabel updateMessageLB;
+   private JTabbedPane userTabbedPane;
+   private JTabbedPane gongjiTabbedPane;
+   private JTabbedPane movieTabbedPane;
+   private JTabbedPane tabbedPane;
 
    /**
     * Launch the application.
@@ -135,14 +139,14 @@ public class GuardMainFrame extends JFrame {
       contentPane.setLayout(new BorderLayout(0, 0));
       setContentPane(contentPane);
       
-      JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+      tabbedPane = new JTabbedPane(JTabbedPane.TOP);
       contentPane.add(tabbedPane, BorderLayout.CENTER);
       
       JPanel moviePanel = new JPanel();
       tabbedPane.addTab("영화", null, moviePanel, null);
       moviePanel.setLayout(new BorderLayout(0, 0));
       
-      JTabbedPane movieTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+      movieTabbedPane = new JTabbedPane(JTabbedPane.TOP);
       moviePanel.add(movieTabbedPane);
       
       JPanel movieListIngPanel = new JPanel();
@@ -766,7 +770,7 @@ public class GuardMainFrame extends JFrame {
       tabbedPane.addTab("회원", null, userPanel, null);
       userPanel.setLayout(new BorderLayout(0, 0));
       
-      JTabbedPane userTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+      userTabbedPane = new JTabbedPane(JTabbedPane.TOP);
       userPanel.add(userTabbedPane, BorderLayout.CENTER);
       
       JPanel joinPanel = new JPanel();
@@ -829,6 +833,7 @@ public class GuardMainFrame extends JFrame {
       
       JButton joinBtn = new JButton("가입");
       joinBtn.addActionListener(new ActionListener() {
+    /**********************회원가입**************************/
          public void actionPerformed(ActionEvent e) {
         	 try {
 
@@ -846,12 +851,22 @@ public class GuardMainFrame extends JFrame {
                  }else {
                 	 User createUser = new User(id,name,phone,jumin,email,password);
                 	 UserService userservice = new UserService();
+              
+                	 int isSuccess = 
                 	 userservice.create(createUser);
+                if(isSuccess==1) {
+                	userTabbedPane.setSelectedIndex(1);
+                }else {
+                	JOptionPane.showMessageDialog(null, "다시 시도해주십시오.");
+                	idTF.requestFocus();
+					idTF.setSelectionStart(0);
+					idTF.setSelectionEnd(id.length());
+                }
                  }
               } catch (Exception e1) {
             	  e1.printStackTrace();
               }
-
+        	 /******************************/
            }
         });
 
@@ -892,6 +907,7 @@ public class GuardMainFrame extends JFrame {
       JButton loginBtn = new JButton("로그인");
       loginBtn.addActionListener(new ActionListener() {
       	public void actionPerformed(ActionEvent e) {
+      /********************로그인**********************/
             try {
                 String id = loginIdTF.getText();
                 String password = loginPasswordTF.getText();
@@ -1031,7 +1047,7 @@ public class GuardMainFrame extends JFrame {
       tabbedPane.addTab("고객센터", null, centerPanel, null);
       centerPanel.setLayout(new BorderLayout(0, 0));
       
-      JTabbedPane gongjiTabbedPane = new JTabbedPane(JTabbedPane.TOP);
+      gongjiTabbedPane = new JTabbedPane(JTabbedPane.TOP);
       centerPanel.add(gongjiTabbedPane, BorderLayout.CENTER);
       
       JPanel gongjiPanel = new JPanel();
@@ -1401,18 +1417,26 @@ public class GuardMainFrame extends JFrame {
       
    }
    /***************************************************/
-   
+   /*****************로그인시 호출할메소드********************/
    public void loginProcess(String id)throws Exception {
 		/*
 		 * 1.로그인멤버객체 저장
 		 * 2.MemberMainFrame타이틀변경
-		 * 3.로그인,회원가입 tab 불활성화
+		 * 3.로그인,회원가입 tab 불활성화 
 		 * 4.로그아웃메뉴아이템 활성화
-		 * 5.회원리스트탭 활성화
+		 * 5.상영영화페이지로 이동
 		 */
 	   UserService inService = new UserService();
 		User loginSuccessUser=inService.finduserInfo(id);
 		loginUser = loginSuccessUser;
+		setTitle(loginUser.getUserId());
+		
+		userTabbedPane.setEnabledAt(0, false);
+		userTabbedPane.setEnabledAt(1, false);
+		gongjiTabbedPane.setEnabledAt(2, true);
+		gongjiTabbedPane.setEnabledAt(3, true);
+		tabbedPane.setSelectedIndex(0);
+		
 		//setTitle(loginSuccessUser.getUserName());
 		//memberTabbedPane.setEnabledAt(0, false);
 		//memberTabbedPane.setEnabledAt(1, false);
