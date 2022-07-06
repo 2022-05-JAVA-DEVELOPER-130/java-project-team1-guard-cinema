@@ -1,6 +1,9 @@
 package com.itwill.gc.service;
 
+import java.util.List;
+
 import com.itwill.gc.dao.UserDao;
+import com.itwill.gc.vo.Food;
 import com.itwill.gc.vo.User;
 
 
@@ -62,6 +65,11 @@ public class UserService {
    //회원탈퇴
    public int remove(String userId) throws Exception{
       return userDao.remove(userId);
+   }
+   
+   //유저 전체 리스트
+   public List<User> selectAllUser() throws Exception {
+	      return userDao.selectAllUser();
    }
    
    

@@ -14,4 +14,8 @@ public class UserSql {
    "select user_id, user_name, user_ph_num, user_jumin, user_email, user_password from user_info where user_id=?";
    public static final String SELECT_BY_ID_COUNT=
    "select count(*) as cnt from user_info where user_id=?";
+   public static final String USER_LIST=
+   "select * from user_info";
+   
+   
 }
