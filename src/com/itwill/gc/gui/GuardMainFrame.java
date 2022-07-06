@@ -58,6 +58,8 @@ import java.awt.Component;
 import java.awt.Container;
 
 import javax.swing.SwingConstants;
+import java.awt.Cursor;
+import java.awt.Insets;
 
 public class GuardMainFrame extends JFrame {
    
@@ -65,7 +67,7 @@ public class GuardMainFrame extends JFrame {
    private GongjiService gongjiService;
    private FaqService faqService;
    private QuestionService questionService;
-   public MovieItem movieItem = null;
+   private MovieItem movieItem = new MovieItem();
    private MovieReserveService movieReserveService =null;
    private MovieReserve movieReserve = null;
    private User loginUser;
@@ -194,6 +196,12 @@ public class GuardMainFrame extends JFrame {
       movieListIngPanel.add(scrollPane_3_1);
       
       JPanel movieListPanel = new JPanel();
+      movieListPanel.addComponentListener(new ComponentAdapter() {
+      	@Override
+      	public void componentShown(ComponentEvent e) {
+      		//movieItem = new MovieItem();
+      	}
+      });
       movieListPanel.setLayout(null);
       movieListPanel.setPreferredSize(new Dimension(10, 800));
       movieListPanel.setBackground(Color.DARK_GRAY);
@@ -224,6 +232,7 @@ public class GuardMainFrame extends JFrame {
       JButton reserveBtn2 = new JButton("예매");
       reserveBtn2.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
+        	 movieItem = new MovieItem(); 
             movieTabbedPane.setSelectedIndex(2);
              movieItem.setI_code(2);
          }
@@ -294,6 +303,7 @@ public class GuardMainFrame extends JFrame {
       JButton reserveBtn3 = new JButton("예매");
       reserveBtn3.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
+        	 movieItem = new MovieItem();
             movieTabbedPane.setSelectedIndex(2);
              movieItem.setI_code(3);
          }
@@ -326,6 +336,7 @@ public class GuardMainFrame extends JFrame {
       JButton reserveBtn4 = new JButton("예매");
       reserveBtn4.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
+        	 movieItem = new MovieItem();
             movieTabbedPane.setSelectedIndex(2);
              movieItem.setI_code(4);
          }
@@ -458,6 +469,7 @@ public class GuardMainFrame extends JFrame {
             movieItem.setI_cplace(cinemaPlace);
             movieTabbedPane.setSelectedIndex(3);
             
+            
          }
       });
       btnNewButton.setBounds(144, 435, 97, 23);
@@ -556,6 +568,17 @@ public class GuardMainFrame extends JFrame {
       reserveOnePanel.add(btnNewButton_2_1_1);
       
       JPanel seatPanel = new JPanel();
+      seatPanel.addComponentListener(new ComponentAdapter() {
+      	@Override
+      	public void componentShown(ComponentEvent e) {
+      		 try {
+				seatListDisplay(movieItem.getI_code(),movieItem.getI_day(),movieItem.getI_daytime(),movieItem.getI_cname(),movieItem.getI_cplace());
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+      	}
+      });
       seatPanel.setBackground(Color.WHITE);
       movieTabbedPane.addTab("좌석", null, seatPanel, null);
       seatPanel.setLayout(null);
@@ -563,9 +586,15 @@ public class GuardMainFrame extends JFrame {
       panel = new JPanel();
       panel.setBounds(12, 10, 356, 404);
       seatPanel.add(panel);
-      panel.setLayout(new GridLayout(0, 5, 0, 0));
+      panel.setLayout(new GridLayout(0, 5, 5, 5));
       
       JButton btnNewButton_3 = new JButton("1");
+      btnNewButton_3.setMargin(new Insets(2, 0, 2, 0));
+      btnNewButton_3.setBorderPainted(false);
+      btnNewButton_3.setBorder(new EmptyBorder(0, 0, 0, 0));
+      btnNewButton_3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+      btnNewButton_3.setBackground(Color.WHITE);
+      btnNewButton_3.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/images/seat.png")));
       panel.add(btnNewButton_3);
       
       JPanel panel_2 = new JPanel();
@@ -577,7 +606,7 @@ public class GuardMainFrame extends JFrame {
       btnNewButton_23.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
             movieReserve = new MovieReserve(0,movieItem.getI_day(),movieItem.getI_seat(),movieItem.getI_daytime(),movieItem.getI_price(),movieItem.getI_cname(),movieItem.getI_cplace(),
-                  new Movie(movieItem.getI_code()),new User("guard1"));
+                  new Movie(movieItem.getI_code()),new User(loginUser.getUserId()));
             System.out.println(movieReserve);
             try {
                MovieReserveService movieRe = new MovieReserveService();
@@ -1220,14 +1249,16 @@ public class GuardMainFrame extends JFrame {
       gongjiService = new GongjiService();
       faqService = new FaqService();
       movieReserveService=new MovieReserveService();
-      movieItem = new MovieItem();
-      seatListDisplay(movieItem.getI_code(),movieItem.getI_day(),movieItem.getI_daytime(),movieItem.getI_cname(),movieItem.getI_cplace());
+     // movieItem = new MovieItem();
+     
    }//생성자끝
    /******************* 좌석리스트 *************/
 	
    JButton[] buttonArray = new JButton[20];
 
 	public void seatListDisplay(int movieCode,String movieDay,String movieDT,String movieCname,String movieCplace) throws Exception {
+		
+		
 		List<MovieReserve> final_mv=new ArrayList<MovieReserve>();
 		
 		//String cinema_place="1관";
@@ -1245,13 +1276,18 @@ public class GuardMainFrame extends JFrame {
 		
 		mv1.addAll(mv2);
 		mv1.addAll(mv3);
+		mv1.addAll(mv4);
+		mv1.addAll(mv5);
+		mv1.addAll(mv6);
+		
 		
 		System.out.println(mv1.size());
 		for(MovieReserve mv:mv1) {
 			
 			if(mv.getCinema_place().equals(movieCplace) && mv.getMovie_daytime().equals(movieDT)&& mv.getMovie_day().equals(movieDay) && mv.getMovie().getMovie_code() == movieCode && mv.getCinema_name().equals(movieCname)) {
 				final_mv.add(mv);
-				System.out.println(mv);
+				System.out.println(final_mv.size());
+				
 			}
 		}
 		
@@ -1264,27 +1300,34 @@ public class GuardMainFrame extends JFrame {
 		for (int i = 0; i < 20; i++) {
 			int b=i+1;
 			JButton btnNewButton_3 = new JButton((i + 1) + "");
+			btnNewButton_3.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/images/seat.png")));
 			btnNewButton_3.addActionListener(new ActionListener() {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					JButton selectecButton = (JButton) e.getSource();
 					System.out.println(selectecButton.getText() + "번좌석");
+				
 					movieItem.setI_seat(b);
 				}
 			});
 			panel.add(btnNewButton_3);
 			buttonArray[i] = btnNewButton_3;
 		}
-		
-		for(int i=1;i<=20;i++) {
-			
+		System.out.println(final_mv.size());
+		for(int i=0;i<20;i++) {
+			int seat_no=i+1;
 			for (MovieReserve movieReserve : final_mv) {
-				if(i==movieReserve.getMovie_seat_num()) {
-					if(movieReserve.getUser().getUserId().equals("guard1")) {
+				if(seat_no == movieReserve.getMovie_seat_num()) {
+					System.out.println("좌석번호-->"+seat_no);
+					
+					/*
+					if(movieReserve.getUser().getUserId().equals(loginUser.getUserId())) {
 						buttonArray[i+1].setText(buttonArray[i+1].getText()+"[내 예약]");
 					}
-					buttonArray[i+1].setEnabled(false);
+					*/
+					
+					buttonArray[seat_no-1].setEnabled(false);
 				}
 			}
 		}
