@@ -221,6 +221,7 @@ public class GuardMainFrame extends JFrame {
       movieTabbedPane.addTab("상영영화", null, movieListIngPanel, null);
       movieListIngPanel.setLayout(new BorderLayout(0, 0));
       
+      
       JScrollPane scrollPane_3_1 = new JScrollPane();
       scrollPane_3_1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
       movieListIngPanel.add(scrollPane_3_1);
@@ -1485,6 +1486,14 @@ public class GuardMainFrame extends JFrame {
 		List<MovieReserve> mv4= movieReserveService.myReserve("guard4");
 		List<MovieReserve> mv5= movieReserveService.myReserve("guard5");
 		List<MovieReserve> mv6= movieReserveService.myReserve("guard6");
+		List<MovieReserve> mv7= movieReserveService.myReserve("guard7");
+		List<MovieReserve> mv8= movieReserveService.myReserve("guard8");
+		List<MovieReserve> mv9= movieReserveService.myReserve("guard9");
+		List<MovieReserve> mv10= movieReserveService.myReserve("guard10");
+		List<MovieReserve> mv11= movieReserveService.myReserve("rlatjdwns");
+		List<MovieReserve> mv12= movieReserveService.myReserve("qkrrjsxo");
+		
+		
 		
 		mv1.addAll(mv2);
 		mv1.addAll(mv3);
