@@ -34,9 +34,6 @@ public class UserService {
             
             result=0;
          }
-      }else {
-         
-         result=0;
       }
       return result;
    }

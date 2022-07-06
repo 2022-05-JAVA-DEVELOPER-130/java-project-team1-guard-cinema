@@ -11,13 +11,13 @@ public class QuestionServiceTest {
 	public static void main(String[] args)throws Exception {
 		QuestionService questionService = new QuestionService();
 		int rowCount = 0;
-		/*
+		
 		System.out.println("1.add");
 		Question question = new Question(0, new User("guard2", null, null, null, null, null), 
 				"문의제목추가", "문의내용추가", "카테고리1", "카테고리2", null);
 		rowCount = questionService.addQuestion(question);
 		System.out.println(">>"+rowCount);
-		*/
+		
 		
 		/*
 		System.out.println("2.update");

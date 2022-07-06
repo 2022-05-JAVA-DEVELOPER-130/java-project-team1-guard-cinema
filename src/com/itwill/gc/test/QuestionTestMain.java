@@ -16,7 +16,7 @@ public class QuestionTestMain {
       int rowCount = -999;
       Question addQuestion = 
             new Question(0, 
-                  new User("guard1", null, null, null, null, null), 
+                  new User("guard1"), 
                   "문의제목1", "문의내용1", "카테고리1", "카테고리2", null);
       rowCount = questionDao.add(addQuestion);
       System.out.println(">>"+rowCount);
