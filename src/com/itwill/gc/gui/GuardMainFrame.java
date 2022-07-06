@@ -582,6 +582,7 @@ public class GuardMainFrame extends JFrame {
             try {
                MovieReserveService movieRe = new MovieReserveService();
                movieRe.movieReserve(movieReserve);
+               movieItem = null;
             } catch (Exception e1) {
                e1.printStackTrace();
             }
@@ -1229,11 +1230,18 @@ public class GuardMainFrame extends JFrame {
 		List<MovieReserve> final_mv=new ArrayList<MovieReserve>();
 		
 		String cinema_place="1관";
+		//String cinema_name = movieItem.getI_cname();
+		//int mov_code = movieItem.getI_code();
 		String daytime="09시~11시";
+		//String dayd =movieItem.getI_day();
 		
 		List<MovieReserve> mv1= movieReserveService.myReserve("guard1");
 		List<MovieReserve> mv2= movieReserveService.myReserve("guard2");
 		List<MovieReserve> mv3= movieReserveService.myReserve("guard3");
+		List<MovieReserve> mv4= movieReserveService.myReserve("guard4");
+		List<MovieReserve> mv5= movieReserveService.myReserve("guard5");
+		List<MovieReserve> mv6= movieReserveService.myReserve("guard6");
+		
 		mv1.addAll(mv2);
 		mv1.addAll(mv3);
 		
