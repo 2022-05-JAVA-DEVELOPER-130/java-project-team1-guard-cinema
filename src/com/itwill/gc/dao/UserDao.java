@@ -36,13 +36,13 @@ public class UserDao {
    public int update(User user) throws Exception{
       Connection con=dataSource.getConnection();
       PreparedStatement pstmt=con.prepareStatement(UserSql.USER_UPDATE);
-      pstmt.setString(1, user.getUserId());
-      pstmt.setString(2, user.getUserName());
-      pstmt.setString(3, user.getUserPhNum());
-      pstmt.setString(4, user.getUserJumin());
-      pstmt.setString(5, user.getUserEmail());
-      pstmt.setString(6, user.getUserPassword());
-      pstmt.setString(7, user.getUserId());
+      
+      pstmt.setString(1, user.getUserName());
+      pstmt.setString(2, user.getUserPhNum());
+      pstmt.setString(3, user.getUserJumin());
+      pstmt.setString(4, user.getUserEmail());
+      pstmt.setString(5, user.getUserPassword());
+      pstmt.setString(6, user.getUserId());
       int rowCount=pstmt.executeUpdate();
       pstmt.close();
       con.close();

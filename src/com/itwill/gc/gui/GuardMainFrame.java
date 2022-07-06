@@ -22,6 +22,7 @@ import com.itwill.gc.service.FaqService;
 import com.itwill.gc.service.GongjiService;
 import com.itwill.gc.service.MovieReserveService;
 import com.itwill.gc.service.QuestionService;
+import com.itwill.gc.service.UserService;
 import com.itwill.gc.vo.Faq;
 import com.itwill.gc.vo.Gongji;
 import com.itwill.gc.vo.Movie;
@@ -60,7 +61,14 @@ public class GuardMainFrame extends JFrame {
    public MovieItem movieItem = null;
    private MovieReserveService movieReserveService =null;
    private MovieReserve movieReserve = null;
-   /**************************************************/
+   private User loginUser;
+   private UserService userService;
+   private JLabel messageLB; 
+   private JLabel loginMessageLB;
+   private JLabel updateLB;
+
+   /**************************
+    *************************/
    /**************************************************/
    /**************************************************/
    
@@ -73,12 +81,12 @@ public class GuardMainFrame extends JFrame {
    private JTextField emailTF;
    private JTextField loginIdTF;
    private JTextField loginPasswordTF;
-   private JTextField textField_6;
-   private JTextField textField_7;
-   private JTextField textField_8;
-   private JTextField textField_9;
-   private JTextField textField_10;
-   private JTextField textField_11;
+   private JTextField c_idTF;
+   private JTextField c_passwordTF;
+   private JTextField c_nameTF;
+   private JTextField c_juminTF;
+   private JTextField c_phoneTF;
+   private JTextField c_emailTF;
    private JTextField g_noTF;
    private JTextField g_categoryTF;
    private JTextField g_titleTF;
@@ -97,6 +105,7 @@ public class GuardMainFrame extends JFrame {
    private JTextArea g_contentTA;
    private JTextArea m_contentTA;
    private JTable reserveTable;
+   private JLabel updateMessageLB;
 
    /**
     * Launch the application.
@@ -187,6 +196,7 @@ public class GuardMainFrame extends JFrame {
       movieListPanel.add(movieTwoPanel);
       
       JLabel lblNewLabel_12_1 = new JLabel("");
+      lblNewLabel_12_1.setIcon(new ImageIcon(GuardMainFrame.class.getResource("/images/50dalma.jpg")));
       lblNewLabel_12_1.setBounds(12, 10, 94, 87);
       movieTwoPanel.add(lblNewLabel_12_1);
       
@@ -813,20 +823,31 @@ public class GuardMainFrame extends JFrame {
       JButton joinBtn = new JButton("가입");
       joinBtn.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
-            String id = idTF.getText();
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-         }
-      });
+        	 try {
+
+                 String id = idTF.getText();
+                 String password = passwordTF.getText();
+                 String name = nameTF.getText();
+                 String jumin = juminTF.getText();
+                 String phone = phoneTF.getText();
+                 String email = emailTF.getText();
+                 
+                 if (id.equals("") || password.equals("") || name.equals("") || jumin.equals("") || phone.equals("")
+                       || email.equals("")) {
+                    messageLB.setText("* 내용을 입력하세요");
+                    return;
+                 }else {
+                	 User createUser = new User(id,name,phone,jumin,email,password);
+                	 UserService userservice = new UserService();
+                	 userservice.create(createUser);
+                 }
+              } catch (Exception e1) {
+            	  e1.printStackTrace();
+              }
+
+           }
+        });
+
       joinBtn.setBounds(72, 410, 97, 23);
       joinPanel.add(joinBtn);
       
@@ -862,6 +883,29 @@ public class GuardMainFrame extends JFrame {
       loginPanel.add(loginPasswordTF);
       
       JButton loginBtn = new JButton("로그인");
+      loginBtn.addActionListener(new ActionListener() {
+      	public void actionPerformed(ActionEvent e) {
+            try {
+                String id = loginIdTF.getText();
+                String password = loginPasswordTF.getText();
+                UserService loginService = new UserService();
+                int result = loginService.login(id, password);
+                if (result == 1) {
+                   loginMessageLB.setText("로그인완료");
+                   loginProcess(id);
+                  
+                } else if (result == 0) {
+                   loginMessageLB.setText("로그인실패");
+                }
+             } catch (Exception e1) {
+
+             }
+          }
+       });
+        loginMessageLB = new JLabel("");
+		loginMessageLB.setBounds(141, 235, 181, 21);
+		loginPanel.add(loginMessageLB);
+
       loginBtn.setBounds(64, 303, 97, 23);
       loginPanel.add(loginBtn);
       
@@ -897,43 +941,84 @@ public class GuardMainFrame extends JFrame {
       lblNewLabel_8_5.setBounds(45, 310, 57, 15);
       changePanel.add(lblNewLabel_8_5);
       
-      textField_6 = new JTextField();
-      textField_6.setBounds(182, 46, 116, 21);
-      changePanel.add(textField_6);
-      textField_6.setColumns(10);
+      c_idTF = new JTextField();
+      c_idTF.setBounds(182, 46, 116, 21);
+      changePanel.add(c_idTF);
+      c_idTF.setColumns(10);
       
-      textField_7 = new JTextField();
-      textField_7.setColumns(10);
-      textField_7.setBounds(182, 92, 116, 21);
-      changePanel.add(textField_7);
+      c_passwordTF = new JTextField();
+      c_passwordTF.setColumns(10);
+      c_passwordTF.setBounds(182, 92, 116, 21);
+      changePanel.add(c_passwordTF);
       
-      textField_8 = new JTextField();
-      textField_8.setColumns(10);
-      textField_8.setBounds(182, 142, 116, 21);
-      changePanel.add(textField_8);
+      c_nameTF = new JTextField();
+      c_nameTF.setColumns(10);
+      c_nameTF.setBounds(182, 142, 116, 21);
+      changePanel.add(c_nameTF);
       
-      textField_9 = new JTextField();
-      textField_9.setColumns(10);
-      textField_9.setBounds(182, 196, 116, 21);
-      changePanel.add(textField_9);
+      c_juminTF = new JTextField();
+      c_juminTF.setColumns(10);
+      c_juminTF.setBounds(182, 196, 116, 21);
+      changePanel.add(c_juminTF);
       
-      textField_10 = new JTextField();
-      textField_10.setColumns(10);
-      textField_10.setBounds(182, 253, 116, 21);
-      changePanel.add(textField_10);
+      c_phoneTF = new JTextField();
+      c_phoneTF.setColumns(10);
+      c_phoneTF.setBounds(182, 253, 116, 21);
+      changePanel.add(c_phoneTF);
       
-      textField_11 = new JTextField();
-      textField_11.setColumns(10);
-      textField_11.setBounds(182, 307, 116, 21);
-      changePanel.add(textField_11);
+      c_emailTF = new JTextField();
+      c_emailTF.setColumns(10);
+      c_emailTF.setBounds(182, 307, 116, 21);
+      changePanel.add(c_emailTF);
       
       JButton memberUpdateBtn = new JButton("수정");
+      memberUpdateBtn.addActionListener(new ActionListener() {
+      	public void actionPerformed(ActionEvent e) {
+            try {
+                c_idTF.setText(loginUser.getUserId());
+                c_juminTF.setText(loginUser.getUserJumin());
+                String password = c_passwordTF.getText();
+                String email = c_emailTF.getText();
+                String name = c_nameTF.getText();
+                String phone = c_phoneTF.getText();
+                
+               loginUser.setUserPassword(password);
+               loginUser.setUserEmail(email);
+               loginUser.setUserName(name);
+               loginUser.setUserPhNum(phone);
+               
+                UserService upservice = new UserService();
+                upservice.update(loginUser);
+                updateMessageLB.setText("수정완료");
+
+             } catch (Exception e1) {
+                updateMessageLB.setText("수정실패");
+             }
+          }
+       });
+
       memberUpdateBtn.setBounds(64, 396, 97, 23);
       changePanel.add(memberUpdateBtn);
       
       JButton memberDeleteBtn = new JButton("삭제");
+      memberDeleteBtn.addActionListener(new ActionListener() {
+      	public void actionPerformed(ActionEvent e) {
+            try {
+                String c_id = c_idTF.getText();
+                userService.remove(c_id);
+
+             } catch (Exception e1) {
+                JOptionPane.showMessageDialog(null, e1.getMessage());
+             }
+          }
+       });
+
       memberDeleteBtn.setBounds(210, 396, 97, 23);
       changePanel.add(memberDeleteBtn);
+      
+      updateMessageLB = new JLabel("");
+      updateMessageLB.setBounds(98, 352, 200, 21);
+      changePanel.add(updateMessageLB);
       
       JPanel centerPanel = new JPanel();
       tabbedPane.addTab("고객센터", null, centerPanel, null);
@@ -1165,8 +1250,9 @@ public class GuardMainFrame extends JFrame {
                String qCateTwo = (String)q_twoCateCB.getSelectedItem();               
                String qContent = q_contentTA.getText();
             
-            Question newQuestion = new Question(0, new User("qkrrjsxo"), qTitle, qContent, qCateOne, qCateTwo, null);
+            Question newQuestion = new Question(0, new User(loginUser.getUserId()), qTitle, qContent, qCateOne, qCateTwo, null);
             QuestionService questionService = new QuestionService();
+            System.out.println("dd");
             int isSuccess = 
                   questionService.addQuestion(newQuestion);
             if(isSuccess==1) {
@@ -1176,7 +1262,7 @@ public class GuardMainFrame extends JFrame {
             }
                
             }catch(Exception e1) {
-               
+            	e1.printStackTrace();
             }
             /*************************************************/
          }
@@ -1311,7 +1397,23 @@ public class GuardMainFrame extends JFrame {
    }
    /***************************************************/
    
-   
+   public void loginProcess(String id)throws Exception {
+		/*
+		 * 1.로그인멤버객체 저장
+		 * 2.MemberMainFrame타이틀변경
+		 * 3.로그인,회원가입 tab 불활성화
+		 * 4.로그아웃메뉴아이템 활성화
+		 * 5.회원리스트탭 활성화
+		 */
+	   UserService inService = new UserService();
+		User loginSuccessUser=inService.finduserInfo(id);
+		loginUser = loginSuccessUser;
+		//setTitle(loginSuccessUser.getUserName());
+		//memberTabbedPane.setEnabledAt(0, false);
+		//memberTabbedPane.setEnabledAt(1, false);
+		//memberTabbedPane.setEnabledAt(2, true);
+		//memberTabbedPane.setSelectedIndex(2);
+	}
    /*******************얘는 뭐임**********************/
    /*
    public  void productList() {
