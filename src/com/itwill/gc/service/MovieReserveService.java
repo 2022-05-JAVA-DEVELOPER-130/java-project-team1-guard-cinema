@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.itwill.gc.dao.MovieReserveDao;
 import com.itwill.gc.vo.Movie;
+import com.itwill.gc.vo.MovieItem;
 import com.itwill.gc.vo.MovieReserve;
 import com.itwill.gc.vo.User;
 
@@ -55,6 +56,23 @@ public class MovieReserveService {
 		}
 		
 		
+		
+		
+	}
+	public int searchReserve(MovieItem movieItem) {
+		int free = 0;
+		try {
+			MovieReserve result = movieReserveDao.selectByMany(movieItem.getI_code(), movieItem.getI_day(), movieItem.getI_daytime(), movieItem.getI_cname(), movieItem.getI_cplace(), movieItem.getI_seat());
+			if(result == null) {
+				free=1;
+			}else {
+				free=0;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return free;
 		
 		
 	}

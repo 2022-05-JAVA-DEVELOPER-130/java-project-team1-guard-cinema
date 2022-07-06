@@ -2,6 +2,7 @@ package com.itwill.gc.servicetest;
 
 import com.itwill.gc.service.MovieReserveService;
 import com.itwill.gc.vo.Movie;
+import com.itwill.gc.vo.MovieItem;
 import com.itwill.gc.vo.MovieReserve;
 import com.itwill.gc.vo.User;
 
@@ -25,6 +26,9 @@ public class MovieReserveServiceTest {
 		
 		System.out.println("예매번호로 예매 취소");
 		System.out.println(">> "+movieReserveService.movieCancleByNum(2));
+		
+		
+		//System.out.println(">>"+movieReserveService.searchReserve(new MovieItem(1,1,1,1,1)));
 	}
 
 }
