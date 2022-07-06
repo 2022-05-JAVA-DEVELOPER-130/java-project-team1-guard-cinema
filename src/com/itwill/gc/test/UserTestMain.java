@@ -13,6 +13,7 @@ package com.itwill.gc.test;
 			System.out.println("4.findUserID"+userDao.findUser("qkrrjsxo"));
 			System.out.println("4.remove:"+userDao.remove("kkkk1"));
 			System.out.println("6.existedUser:"+userDao.serchUserid("guard1"));
+			System.out.println("7.selectAllUser:"+userDao.selectAllUser());
 			
 		
 		}
