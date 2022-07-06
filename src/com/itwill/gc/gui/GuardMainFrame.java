@@ -127,6 +127,7 @@ public class GuardMainFrame extends JFrame {
    private JButton reserveBtn4;
    private JTextArea p_contentTA;
    private JButton questionDeleteBtn;
+   private JPanel changePanel;
 
    /**
     * Launch the application.
@@ -858,7 +859,7 @@ public class GuardMainFrame extends JFrame {
       cancleBtn2.setBounds(214, 303, 97, 23);
       loginPanel.add(cancleBtn2);
       
-      JPanel changePanel = new JPanel();
+      changePanel = new JPanel();
       userTabbedPane.addTab("정보수정", null, changePanel, null);
       changePanel.setLayout(null);
       
@@ -1575,6 +1576,7 @@ public class GuardMainFrame extends JFrame {
 	  reserveBtn4.setEnabled(true);
       userTabbedPane.setEnabledAt(0, false);
       userTabbedPane.setEnabledAt(1, false);
+      userTabbedPane.setEnabledAt(2, true);
       movieTabbedPane.setEnabledAt(2, true);
 	  movieTabbedPane.setEnabledAt(3, true);
 	  movieTabbedPane.setEnabledAt(4, true);
@@ -1606,6 +1608,7 @@ public class GuardMainFrame extends JFrame {
 		reserveBtn4.setEnabled(false);
 		userTabbedPane.setEnabledAt(0, true);
 	    userTabbedPane.setEnabledAt(1, true);
+	    userTabbedPane.setEnabledAt(2, false);
 	    movieTabbedPane.setEnabledAt(2, false);
 	    movieTabbedPane.setEnabledAt(3, false);
 	    movieTabbedPane.setEnabledAt(4, false);
