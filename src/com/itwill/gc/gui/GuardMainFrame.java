@@ -1500,6 +1500,13 @@ public class GuardMainFrame extends JFrame {
 		mv1.addAll(mv4);
 		mv1.addAll(mv5);
 		mv1.addAll(mv6);
+		mv1.addAll(mv7);
+		mv1.addAll(mv8);
+		mv1.addAll(mv9);
+		mv1.addAll(mv10);
+		mv1.addAll(mv11);
+		mv1.addAll(mv12);
+		
 		
 		
 		System.out.println(mv1.size());
