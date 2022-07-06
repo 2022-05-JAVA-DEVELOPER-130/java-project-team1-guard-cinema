@@ -1368,9 +1368,9 @@ public class GuardMainFrame extends JFrame {
       for(Question question : questionList) {
          Vector rowVector = new Vector();
          rowVector.add(question.getQuestion_no());
-         rowVector.add(question.getQuestion_title());
          rowVector.add(question.getQuestion_cate_one());
          rowVector.add(question.getQuestion_cate_two());
+         rowVector.add(question.getQuestion_title());
          rowVector.add(question.getQuestion_date());
          
          questionListVector.add(rowVector);
@@ -1378,9 +1378,9 @@ public class GuardMainFrame extends JFrame {
       
       Vector columnVector = new Vector();
       columnVector.add("번호");
-      columnVector.add("제목");
-      columnVector.add("카테고리1");
-      columnVector.add("카테고리2");
+      columnVector.add("대분류");
+      columnVector.add("소분류");
+      columnVector.add("문의제목");
       columnVector.add("문의날짜");
       
       
