@@ -1040,7 +1040,7 @@ public class GuardMainFrame extends JFrame {
                loginUser.setUserPassword(password);
                loginUser.setUserEmail(email);
                loginUser.setUserName(name);
-               loginUser.setUserPhNum;
+               loginUser.setUserPhNum(phone);
                
                 UserService upservice = new UserService();
                 upservice.update(loginUser);
